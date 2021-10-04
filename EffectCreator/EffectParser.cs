@@ -8,7 +8,11 @@ namespace EffectCreator {
         private const string PARTIAL_PATH = @"\Resources\effects.json";
         private ParsedEffectGroup[] parsedEffectGroups;
 
-        public void ParseEffects() {
+        public EffectParser() {
+            ParseEffects();
+        }
+
+        private void ParseEffects() {
             string fullPath = Directory.GetCurrentDirectory() + PARTIAL_PATH;
 
             string jsonText = File.ReadAllText(fullPath);
