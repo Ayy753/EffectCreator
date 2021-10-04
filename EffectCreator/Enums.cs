@@ -6,4 +6,25 @@
     public enum StatType {
         Armor, ColdResist, FireResist, PoisonResist, LightningResist, Health, Speed, Max
     }
+
+    public enum SoundType {
+        arrowHitFlesh,
+        arrowHitDirt,
+        arrowHitStone,
+        arrowFire,
+        bluntHit,
+        explosionTiny,
+        arrowRelease,
+        gainGold,
+        buff,
+        gunFire
+    }
+    
+    public enum TargetType {
+        Individual, Area
+    }
+
+    public enum EffectType {
+        Buff, Damage, DOT, StatMod, Debuff, Heal
+    }
 }
