@@ -61,12 +61,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Effects.cs" />
+    <Compile Include="Enums.cs" />
     <Compile Include="frmEffectGroup.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmEffectGroup.Designer.cs">
       <DependentUpon>frmEffectGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="IEffects.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmEffectGroup.resx">
