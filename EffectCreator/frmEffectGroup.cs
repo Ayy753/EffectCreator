@@ -12,6 +12,8 @@ namespace EffectCreator {
     public partial class frmEffectGroup : Form {
         public frmEffectGroup() {
             InitializeComponent();
+            EffectParser effectParser = new EffectParser();
+            effectParser.ParseEffects();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e) {

@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EffectParser.cs" />
     <Compile Include="Effects.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="frmEffectGroup.cs">
