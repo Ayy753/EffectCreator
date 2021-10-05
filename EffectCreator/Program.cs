@@ -13,7 +13,7 @@ namespace EffectCreator {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmEffectGroup());
+            Application.Run(new frmMain());
         }
     }
 }
