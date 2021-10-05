@@ -14,8 +14,24 @@ namespace EffectCreator {
     public partial class frmEffectGroup : Form {
         public frmEffectGroup() {
             InitializeComponent();
-            ReadOnlyCollection<EffectGroup> effectGroups = EffectParser.GetEffectGroups();
-            Debug.WriteLine($"EffectGroup length: {effectGroups.Count}");
+        }
+
+        public frmEffectGroup(EffectGroup effectGroup) {
+            InitializeComponent();
+            PopulateForm(effectGroup);
+        }
+
+        private void PopulateForm(EffectGroup effectGroup) {
+            tbName.Text = effectGroup.Name;
+            tbDescription.Text = effectGroup.Description;
+            cbSoundType.SelectedItem = effectGroup.SoundType.ToString();
+            numCooldown.Value = (decimal)effectGroup.Cooldown;
+            radTargetGroup.Checked = effectGroup.Type == TargetType.Area;
+            numRadius.Value = (decimal)effectGroup.Radius;
+
+            foreach (IEffect effect in effectGroup.Effects) {
+                lbEffects.Items.Add("Effect " + lbEffects.Items.Count);
+            }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e) {

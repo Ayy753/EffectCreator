@@ -68,6 +68,7 @@ namespace EffectCreator {
             this.btnOpenEffectGroup.TabIndex = 3;
             this.btnOpenEffectGroup.Text = "Open";
             this.btnOpenEffectGroup.UseVisualStyleBackColor = true;
+            this.btnOpenEffectGroup.Click += new System.EventHandler(this.btnOpenEffectGroup_Click);
             // 
             // btnDeleteEffectGroup
             // 
