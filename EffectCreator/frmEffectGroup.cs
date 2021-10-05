@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,6 @@ namespace EffectCreator {
     public partial class frmEffectGroup : Form {
         public frmEffectGroup() {
             InitializeComponent();
-            EffectParser effectParser = new EffectParser();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e) {
