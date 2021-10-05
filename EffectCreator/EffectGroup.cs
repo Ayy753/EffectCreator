@@ -1,5 +1,5 @@
 ﻿namespace EffectCreator {
-    struct EffectGroup {
+    public struct EffectGroup {
         public string Name { get; }
         public string Description { get; }
         public float Radius { get; }

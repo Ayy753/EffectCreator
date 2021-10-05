@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
@@ -13,6 +14,8 @@ namespace EffectCreator {
     public partial class frmEffectGroup : Form {
         public frmEffectGroup() {
             InitializeComponent();
+            ReadOnlyCollection<EffectGroup> effectGroups = EffectParser.GetEffectGroups();
+            Debug.WriteLine($"EffectGroup length: {effectGroups.Count}");
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e) {
