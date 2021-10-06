@@ -10,8 +10,13 @@ using System.Windows.Forms;
 
 namespace EffectCreator.EffectControls {
     public partial class ucStatMod : UserControl {
-        public ucStatMod() {
+        public ucStatMod(StatMod statMod) {
             InitializeComponent();
+            PopulateForm(statMod);
+        }
+
+        private void PopulateForm(StatMod statMod) {
+            cbStatType.SelectedItem = statMod.Type.ToString();
         }
     }
 }

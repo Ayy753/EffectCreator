@@ -10,8 +10,13 @@ using System.Windows.Forms;
 
 namespace EffectCreator.EffectControls {
     public partial class ucHeal : UserControl {
-        public ucHeal() {
+        public ucHeal(Heal heal) {
             InitializeComponent();
+            PopulateForm(heal);
+        }
+
+        private void PopulateForm(Heal heal) {
+            numPotency.Value = (decimal)heal.Potency;
         }
     }
 }

@@ -10,8 +10,17 @@ using System.Windows.Forms;
 
 namespace EffectCreator.EffectControls {
     public partial class ucDebuff : UserControl {
-        public ucDebuff() {
+        public ucDebuff(Debuff debuff) {
             InitializeComponent();
+            PopulateForm(debuff);
+        }
+
+        private void PopulateForm(Debuff debuff) {
+            numPotency.Value = (decimal)debuff.Potency;
+            numDuration.Value = (decimal)debuff.Duration;
+            cbResistType.SelectedItem = debuff.ResistType.ToString();
+            cbStatType.SelectedItem = debuff.Type.ToString();
+            cbExpires.Checked = debuff.Expires;
         }
     }
 }

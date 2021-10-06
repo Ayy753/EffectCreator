@@ -10,8 +10,14 @@ using System.Windows.Forms;
 
 namespace EffectCreator.EffectControls {
     public partial class ucDamage : UserControl {
-        public ucDamage() {
+        public ucDamage(Damage damage) {
             InitializeComponent();
+            PopulateForm(damage);
+        }
+
+        private void PopulateForm(Damage damage) {
+            numPotency.Value = (decimal)damage.Potency;
+            cbDamageType.SelectedItem = damage.Type.ToString();
         }
     }
 }

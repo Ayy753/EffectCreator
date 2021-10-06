@@ -50,23 +50,23 @@ namespace EffectCreator {
             IEffect effect = listboxRowToEffect[rowKey];
             UserControl control;
 
-            if (effect is Damage) {
-                control = new ucDamage();
+            if (effect is Damage damage) {
+                control = new ucDamage(damage);
             }
-            else if (effect is DamageOverTime) {
-                control = new ucDamageOverTime();
+            else if (effect is DamageOverTime damageOverTime) {
+                control = new ucDamageOverTime(damageOverTime);
             }
-            else if (effect is Buff) {
-                control = new ucBuff();
+            else if (effect is Buff buff) {
+                control = new ucBuff(buff);
             }
-            else if (effect is StatMod) {
-                control = new ucStatMod();
+            else if (effect is StatMod statMod) {
+                control = new ucStatMod(statMod);
             }
-            else if (effect is Debuff) {
-                control = new ucDebuff();
+            else if (effect is Debuff debuff) {
+                control = new ucDebuff(debuff);
             }
             else {
-                control = new ucHeal();
+                control = new ucHeal((Heal)effect);
             }
 
             AddEffectControl(control);

@@ -10,8 +10,16 @@ using System.Windows.Forms;
 
 namespace EffectCreator.EffectControls {
     public partial class ucBuff : UserControl {
-        public ucBuff() {
+        public ucBuff(Buff buff) {
             InitializeComponent();
+            PopulateForm(buff);
+        }
+
+        private void PopulateForm(Buff buff) {
+            numPotency.Value = (decimal)buff.Potency;
+            numDuration.Value = (decimal)buff.Duration;
+            cbStatType.SelectedItem = buff.Type.ToString();
+            cbExpires.Checked = buff.Expires;
         }
     }
 }
