@@ -43,6 +43,14 @@ namespace EffectCreator.EffectControls {
             // cbStatType
             // 
             this.cbStatType.FormattingEnabled = true;
+            this.cbStatType.Items.AddRange(new object[] {
+            "Armor",
+            "ColdResist",
+            "FireResist",
+            "PoisonResist",
+            "LightningResist",
+            "Health",
+            "Speed"});
             this.cbStatType.Location = new System.Drawing.Point(116, 53);
             this.cbStatType.Name = "cbStatType";
             this.cbStatType.Size = new System.Drawing.Size(121, 21);

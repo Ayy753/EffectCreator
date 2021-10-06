@@ -46,6 +46,12 @@ namespace EffectCreator.EffectControls {
             // cbDamageType
             // 
             this.cbDamageType.FormattingEnabled = true;
+            this.cbDamageType.Items.AddRange(new object[] {
+            "Physical",
+            "Cold",
+            "Fire",
+            "Poison",
+            "Lightning"});
             this.cbDamageType.Location = new System.Drawing.Point(114, 37);
             this.cbDamageType.Name = "cbDamageType";
             this.cbDamageType.Size = new System.Drawing.Size(121, 21);

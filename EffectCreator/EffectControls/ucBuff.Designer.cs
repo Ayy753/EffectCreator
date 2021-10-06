@@ -64,6 +64,14 @@ namespace EffectCreator.EffectControls {
             // cbStatType
             // 
             this.cbStatType.FormattingEnabled = true;
+            this.cbStatType.Items.AddRange(new object[] {
+            "Armor",
+            "ColdResist",
+            "FireResist",
+            "PoisonResist",
+            "LightningResist",
+            "Health",
+            "Speed"});
             this.cbStatType.Location = new System.Drawing.Point(116, 39);
             this.cbStatType.Name = "cbStatType";
             this.cbStatType.Size = new System.Drawing.Size(121, 21);
@@ -75,6 +83,11 @@ namespace EffectCreator.EffectControls {
             this.numPotency.Name = "numPotency";
             this.numPotency.Size = new System.Drawing.Size(121, 20);
             this.numPotency.TabIndex = 11;
+            this.numPotency.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             // 
             // lblPotency
             // 

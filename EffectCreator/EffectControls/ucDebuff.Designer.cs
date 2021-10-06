@@ -86,6 +86,14 @@ namespace EffectCreator.EffectControls {
             // cbStatType
             // 
             this.cbStatType.FormattingEnabled = true;
+            this.cbStatType.Items.AddRange(new object[] {
+            "Armor",
+            "ColdResist",
+            "FireResist",
+            "PoisonResist",
+            "LightningResist",
+            "Health",
+            "Speed"});
             this.cbStatType.Location = new System.Drawing.Point(116, 41);
             this.cbStatType.Name = "cbStatType";
             this.cbStatType.Size = new System.Drawing.Size(121, 21);
@@ -119,6 +127,12 @@ namespace EffectCreator.EffectControls {
             // cbResistType
             // 
             this.cbResistType.FormattingEnabled = true;
+            this.cbResistType.Items.AddRange(new object[] {
+            "Physical",
+            "Cold",
+            "Fire",
+            "Poison",
+            "Lightning"});
             this.cbResistType.Location = new System.Drawing.Point(116, 69);
             this.cbResistType.Name = "cbResistType";
             this.cbResistType.Size = new System.Drawing.Size(121, 21);
