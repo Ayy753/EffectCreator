@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EffectCreator.EffectControls;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -35,7 +36,9 @@ namespace EffectCreator {
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e) {
-        
+            ucDamage damageControl = new ucDamage();
+
+            splitContainer1.Panel2.Controls.Add(damageControl);
         }
 
         private void radTargetIndividual_CheckedChanged(object sender, EventArgs e) {

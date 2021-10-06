@@ -64,6 +64,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EffectControls\ucDamage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EffectControls\ucDamage.Designer.cs">
+      <DependentUpon>ucDamage.cs</DependentUpon>
+    </Compile>
     <Compile Include="EffectGroup.cs" />
     <Compile Include="EffectParser.cs" />
     <Compile Include="Effects.cs" />
@@ -83,6 +89,9 @@
     <Compile Include="IEffects.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EffectControls\ucDamage.resx">
+      <DependentUpon>ucDamage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEffectGroup.resx">
       <DependentUpon>frmEffectGroup.cs</DependentUpon>
     </EmbeddedResource>

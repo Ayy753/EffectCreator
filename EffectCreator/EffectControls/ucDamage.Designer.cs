@@ -1,0 +1,90 @@
+﻿
+namespace EffectCreator.EffectControls {
+    partial class ucDamage {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing) {
+            if (disposing && (components != null)) {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent() {
+            this.lblPotency = new System.Windows.Forms.Label();
+            this.numPotency = new System.Windows.Forms.NumericUpDown();
+            this.cbDamageType = new System.Windows.Forms.ComboBox();
+            this.lblDamageType = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.numPotency)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // lblPotency
+            // 
+            this.lblPotency.AutoSize = true;
+            this.lblPotency.Location = new System.Drawing.Point(4, 4);
+            this.lblPotency.Name = "lblPotency";
+            this.lblPotency.Size = new System.Drawing.Size(46, 13);
+            this.lblPotency.TabIndex = 0;
+            this.lblPotency.Text = "Potency";
+            // 
+            // numPotency
+            // 
+            this.numPotency.Location = new System.Drawing.Point(106, 3);
+            this.numPotency.Name = "numPotency";
+            this.numPotency.Size = new System.Drawing.Size(121, 20);
+            this.numPotency.TabIndex = 1;
+            // 
+            // cbDamageType
+            // 
+            this.cbDamageType.FormattingEnabled = true;
+            this.cbDamageType.Location = new System.Drawing.Point(106, 32);
+            this.cbDamageType.Name = "cbDamageType";
+            this.cbDamageType.Size = new System.Drawing.Size(121, 21);
+            this.cbDamageType.TabIndex = 2;
+            // 
+            // lblDamageType
+            // 
+            this.lblDamageType.AutoSize = true;
+            this.lblDamageType.Location = new System.Drawing.Point(4, 32);
+            this.lblDamageType.Name = "lblDamageType";
+            this.lblDamageType.Size = new System.Drawing.Size(74, 13);
+            this.lblDamageType.TabIndex = 3;
+            this.lblDamageType.Text = "Damage Type";
+            // 
+            // ucDamage
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblDamageType);
+            this.Controls.Add(this.cbDamageType);
+            this.Controls.Add(this.numPotency);
+            this.Controls.Add(this.lblPotency);
+            this.Name = "ucDamage";
+            this.Size = new System.Drawing.Size(250, 60);
+            ((System.ComponentModel.ISupportInitialize)(this.numPotency)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label lblPotency;
+        private System.Windows.Forms.NumericUpDown numPotency;
+        private System.Windows.Forms.ComboBox cbDamageType;
+        private System.Windows.Forms.Label lblDamageType;
+    }
+}
