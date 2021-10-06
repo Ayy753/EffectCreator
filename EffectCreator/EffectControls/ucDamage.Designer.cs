@@ -36,9 +36,9 @@ namespace EffectCreator.EffectControls {
             this.lblPotency.AutoSize = true;
             this.lblPotency.Location = new System.Drawing.Point(4, 4);
             this.lblPotency.Name = "lblPotency";
-            this.lblPotency.Size = new System.Drawing.Size(46, 13);
+            this.lblPotency.Size = new System.Drawing.Size(86, 13);
             this.lblPotency.TabIndex = 0;
-            this.lblPotency.Text = "Potency";
+            this.lblPotency.Text = "Damage Amount";
             // 
             // numPotency
             // 
