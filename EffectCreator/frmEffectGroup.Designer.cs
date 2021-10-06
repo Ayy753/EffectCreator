@@ -43,12 +43,18 @@ namespace EffectCreator {
             this.tbDescription = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.tbName = new System.Windows.Forms.TextBox();
+            this.scEffect = new System.Windows.Forms.SplitContainer();
+            this.lblEffectType = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRadius)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCooldown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scEffect)).BeginInit();
+            this.scEffect.Panel1.SuspendLayout();
+            this.scEffect.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -59,7 +65,6 @@ namespace EffectCreator {
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.cbEffectType);
             this.splitContainer1.Panel1.Controls.Add(this.btnRemove);
             this.splitContainer1.Panel1.Controls.Add(this.btnCreateNew);
             this.splitContainer1.Panel1.Controls.Add(this.label6);
@@ -75,6 +80,10 @@ namespace EffectCreator {
             this.splitContainer1.Panel1.Controls.Add(this.tbDescription);
             this.splitContainer1.Panel1.Controls.Add(this.lblName);
             this.splitContainer1.Panel1.Controls.Add(this.tbName);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.scEffect);
             this.splitContainer1.Size = new System.Drawing.Size(800, 450);
             this.splitContainer1.SplitterDistance = 341;
             this.splitContainer1.TabIndex = 0;
@@ -88,7 +97,7 @@ namespace EffectCreator {
             "Damage",
             "DamageOverTime",
             "StatMod"});
-            this.cbEffectType.Location = new System.Drawing.Point(93, 376);
+            this.cbEffectType.Location = new System.Drawing.Point(83, 6);
             this.cbEffectType.Name = "cbEffectType";
             this.cbEffectType.Size = new System.Drawing.Size(121, 21);
             this.cbEffectType.TabIndex = 15;
@@ -105,7 +114,7 @@ namespace EffectCreator {
             // 
             // btnCreateNew
             // 
-            this.btnCreateNew.Location = new System.Drawing.Point(12, 374);
+            this.btnCreateNew.Location = new System.Drawing.Point(94, 345);
             this.btnCreateNew.Name = "btnCreateNew";
             this.btnCreateNew.Size = new System.Drawing.Size(75, 23);
             this.btnCreateNew.TabIndex = 13;
@@ -128,7 +137,7 @@ namespace EffectCreator {
             this.lbEffects.Name = "lbEffects";
             this.lbEffects.Size = new System.Drawing.Size(157, 95);
             this.lbEffects.TabIndex = 11;
-            this.lbEffects.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.lbEffects.SelectedIndexChanged += new System.EventHandler(this.lbEffects_SelectedIndexChanged);
             // 
             // lblRadius
             // 
@@ -255,6 +264,30 @@ namespace EffectCreator {
             this.tbName.Size = new System.Drawing.Size(237, 20);
             this.tbName.TabIndex = 0;
             // 
+            // scEffect
+            // 
+            this.scEffect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scEffect.Location = new System.Drawing.Point(0, 0);
+            this.scEffect.Name = "scEffect";
+            this.scEffect.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // scEffect.Panel1
+            // 
+            this.scEffect.Panel1.Controls.Add(this.cbEffectType);
+            this.scEffect.Panel1.Controls.Add(this.lblEffectType);
+            this.scEffect.Size = new System.Drawing.Size(455, 450);
+            this.scEffect.SplitterDistance = 36;
+            this.scEffect.TabIndex = 0;
+            // 
+            // lblEffectType
+            // 
+            this.lblEffectType.AutoSize = true;
+            this.lblEffectType.Location = new System.Drawing.Point(15, 9);
+            this.lblEffectType.Name = "lblEffectType";
+            this.lblEffectType.Size = new System.Drawing.Size(62, 13);
+            this.lblEffectType.TabIndex = 0;
+            this.lblEffectType.Text = "Effect Type";
+            // 
             // frmEffectGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -265,12 +298,17 @@ namespace EffectCreator {
             this.Text = "frmEffectGroup";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numRadius)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCooldown)).EndInit();
+            this.scEffect.Panel1.ResumeLayout(false);
+            this.scEffect.Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scEffect)).EndInit();
+            this.scEffect.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -296,5 +334,7 @@ namespace EffectCreator {
         private System.Windows.Forms.Button btnCreateNew;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbEffectType;
+        private System.Windows.Forms.SplitContainer scEffect;
+        private System.Windows.Forms.Label lblEffectType;
     }
 }
