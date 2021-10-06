@@ -60,9 +60,24 @@ namespace EffectCreator.EffectControls {
             // numPotency
             // 
             this.numPotency.Location = new System.Drawing.Point(114, 8);
+            this.numPotency.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.numPotency.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numPotency.Name = "numPotency";
             this.numPotency.Size = new System.Drawing.Size(121, 20);
             this.numPotency.TabIndex = 5;
+            this.numPotency.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // lblPotency
             // 
@@ -75,10 +90,30 @@ namespace EffectCreator.EffectControls {
             // 
             // numDuration
             // 
+            this.numDuration.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.numDuration.Location = new System.Drawing.Point(114, 64);
+            this.numDuration.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.numDuration.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.numDuration.Name = "numDuration";
             this.numDuration.Size = new System.Drawing.Size(121, 20);
             this.numDuration.TabIndex = 9;
+            this.numDuration.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             // 
             // lblDuration
             // 

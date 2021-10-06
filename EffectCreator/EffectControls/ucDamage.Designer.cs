@@ -43,9 +43,24 @@ namespace EffectCreator.EffectControls {
             // numPotency
             // 
             this.numPotency.Location = new System.Drawing.Point(106, 3);
+            this.numPotency.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.numPotency.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numPotency.Name = "numPotency";
             this.numPotency.Size = new System.Drawing.Size(121, 20);
             this.numPotency.TabIndex = 1;
+            this.numPotency.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // cbDamageType
             // 
