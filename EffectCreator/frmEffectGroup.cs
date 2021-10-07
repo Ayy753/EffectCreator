@@ -13,7 +13,6 @@ using System.Windows.Forms;
 
 namespace EffectCreator {
     public partial class frmEffectGroup : Form {
-        private EffectGroup effectGroup;
         private Dictionary<string, IEffect> listboxRowToEffect;
 
         public frmEffectGroup() {
@@ -24,11 +23,14 @@ namespace EffectCreator {
             InitializeComponent();
 
             listboxRowToEffect = new Dictionary<string, IEffect>();
-            this.effectGroup = effectGroup;
-            PopulateForm();
+            PopulateForm(effectGroup);
+
+            if (lbEffects.Items.Count > 0) {
+                lbEffects.SelectedIndex = 0;
+            }
         }
 
-        private void PopulateForm() {
+        private void PopulateForm(EffectGroup effectGroup) {
             tbName.Text = effectGroup.Name;
             tbDescription.Text = effectGroup.Description;
             cbSoundType.SelectedItem = effectGroup.SoundType.ToString();
@@ -46,31 +48,38 @@ namespace EffectCreator {
         private void lbEffects_SelectedIndexChanged(object sender, EventArgs e) {
             RemoveExistingEffectControl();
 
-            string rowKey = lbEffects.SelectedItem.ToString();
-            IEffect effect = listboxRowToEffect[rowKey];
-            UserControl control;
+            if (lbEffects.SelectedIndex != -1) {
+                string rowKey = lbEffects.SelectedItem.ToString();
+                IEffect effect = listboxRowToEffect[rowKey];
+                UserControl control;
 
-            if (effect is Damage damage) {
-                control = new ucDamage(damage);
-            }
-            else if (effect is DamageOverTime damageOverTime) {
-                control = new ucDamageOverTime(damageOverTime);
-            }
-            else if (effect is Buff buff) {
-                control = new ucBuff(buff);
-            }
-            else if (effect is StatMod statMod) {
-                control = new ucStatMod(statMod);
-            }
-            else if (effect is Debuff debuff) {
-                control = new ucDebuff(debuff);
+                if (effect is Damage damage) {
+                    control = new ucDamage(damage);
+                }
+                else if (effect is DamageOverTime damageOverTime) {
+                    control = new ucDamageOverTime(damageOverTime);
+                }
+                else if (effect is Buff buff) {
+                    control = new ucBuff(buff);
+                }
+                else if (effect is StatMod statMod) {
+                    control = new ucStatMod(statMod);
+                }
+                else if (effect is Debuff debuff) {
+                    control = new ucDebuff(debuff);
+                }
+                else {
+                    control = new ucHeal((Heal)effect);
+                }
+
+                AddEffectControl(control);
+                cbEffectType.SelectedItem = effect.GetType().Name;
+
+                btnRemove.Enabled = true;
             }
             else {
-                control = new ucHeal((Heal)effect);
+                btnRemove.Enabled = false;
             }
-
-            AddEffectControl(control);
-            cbEffectType.SelectedItem = effect.GetType().Name;
         }
 
         private void RemoveExistingEffectControl() {
@@ -91,6 +100,20 @@ namespace EffectCreator {
             else {
                 lblRadius.Visible = false;
                 numRadius.Visible = false;
+            }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e) {
+            int selectedRowIndex = lbEffects.SelectedIndex;
+            string rowKey = lbEffects.SelectedItem.ToString();
+            listboxRowToEffect.Remove(rowKey);
+            lbEffects.Items.RemoveAt(selectedRowIndex);
+
+            if (selectedRowIndex > 0) {
+                lbEffects.SelectedIndex = selectedRowIndex -1;
+            }
+            else if (selectedRowIndex == 0 && lbEffects.Items.Count >= 1) {
+                lbEffects.SelectedIndex = 0;
             }
         }
     }

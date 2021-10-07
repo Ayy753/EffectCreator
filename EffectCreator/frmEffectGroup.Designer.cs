@@ -25,7 +25,6 @@ namespace EffectCreator {
         /// </summary>
         private void InitializeComponent() {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btnRemove = new System.Windows.Forms.Button();
             this.btnCreateNew = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.lbEffects = new System.Windows.Forms.ListBox();
@@ -45,6 +44,7 @@ namespace EffectCreator {
             this.scEffect = new System.Windows.Forms.SplitContainer();
             this.cbEffectType = new System.Windows.Forms.ComboBox();
             this.lblEffectType = new System.Windows.Forms.Label();
+            this.btnRemove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -87,16 +87,6 @@ namespace EffectCreator {
             this.splitContainer1.Size = new System.Drawing.Size(800, 450);
             this.splitContainer1.SplitterDistance = 341;
             this.splitContainer1.TabIndex = 0;
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.Enabled = false;
-            this.btnRemove.Location = new System.Drawing.Point(12, 345);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(75, 23);
-            this.btnRemove.TabIndex = 14;
-            this.btnRemove.Text = "Remove";
-            this.btnRemove.UseVisualStyleBackColor = true;
             // 
             // btnCreateNew
             // 
@@ -289,6 +279,17 @@ namespace EffectCreator {
             this.lblEffectType.TabIndex = 0;
             this.lblEffectType.Text = "Effect Type";
             // 
+            // btnRemove
+            // 
+            this.btnRemove.Enabled = false;
+            this.btnRemove.Location = new System.Drawing.Point(12, 345);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 23);
+            this.btnRemove.TabIndex = 14;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
             // frmEffectGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -331,11 +332,11 @@ namespace EffectCreator {
         private System.Windows.Forms.Label lblRadius;
         private System.Windows.Forms.NumericUpDown numRadius;
         private System.Windows.Forms.ListBox lbEffects;
-        private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnCreateNew;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbEffectType;
         private System.Windows.Forms.SplitContainer scEffect;
         private System.Windows.Forms.Label lblEffectType;
+        private System.Windows.Forms.Button btnRemove;
     }
 }
