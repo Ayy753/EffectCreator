@@ -19,7 +19,7 @@ namespace EffectCreator.EffectControls {
             numPotency.Value = (decimal)debuff.Potency;
             numDuration.Value = (decimal)debuff.Duration;
             cbResistType.SelectedItem = debuff.ResistType.ToString();
-            cbStatType.SelectedItem = debuff.Type.ToString();
+            cbStatType.SelectedItem = debuff.StatType.ToString();
             cbExpires.Checked = debuff.Expires;
         }
     }

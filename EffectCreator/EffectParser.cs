@@ -50,7 +50,7 @@ namespace EffectCreator {
                         newEffect = new StatMod(parsed.Potency, parsed.StatType);
                         break;
                     case EffectType.Debuff:
-                        newEffect = new Debuff(parsed.Potency, parsed.Duration, parsed.StatType, parsed.DamageType, parsed.Expires);
+                        newEffect = new Debuff(parsed.Potency, parsed.Duration, parsed.StatType, parsed.ResistType, parsed.Expires);
                         break;
                     case EffectType.Heal:
                         newEffect = new Heal(parsed.Potency);

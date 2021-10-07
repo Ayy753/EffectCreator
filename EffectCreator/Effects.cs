@@ -11,11 +11,11 @@
     public struct Buff : IStatusEffect, IStatMod {
         public float Duration { get; private set; }
         public float Potency { get; private set; }
-        public StatType Type { get; private set; }
+        public StatType StatType { get; private set; }
         public bool Expires { get; private set; }
         public Buff(float potency, float duration, StatType statType, bool expires) {
             Potency = potency;
-            Type = statType;
+            StatType = statType;
             Duration = duration;
             Expires = expires;
         }
@@ -38,13 +38,13 @@
     public struct Debuff : IStatusEffect, IStatMod {
         public float Duration { get; private set; }
         public float Potency { get; private set; }
-        public StatType Type { get; private set; }
+        public StatType StatType { get; private set; }
         public DamageType ResistType { get; private set; }
         public bool Expires { get; private set; }
 
         public Debuff(float potency, float duration, StatType statType, DamageType resistType, bool expires) {
             Potency = potency;
-            Type = statType;
+            StatType = statType;
             Duration = duration;
             ResistType = resistType;
             Expires = expires;
@@ -61,11 +61,11 @@
 
     public struct StatMod : IStatMod{
         public float Potency { get; }
-        public StatType Type { get; private set; }
+        public StatType StatType { get; private set; }
 
         public StatMod(float potency, StatType statType) {
             Potency = potency;
-            Type = statType;
+            StatType = statType;
         }
     }
 }

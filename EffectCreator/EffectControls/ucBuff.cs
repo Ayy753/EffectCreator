@@ -18,7 +18,7 @@ namespace EffectCreator.EffectControls {
         private void PopulateForm(Buff buff) {
             numPotency.Value = (decimal)buff.Potency;
             numDuration.Value = (decimal)buff.Duration;
-            cbStatType.SelectedItem = buff.Type.ToString();
+            cbStatType.SelectedItem = buff.StatType.ToString();
             cbExpires.Checked = buff.Expires;
         }
     }

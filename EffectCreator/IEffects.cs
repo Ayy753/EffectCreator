@@ -13,6 +13,6 @@
     }
 
     public interface IStatMod : IEffect {
-        StatType Type { get; }
+        StatType StatType { get; }
     }
 }

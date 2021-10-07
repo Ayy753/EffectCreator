@@ -16,7 +16,7 @@ namespace EffectCreator.EffectControls {
         }
 
         private void PopulateForm(StatMod statMod) {
-            cbStatType.SelectedItem = statMod.Type.ToString();
+            cbStatType.SelectedItem = statMod.StatType.ToString();
         }
     }
 }
