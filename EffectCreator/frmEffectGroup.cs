@@ -70,6 +70,7 @@ namespace EffectCreator {
             }
 
             AddEffectControl(control);
+            cbEffectType.SelectedItem = effect.GetType().Name;
         }
 
         private void RemoveExistingEffectControl() {

@@ -25,7 +25,6 @@ namespace EffectCreator {
         /// </summary>
         private void InitializeComponent() {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.cbEffectType = new System.Windows.Forms.ComboBox();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnCreateNew = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -44,6 +43,7 @@ namespace EffectCreator {
             this.lblName = new System.Windows.Forms.Label();
             this.tbName = new System.Windows.Forms.TextBox();
             this.scEffect = new System.Windows.Forms.SplitContainer();
+            this.cbEffectType = new System.Windows.Forms.ComboBox();
             this.lblEffectType = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -87,20 +87,6 @@ namespace EffectCreator {
             this.splitContainer1.Size = new System.Drawing.Size(800, 450);
             this.splitContainer1.SplitterDistance = 341;
             this.splitContainer1.TabIndex = 0;
-            // 
-            // cbEffectType
-            // 
-            this.cbEffectType.FormattingEnabled = true;
-            this.cbEffectType.Items.AddRange(new object[] {
-            "Buff",
-            "Debuff",
-            "Damage",
-            "DamageOverTime",
-            "StatMod"});
-            this.cbEffectType.Location = new System.Drawing.Point(83, 6);
-            this.cbEffectType.Name = "cbEffectType";
-            this.cbEffectType.Size = new System.Drawing.Size(121, 21);
-            this.cbEffectType.TabIndex = 15;
             // 
             // btnRemove
             // 
@@ -278,6 +264,21 @@ namespace EffectCreator {
             this.scEffect.Size = new System.Drawing.Size(455, 450);
             this.scEffect.SplitterDistance = 36;
             this.scEffect.TabIndex = 0;
+            // 
+            // cbEffectType
+            // 
+            this.cbEffectType.Enabled = false;
+            this.cbEffectType.FormattingEnabled = true;
+            this.cbEffectType.Items.AddRange(new object[] {
+            "Buff",
+            "Debuff",
+            "Damage",
+            "DamageOverTime",
+            "StatMod"});
+            this.cbEffectType.Location = new System.Drawing.Point(83, 6);
+            this.cbEffectType.Name = "cbEffectType";
+            this.cbEffectType.Size = new System.Drawing.Size(121, 21);
+            this.cbEffectType.TabIndex = 15;
             // 
             // lblEffectType
             // 
