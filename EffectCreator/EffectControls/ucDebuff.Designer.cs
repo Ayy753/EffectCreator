@@ -43,16 +43,17 @@ namespace EffectCreator.EffectControls {
             this.cbExpires.AutoSize = true;
             this.cbExpires.Checked = true;
             this.cbExpires.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbExpires.Location = new System.Drawing.Point(116, 124);
+            this.cbExpires.Location = new System.Drawing.Point(116, 96);
             this.cbExpires.Name = "cbExpires";
             this.cbExpires.Size = new System.Drawing.Size(15, 14);
             this.cbExpires.TabIndex = 25;
             this.cbExpires.UseVisualStyleBackColor = true;
+            this.cbExpires.CheckedChanged += new System.EventHandler(this.cbExpires_CheckedChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 122);
+            this.label1.Location = new System.Drawing.Point(14, 94);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 24;
@@ -60,7 +61,7 @@ namespace EffectCreator.EffectControls {
             // 
             // numDuration
             // 
-            this.numDuration.Location = new System.Drawing.Point(116, 97);
+            this.numDuration.Location = new System.Drawing.Point(116, 119);
             this.numDuration.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -83,7 +84,7 @@ namespace EffectCreator.EffectControls {
             // lblDuration
             // 
             this.lblDuration.AutoSize = true;
-            this.lblDuration.Location = new System.Drawing.Point(14, 96);
+            this.lblDuration.Location = new System.Drawing.Point(14, 118);
             this.lblDuration.Name = "lblDuration";
             this.lblDuration.Size = new System.Drawing.Size(47, 13);
             this.lblDuration.TabIndex = 22;

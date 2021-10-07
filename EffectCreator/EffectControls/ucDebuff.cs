@@ -17,10 +17,21 @@ namespace EffectCreator.EffectControls {
 
         private void PopulateForm(Debuff debuff) {
             numPotency.Value = (decimal)debuff.Potency;
-            numDuration.Value = (decimal)debuff.Duration;
             cbResistType.SelectedItem = debuff.ResistType.ToString();
             cbStatType.SelectedItem = debuff.StatType.ToString();
             cbExpires.Checked = debuff.Expires;
+
+            lblDuration.Enabled = debuff.Expires;
+            numDuration.Enabled = debuff.Expires;
+
+            if (debuff.Expires) {
+                numDuration.Value = (decimal)debuff.Duration;
+            }
+        }
+
+        private void cbExpires_CheckedChanged(object sender, EventArgs e) {
+            lblDuration.Enabled = cbExpires.Checked;
+            numDuration.Enabled = cbExpires.Checked;
         }
     }
 }

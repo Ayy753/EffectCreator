@@ -43,7 +43,7 @@ namespace EffectCreator.EffectControls {
             0,
             0,
             65536});
-            this.numDuration.Location = new System.Drawing.Point(116, 67);
+            this.numDuration.Location = new System.Drawing.Point(116, 89);
             this.numDuration.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -66,7 +66,7 @@ namespace EffectCreator.EffectControls {
             // lblDuration
             // 
             this.lblDuration.AutoSize = true;
-            this.lblDuration.Location = new System.Drawing.Point(14, 65);
+            this.lblDuration.Location = new System.Drawing.Point(14, 91);
             this.lblDuration.Name = "lblDuration";
             this.lblDuration.Size = new System.Drawing.Size(47, 13);
             this.lblDuration.TabIndex = 14;
@@ -131,7 +131,7 @@ namespace EffectCreator.EffectControls {
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 91);
+            this.label1.Location = new System.Drawing.Point(14, 66);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 16;
@@ -142,11 +142,12 @@ namespace EffectCreator.EffectControls {
             this.cbExpires.AutoSize = true;
             this.cbExpires.Checked = true;
             this.cbExpires.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbExpires.Location = new System.Drawing.Point(116, 94);
+            this.cbExpires.Location = new System.Drawing.Point(116, 66);
             this.cbExpires.Name = "cbExpires";
             this.cbExpires.Size = new System.Drawing.Size(15, 14);
             this.cbExpires.TabIndex = 17;
             this.cbExpires.UseVisualStyleBackColor = true;
+            this.cbExpires.CheckStateChanged += new System.EventHandler(this.cbExpires_CheckStateChanged);
             // 
             // ucBuff
             // 
