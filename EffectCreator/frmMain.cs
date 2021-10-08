@@ -29,18 +29,24 @@ namespace EffectCreator {
         }
 
         private void btnOpenEffectGroup_Click(object sender, EventArgs e) {
-            EffectGroup selectedEffectGroup = null;
-
-            foreach (EffectGroup effectGroup in effectGroups) {
-                if (effectGroup.Name == lbEffectGroups.SelectedItem.ToString()) {
-                    selectedEffectGroup = effectGroup;
-                }
-            }
+            EffectGroup selectedEffectGroup = GetSelectedEffectGroup();
 
             if (selectedEffectGroup != null) {
                 frmEffectGroup newEFfectGroupForm = new frmEffectGroup(selectedEffectGroup);
                 newEFfectGroupForm.ShowDialog();
             }
+            else {
+                MessageBox.Show($"Error: '{lbEffectGroups.SelectedItem}' does not map to any EffectGroup object in the effects.json file");
+            }
+        }
+
+        private EffectGroup GetSelectedEffectGroup() {
+            foreach (EffectGroup effectGroup in effectGroups) {
+                if (effectGroup.Name == lbEffectGroups.SelectedItem.ToString()) {
+                    return effectGroup;
+                }
+            }
+            return null;
         }
     }
 }
