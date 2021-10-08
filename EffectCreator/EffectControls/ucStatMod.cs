@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EffectCreator.EffectControls {
-    public partial class ucStatMod : UserControl {
+    public partial class ucStatMod : UserControl, IEffectUserControl {
         public ucStatMod(StatMod statMod) {
             InitializeComponent();
             PopulateForm(statMod);
@@ -17,6 +17,10 @@ namespace EffectCreator.EffectControls {
 
         private void PopulateForm(StatMod statMod) {
             cbStatType.SelectedItem = statMod.StatType.ToString();
+        }
+
+        public IEffect GetEffect() {
+            return new StatMod((float)numPotency.Value, (StatType)cbStatType.SelectedItem);
         }
     }
 }

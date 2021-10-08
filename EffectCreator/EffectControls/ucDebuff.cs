@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EffectCreator.EffectControls {
-    public partial class ucDebuff : UserControl {
+    public partial class ucDebuff : UserControl, IEffectUserControl {
         public ucDebuff(Debuff debuff) {
             InitializeComponent();
             PopulateForm(debuff);
@@ -32,6 +32,10 @@ namespace EffectCreator.EffectControls {
         private void cbExpires_CheckedChanged(object sender, EventArgs e) {
             lblDuration.Enabled = cbExpires.Checked;
             numDuration.Enabled = cbExpires.Checked;
+        }
+
+        public IEffect GetEffect() {
+            return new Debuff((float)numPotency.Value, (float)numDuration.Value, (StatType)cbStatType.SelectedItem, (DamageType)cbResistType.SelectedItem, cbExpires.Checked);
         }
     }
 }

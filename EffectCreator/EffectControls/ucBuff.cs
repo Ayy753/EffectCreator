@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EffectCreator.EffectControls {
-    public partial class ucBuff : UserControl {
+    public partial class ucBuff : UserControl, IEffectUserControl {
         public ucBuff(Buff buff) {
             InitializeComponent();
             PopulateForm(buff);
@@ -31,6 +31,10 @@ namespace EffectCreator.EffectControls {
         private void cbExpires_CheckStateChanged(object sender, EventArgs e) {
             lblDuration.Enabled = cbExpires.Checked;
             numDuration.Enabled = cbExpires.Checked;
+        }
+
+        public IEffect GetEffect() {
+            return new Buff((float)numPotency.Value, (float)numDuration.Value, (StatType)cbStatType.SelectedItem, cbExpires.Checked);
         }
     }
 }

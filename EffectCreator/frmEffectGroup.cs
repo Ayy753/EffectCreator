@@ -51,7 +51,7 @@ namespace EffectCreator {
             if (lbEffects.SelectedIndex != -1) {
                 string rowKey = lbEffects.SelectedItem.ToString();
                 IEffect effect = listboxRowToEffect[rowKey];
-                UserControl control;
+                IEffectUserControl control;
 
                 if (effect is Damage damage) {
                     control = new ucDamage(damage);
@@ -88,8 +88,8 @@ namespace EffectCreator {
             }
         }
 
-        private void AddEffectControl(UserControl control) {
-            scEffect.Panel2.Controls.Add(control);
+        private void AddEffectControl(IEffectUserControl control) {
+            scEffect.Panel2.Controls.Add((Control)control);
         }
 
         private void radTargetIndividual_CheckedChanged(object sender, EventArgs e) {

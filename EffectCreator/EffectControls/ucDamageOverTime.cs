@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EffectCreator.EffectControls {
-    public partial class ucDamageOverTime : UserControl {
+    public partial class ucDamageOverTime : UserControl, IEffectUserControl {
         public ucDamageOverTime(DamageOverTime damageOverTime) {
             InitializeComponent();
             PopulateForm(damageOverTime);
@@ -19,6 +19,10 @@ namespace EffectCreator.EffectControls {
             numDuration.Value = (decimal)damageOverTime.Duration;
             numPotency.Value = (decimal)damageOverTime.Potency;
             cbDamageType.SelectedItem = damageOverTime.Type.ToString();
+        }
+
+        public IEffect GetEffect() {
+            return new DamageOverTime((float)numPotency.Value, (float)numDuration.Value, (DamageType)cbDamageType.SelectedItem, true);
         }
     }
 }

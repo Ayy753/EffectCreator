@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EffectCreator.EffectControls {
-    public partial class ucDamage : UserControl {
+    public partial class ucDamage : UserControl, IEffectUserControl {
         public ucDamage(Damage damage) {
             InitializeComponent();
             PopulateForm(damage);
@@ -18,6 +18,10 @@ namespace EffectCreator.EffectControls {
         private void PopulateForm(Damage damage) {
             numPotency.Value = (decimal)damage.Potency;
             cbDamageType.SelectedItem = damage.Type.ToString();
+        }
+
+        public IEffect GetEffect() {
+            return new Damage((float)numPotency.Value, (DamageType)cbDamageType.SelectedItem);
         }
     }
 }

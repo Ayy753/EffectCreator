@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EffectCreator.EffectControls {
-    public partial class ucHeal : UserControl {
+    public partial class ucHeal : UserControl, IEffectUserControl {
         public ucHeal(Heal heal) {
             InitializeComponent();
             PopulateForm(heal);
@@ -17,6 +17,10 @@ namespace EffectCreator.EffectControls {
 
         private void PopulateForm(Heal heal) {
             numPotency.Value = (decimal)heal.Potency;
+        }
+
+        public IEffect GetEffect() {
+            return new Heal((float)numPotency.Value);
         }
     }
 }
