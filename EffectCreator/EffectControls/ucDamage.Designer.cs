@@ -64,6 +64,7 @@ namespace EffectCreator.EffectControls {
             // 
             // cbDamageType
             // 
+            this.cbDamageType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDamageType.FormattingEnabled = true;
             this.cbDamageType.Items.AddRange(new object[] {
             "Physical",

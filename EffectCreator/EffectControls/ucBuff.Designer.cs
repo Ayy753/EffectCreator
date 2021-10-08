@@ -83,6 +83,7 @@ namespace EffectCreator.EffectControls {
             // 
             // cbStatType
             // 
+            this.cbStatType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStatType.FormattingEnabled = true;
             this.cbStatType.Items.AddRange(new object[] {
             "Armor",

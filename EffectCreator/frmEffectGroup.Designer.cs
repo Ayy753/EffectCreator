@@ -298,6 +298,7 @@ namespace EffectCreator {
             // 
             // cbEffectType
             // 
+            this.cbEffectType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEffectType.Enabled = false;
             this.cbEffectType.FormattingEnabled = true;
             this.cbEffectType.Items.AddRange(new object[] {

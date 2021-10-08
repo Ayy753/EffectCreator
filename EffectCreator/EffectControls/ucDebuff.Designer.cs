@@ -101,6 +101,7 @@ namespace EffectCreator.EffectControls {
             // 
             // cbStatType
             // 
+            this.cbStatType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStatType.FormattingEnabled = true;
             this.cbStatType.Items.AddRange(new object[] {
             "Armor",
@@ -152,6 +153,7 @@ namespace EffectCreator.EffectControls {
             // 
             // cbResistType
             // 
+            this.cbResistType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbResistType.FormattingEnabled = true;
             this.cbResistType.Items.AddRange(new object[] {
             "Physical",
