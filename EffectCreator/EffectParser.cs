@@ -83,8 +83,9 @@ namespace EffectCreator {
             [JsonConverter(typeof(StringEnumConverter))]
             public TargetType TargetType { get; set; }
 
-            [JsonProperty("particle effect", NullValueHandling = NullValueHandling.Ignore)]
-            public string ParticleName { get; set; } 
+            [JsonProperty("particle effect")]
+            [JsonConverter(typeof(StringEnumConverter))]
+            public ParticleType ParticleName { get; set; }
 
             [JsonProperty("radius", NullValueHandling = NullValueHandling.Ignore)]
             public float Radius { get; set; } 

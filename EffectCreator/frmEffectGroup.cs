@@ -28,12 +28,15 @@ namespace EffectCreator {
             if (lbEffects.Items.Count > 0) {
                 lbEffects.SelectedIndex = 0;
             }
+
+
         }
 
         private void PopulateForm(EffectGroup effectGroup) {
             tbName.Text = effectGroup.Name;
             tbDescription.Text = effectGroup.Description;
             cbSoundType.SelectedItem = effectGroup.SoundType.ToString();
+            cbParticleType.SelectedItem = effectGroup.ParticleName.ToString();
             numCooldown.Value = (decimal)effectGroup.Cooldown;
             radTargetGroup.Checked = effectGroup.Type == TargetType.Area;
             numRadius.Value = (decimal)effectGroup.Radius;
@@ -115,6 +118,23 @@ namespace EffectCreator {
             else if (selectedRowIndex == 0 && lbEffects.Items.Count >= 1) {
                 lbEffects.SelectedIndex = 0;
             }
+        }
+
+        public EffectGroup GetEffectGroup() {
+            string name = tbName.Text;
+            string desc = tbDescription.Text;
+            float radius = (float)numRadius.Value;
+            TargetType targetType = radTargetIndividual.Checked ? TargetType.Individual : TargetType.Area;
+            ParticleType particleType = (ParticleType)cbParticleType.SelectedItem;
+            SoundType soundType = (SoundType)cbSoundType.SelectedIndex;
+            float cooldown = (float)numCooldown.Value;
+            List<IEffect> effects = new List<IEffect>();
+
+            foreach (IEffect item in listboxRowToEffect.Values) {
+                effects.Add(item);
+            }
+
+            return new EffectGroup(name, desc, radius, targetType, particleType, soundType, cooldown, effects.ToArray());
         }
     }
 }

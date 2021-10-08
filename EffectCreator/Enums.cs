@@ -27,4 +27,8 @@
     public enum EffectType {
         Buff, Damage, DOT, StatMod, Debuff, Heal
     }
+
+    public enum ParticleType {
+        Explosion, Buff, Blood, Heal
+    }
 }

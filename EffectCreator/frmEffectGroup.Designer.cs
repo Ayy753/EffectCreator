@@ -25,6 +25,7 @@ namespace EffectCreator {
         /// </summary>
         private void InitializeComponent() {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.btnCreateNew = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.lbEffects = new System.Windows.Forms.ListBox();
@@ -44,7 +45,8 @@ namespace EffectCreator {
             this.scEffect = new System.Windows.Forms.SplitContainer();
             this.cbEffectType = new System.Windows.Forms.ComboBox();
             this.lblEffectType = new System.Windows.Forms.Label();
-            this.btnRemove = new System.Windows.Forms.Button();
+            this.cbParticleType = new System.Windows.Forms.ComboBox();
+            this.lbParticleType = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -65,6 +67,8 @@ namespace EffectCreator {
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.cbParticleType);
+            this.splitContainer1.Panel1.Controls.Add(this.lbParticleType);
             this.splitContainer1.Panel1.Controls.Add(this.btnRemove);
             this.splitContainer1.Panel1.Controls.Add(this.btnCreateNew);
             this.splitContainer1.Panel1.Controls.Add(this.label6);
@@ -88,9 +92,20 @@ namespace EffectCreator {
             this.splitContainer1.SplitterDistance = 341;
             this.splitContainer1.TabIndex = 0;
             // 
+            // btnRemove
+            // 
+            this.btnRemove.Enabled = false;
+            this.btnRemove.Location = new System.Drawing.Point(12, 384);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 23);
+            this.btnRemove.TabIndex = 14;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
             // btnCreateNew
             // 
-            this.btnCreateNew.Location = new System.Drawing.Point(94, 345);
+            this.btnCreateNew.Location = new System.Drawing.Point(94, 384);
             this.btnCreateNew.Name = "btnCreateNew";
             this.btnCreateNew.Size = new System.Drawing.Size(75, 23);
             this.btnCreateNew.TabIndex = 13;
@@ -100,7 +115,7 @@ namespace EffectCreator {
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 228);
+            this.label6.Location = new System.Drawing.Point(12, 267);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 13);
             this.label6.TabIndex = 12;
@@ -109,7 +124,7 @@ namespace EffectCreator {
             // lbEffects
             // 
             this.lbEffects.FormattingEnabled = true;
-            this.lbEffects.Location = new System.Drawing.Point(12, 244);
+            this.lbEffects.Location = new System.Drawing.Point(12, 283);
             this.lbEffects.Name = "lbEffects";
             this.lbEffects.Size = new System.Drawing.Size(157, 95);
             this.lbEffects.TabIndex = 11;
@@ -118,7 +133,7 @@ namespace EffectCreator {
             // lblRadius
             // 
             this.lblRadius.AutoSize = true;
-            this.lblRadius.Location = new System.Drawing.Point(12, 199);
+            this.lblRadius.Location = new System.Drawing.Point(12, 238);
             this.lblRadius.Name = "lblRadius";
             this.lblRadius.Size = new System.Drawing.Size(40, 13);
             this.lblRadius.TabIndex = 10;
@@ -127,7 +142,7 @@ namespace EffectCreator {
             // 
             // numRadius
             // 
-            this.numRadius.Location = new System.Drawing.Point(91, 200);
+            this.numRadius.Location = new System.Drawing.Point(91, 239);
             this.numRadius.Name = "numRadius";
             this.numRadius.Size = new System.Drawing.Size(120, 20);
             this.numRadius.TabIndex = 9;
@@ -137,7 +152,7 @@ namespace EffectCreator {
             // 
             this.groupBox1.Controls.Add(this.radTargetGroup);
             this.groupBox1.Controls.Add(this.radTargetIndividual);
-            this.groupBox1.Location = new System.Drawing.Point(12, 125);
+            this.groupBox1.Location = new System.Drawing.Point(12, 164);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 71);
             this.groupBox1.TabIndex = 4;
@@ -170,7 +185,7 @@ namespace EffectCreator {
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 101);
+            this.label4.Location = new System.Drawing.Point(12, 140);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(54, 13);
             this.label4.TabIndex = 8;
@@ -194,7 +209,7 @@ namespace EffectCreator {
             // 
             // numCooldown
             // 
-            this.numCooldown.Location = new System.Drawing.Point(91, 102);
+            this.numCooldown.Location = new System.Drawing.Point(91, 141);
             this.numCooldown.Name = "numCooldown";
             this.numCooldown.Size = new System.Drawing.Size(120, 20);
             this.numCooldown.TabIndex = 7;
@@ -279,16 +294,31 @@ namespace EffectCreator {
             this.lblEffectType.TabIndex = 0;
             this.lblEffectType.Text = "Effect Type";
             // 
-            // btnRemove
+            // cbParticleType
             // 
-            this.btnRemove.Enabled = false;
-            this.btnRemove.Location = new System.Drawing.Point(12, 345);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(75, 23);
-            this.btnRemove.TabIndex = 14;
-            this.btnRemove.Text = "Remove";
-            this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            this.cbParticleType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbParticleType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbParticleType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbParticleType.FormattingEnabled = true;
+            this.cbParticleType.Items.AddRange(new object[] {
+            "Blood",
+            "Buff",
+            "Explosion",
+            "Heal"});
+            this.cbParticleType.Location = new System.Drawing.Point(91, 105);
+            this.cbParticleType.Name = "cbParticleType";
+            this.cbParticleType.Size = new System.Drawing.Size(121, 21);
+            this.cbParticleType.Sorted = true;
+            this.cbParticleType.TabIndex = 16;
+            // 
+            // lbParticleType
+            // 
+            this.lbParticleType.AutoSize = true;
+            this.lbParticleType.Location = new System.Drawing.Point(12, 108);
+            this.lbParticleType.Name = "lbParticleType";
+            this.lbParticleType.Size = new System.Drawing.Size(69, 13);
+            this.lbParticleType.TabIndex = 15;
+            this.lbParticleType.Text = "Particle Type";
             // 
             // frmEffectGroup
             // 
@@ -338,5 +368,7 @@ namespace EffectCreator {
         private System.Windows.Forms.SplitContainer scEffect;
         private System.Windows.Forms.Label lblEffectType;
         private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.ComboBox cbParticleType;
+        private System.Windows.Forms.Label lbParticleType;
     }
 }
