@@ -28,8 +28,6 @@ namespace EffectCreator {
             if (lbEffects.Items.Count > 0) {
                 lbEffects.SelectedIndex = 0;
             }
-
-
         }
 
         private void PopulateForm(EffectGroup effectGroup) {
@@ -49,40 +47,49 @@ namespace EffectCreator {
         }
 
         private void lbEffects_SelectedIndexChanged(object sender, EventArgs e) {
-            RemoveExistingEffectControl();
-
             if (lbEffects.SelectedIndex != -1) {
-                string rowKey = lbEffects.SelectedItem.ToString();
-                IEffect effect = listboxRowToEffect[rowKey];
-                IEffectUserControl control;
-
-                if (effect is Damage damage) {
-                    control = new ucDamage(damage);
-                }
-                else if (effect is DamageOverTime damageOverTime) {
-                    control = new ucDamageOverTime(damageOverTime);
-                }
-                else if (effect is Buff buff) {
-                    control = new ucBuff(buff);
-                }
-                else if (effect is StatMod statMod) {
-                    control = new ucStatMod(statMod);
-                }
-                else if (effect is Debuff debuff) {
-                    control = new ucDebuff(debuff);
-                }
-                else {
-                    control = new ucHeal((Heal)effect);
-                }
-
-                AddEffectControl(control);
-                cbEffectType.SelectedItem = effect.GetType().Name;
-
+                OpenSelectedEffect();
                 btnRemove.Enabled = true;
             }
             else {
                 btnRemove.Enabled = false;
             }
+        }
+
+        private void btnRevertChanges_Click(object sender, EventArgs e) {
+            if (lbEffects.SelectedIndex != -1) {
+                OpenSelectedEffect();
+            }
+        }
+
+        private void OpenSelectedEffect() {
+            RemoveExistingEffectControl();
+
+            string rowKey = lbEffects.SelectedItem.ToString();
+            IEffect effect = listboxRowToEffect[rowKey];
+            IEffectUserControl control;
+
+            if (effect is Damage damage) {
+                control = new ucDamage(damage);
+            }
+            else if (effect is DamageOverTime damageOverTime) {
+                control = new ucDamageOverTime(damageOverTime);
+            }
+            else if (effect is Buff buff) {
+                control = new ucBuff(buff);
+            }
+            else if (effect is StatMod statMod) {
+                control = new ucStatMod(statMod);
+            }
+            else if (effect is Debuff debuff) {
+                control = new ucDebuff(debuff);
+            }
+            else {
+                control = new ucHeal((Heal)effect);
+            }
+
+            AddEffectControl(control);
+            cbEffectType.SelectedItem = effect.GetType().Name;
         }
 
         private void RemoveExistingEffectControl() {

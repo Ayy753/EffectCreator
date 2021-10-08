@@ -368,6 +368,7 @@ namespace EffectCreator {
             this.btnRevertChanges.TabIndex = 1;
             this.btnRevertChanges.Text = "Revert";
             this.btnRevertChanges.UseVisualStyleBackColor = true;
+            this.btnRevertChanges.Click += new System.EventHandler(this.btnRevertChanges_Click);
             // 
             // frmEffectGroup
             // 
