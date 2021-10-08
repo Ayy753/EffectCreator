@@ -25,6 +25,8 @@ namespace EffectCreator {
         /// </summary>
         private void InitializeComponent() {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.cbParticleType = new System.Windows.Forms.ComboBox();
+            this.lbParticleType = new System.Windows.Forms.Label();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnCreateNew = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -45,8 +47,6 @@ namespace EffectCreator {
             this.scEffect = new System.Windows.Forms.SplitContainer();
             this.cbEffectType = new System.Windows.Forms.ComboBox();
             this.lblEffectType = new System.Windows.Forms.Label();
-            this.cbParticleType = new System.Windows.Forms.ComboBox();
-            this.lbParticleType = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -91,6 +91,32 @@ namespace EffectCreator {
             this.splitContainer1.Size = new System.Drawing.Size(800, 450);
             this.splitContainer1.SplitterDistance = 341;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // cbParticleType
+            // 
+            this.cbParticleType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbParticleType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbParticleType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbParticleType.FormattingEnabled = true;
+            this.cbParticleType.Items.AddRange(new object[] {
+            "Blood",
+            "Buff",
+            "Explosion",
+            "Heal"});
+            this.cbParticleType.Location = new System.Drawing.Point(91, 105);
+            this.cbParticleType.Name = "cbParticleType";
+            this.cbParticleType.Size = new System.Drawing.Size(121, 21);
+            this.cbParticleType.Sorted = true;
+            this.cbParticleType.TabIndex = 16;
+            // 
+            // lbParticleType
+            // 
+            this.lbParticleType.AutoSize = true;
+            this.lbParticleType.Location = new System.Drawing.Point(12, 108);
+            this.lbParticleType.Name = "lbParticleType";
+            this.lbParticleType.Size = new System.Drawing.Size(69, 13);
+            this.lbParticleType.TabIndex = 15;
+            this.lbParticleType.Text = "Particle Type";
             // 
             // btnRemove
             // 
@@ -279,7 +305,8 @@ namespace EffectCreator {
             "Debuff",
             "Damage",
             "DamageOverTime",
-            "StatMod"});
+            "StatMod",
+            "Heal"});
             this.cbEffectType.Location = new System.Drawing.Point(83, 6);
             this.cbEffectType.Name = "cbEffectType";
             this.cbEffectType.Size = new System.Drawing.Size(121, 21);
@@ -293,32 +320,6 @@ namespace EffectCreator {
             this.lblEffectType.Size = new System.Drawing.Size(62, 13);
             this.lblEffectType.TabIndex = 0;
             this.lblEffectType.Text = "Effect Type";
-            // 
-            // cbParticleType
-            // 
-            this.cbParticleType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbParticleType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbParticleType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbParticleType.FormattingEnabled = true;
-            this.cbParticleType.Items.AddRange(new object[] {
-            "Blood",
-            "Buff",
-            "Explosion",
-            "Heal"});
-            this.cbParticleType.Location = new System.Drawing.Point(91, 105);
-            this.cbParticleType.Name = "cbParticleType";
-            this.cbParticleType.Size = new System.Drawing.Size(121, 21);
-            this.cbParticleType.Sorted = true;
-            this.cbParticleType.TabIndex = 16;
-            // 
-            // lbParticleType
-            // 
-            this.lbParticleType.AutoSize = true;
-            this.lbParticleType.Location = new System.Drawing.Point(12, 108);
-            this.lbParticleType.Name = "lbParticleType";
-            this.lbParticleType.Size = new System.Drawing.Size(69, 13);
-            this.lbParticleType.TabIndex = 15;
-            this.lbParticleType.Text = "Particle Type";
             // 
             // frmEffectGroup
             // 
