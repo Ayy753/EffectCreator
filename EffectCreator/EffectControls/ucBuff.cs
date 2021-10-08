@@ -12,12 +12,13 @@ namespace EffectCreator.EffectControls {
     public partial class ucBuff : UserControl, IEffectUserControl {
         public ucBuff(Buff buff) {
             InitializeComponent();
+            cbStatType.DataSource = Enum.GetValues(typeof(StatType));
             PopulateForm(buff);
         }
 
         private void PopulateForm(Buff buff) {
             numPotency.Value = (decimal)buff.Potency;
-            cbStatType.SelectedItem = buff.StatType.ToString();
+            cbStatType.SelectedItem = buff.StatType;
             cbExpires.Checked = buff.Expires;
 
             lblDuration.Enabled = buff.Expires;

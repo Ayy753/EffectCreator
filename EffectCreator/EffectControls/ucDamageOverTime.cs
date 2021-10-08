@@ -12,13 +12,14 @@ namespace EffectCreator.EffectControls {
     public partial class ucDamageOverTime : UserControl, IEffectUserControl {
         public ucDamageOverTime(DamageOverTime damageOverTime) {
             InitializeComponent();
+            cbDamageType.DataSource = Enum.GetValues(typeof(DamageType));
             PopulateForm(damageOverTime);
         }
 
         private void PopulateForm(DamageOverTime damageOverTime) {
             numDuration.Value = (decimal)damageOverTime.Duration;
             numPotency.Value = (decimal)damageOverTime.Potency;
-            cbDamageType.SelectedItem = damageOverTime.Type.ToString();
+            cbDamageType.SelectedItem = damageOverTime.Type;
         }
 
         public IEffect GetEffect() {

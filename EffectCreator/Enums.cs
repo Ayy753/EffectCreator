@@ -1,10 +1,10 @@
 ﻿namespace EffectCreator {
     public enum DamageType {
-        Physical, Cold, Fire, Poison, Lightning, Max
+        Physical, Cold, Fire, Poison, Lightning
     }
 
     public enum StatType {
-        Armor, ColdResist, FireResist, PoisonResist, LightningResist, Health, Speed, Max
+        Armor, ColdResist, FireResist, PoisonResist, LightningResist, Health, Speed
     }
 
     public enum SoundType {

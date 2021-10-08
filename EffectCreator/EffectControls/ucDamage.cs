@@ -12,12 +12,13 @@ namespace EffectCreator.EffectControls {
     public partial class ucDamage : UserControl, IEffectUserControl {
         public ucDamage(Damage damage) {
             InitializeComponent();
+            cbDamageType.DataSource = Enum.GetValues(typeof(DamageType));
             PopulateForm(damage);
         }
 
         private void PopulateForm(Damage damage) {
             numPotency.Value = (decimal)damage.Potency;
-            cbDamageType.SelectedItem = damage.Type.ToString();
+            cbDamageType.SelectedItem = damage.Type;
         }
 
         public IEffect GetEffect() {

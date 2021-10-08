@@ -48,8 +48,8 @@ namespace EffectCreator {
             this.cbEffectType = new System.Windows.Forms.ComboBox();
             this.lblEffectType = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.btnApplyChanges = new System.Windows.Forms.Button();
             this.btnRevertChanges = new System.Windows.Forms.Button();
+            this.btnApplyChanges = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -231,14 +231,9 @@ namespace EffectCreator {
             this.cbSoundType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbSoundType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSoundType.FormattingEnabled = true;
-            this.cbSoundType.Items.AddRange(new object[] {
-            "arrowHitFlesh",
-            "buff",
-            "explosionTiny"});
             this.cbSoundType.Location = new System.Drawing.Point(91, 71);
             this.cbSoundType.Name = "cbSoundType";
             this.cbSoundType.Size = new System.Drawing.Size(121, 21);
-            this.cbSoundType.Sorted = true;
             this.cbSoundType.TabIndex = 8;
             // 
             // numCooldown
@@ -351,15 +346,6 @@ namespace EffectCreator {
             this.splitContainer2.SplitterDistance = 151;
             this.splitContainer2.TabIndex = 0;
             // 
-            // btnApplyChanges
-            // 
-            this.btnApplyChanges.Location = new System.Drawing.Point(3, 3);
-            this.btnApplyChanges.Name = "btnApplyChanges";
-            this.btnApplyChanges.Size = new System.Drawing.Size(75, 23);
-            this.btnApplyChanges.TabIndex = 0;
-            this.btnApplyChanges.Text = "Apply";
-            this.btnApplyChanges.UseVisualStyleBackColor = true;
-            // 
             // btnRevertChanges
             // 
             this.btnRevertChanges.Location = new System.Drawing.Point(84, 3);
@@ -369,6 +355,16 @@ namespace EffectCreator {
             this.btnRevertChanges.Text = "Revert";
             this.btnRevertChanges.UseVisualStyleBackColor = true;
             this.btnRevertChanges.Click += new System.EventHandler(this.btnRevertChanges_Click);
+            // 
+            // btnApplyChanges
+            // 
+            this.btnApplyChanges.Location = new System.Drawing.Point(3, 3);
+            this.btnApplyChanges.Name = "btnApplyChanges";
+            this.btnApplyChanges.Size = new System.Drawing.Size(75, 23);
+            this.btnApplyChanges.TabIndex = 0;
+            this.btnApplyChanges.Text = "Apply";
+            this.btnApplyChanges.UseVisualStyleBackColor = true;
+            this.btnApplyChanges.Click += new System.EventHandler(this.btnApplyChanges_Click);
             // 
             // frmEffectGroup
             // 

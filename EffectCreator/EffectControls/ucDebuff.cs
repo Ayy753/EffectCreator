@@ -12,13 +12,15 @@ namespace EffectCreator.EffectControls {
     public partial class ucDebuff : UserControl, IEffectUserControl {
         public ucDebuff(Debuff debuff) {
             InitializeComponent();
+            cbStatType.DataSource = Enum.GetValues(typeof(StatType));
+            cbResistType.DataSource = Enum.GetValues(typeof(DamageType));
             PopulateForm(debuff);
         }
 
         private void PopulateForm(Debuff debuff) {
             numPotency.Value = (decimal)debuff.Potency;
-            cbResistType.SelectedItem = debuff.ResistType.ToString();
-            cbStatType.SelectedItem = debuff.StatType.ToString();
+            cbResistType.SelectedItem = debuff.ResistType;
+            cbStatType.SelectedItem = debuff.StatType;
             cbExpires.Checked = debuff.Expires;
 
             lblDuration.Enabled = debuff.Expires;

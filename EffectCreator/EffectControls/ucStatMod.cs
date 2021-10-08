@@ -12,11 +12,12 @@ namespace EffectCreator.EffectControls {
     public partial class ucStatMod : UserControl, IEffectUserControl {
         public ucStatMod(StatMod statMod) {
             InitializeComponent();
+            cbStatType.DataSource = Enum.GetValues(typeof(StatType));
             PopulateForm(statMod);
         }
 
         private void PopulateForm(StatMod statMod) {
-            cbStatType.SelectedItem = statMod.StatType.ToString();
+            cbStatType.SelectedItem = statMod.StatType;
         }
 
         public IEffect GetEffect() {

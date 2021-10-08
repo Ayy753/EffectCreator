@@ -14,6 +14,8 @@ using System.Windows.Forms;
 namespace EffectCreator {
     public partial class frmEffectGroup : Form {
         private Dictionary<string, IEffect> listboxRowToEffect;
+        private IEffectUserControl activeEffectControl;
+        private string activeRowKey;
 
         public frmEffectGroup() {
             InitializeComponent();
@@ -21,6 +23,9 @@ namespace EffectCreator {
 
         public frmEffectGroup(EffectGroup effectGroup) {
             InitializeComponent();
+
+            cbSoundType.DataSource = Enum.GetValues(typeof(SoundType));
+            cbParticleType.DataSource = Enum.GetValues(typeof(ParticleType));
 
             listboxRowToEffect = new Dictionary<string, IEffect>();
             PopulateForm(effectGroup);
@@ -33,8 +38,8 @@ namespace EffectCreator {
         private void PopulateForm(EffectGroup effectGroup) {
             tbName.Text = effectGroup.Name;
             tbDescription.Text = effectGroup.Description;
-            cbSoundType.SelectedItem = effectGroup.SoundType.ToString();
-            cbParticleType.SelectedItem = effectGroup.ParticleName.ToString();
+            cbSoundType.SelectedItem = effectGroup.SoundType;
+            cbParticleType.SelectedItem = effectGroup.ParticleName;
             numCooldown.Value = (decimal)effectGroup.Cooldown;
             radTargetGroup.Checked = effectGroup.Type == TargetType.Area;
             numRadius.Value = (decimal)effectGroup.Radius;
@@ -64,31 +69,29 @@ namespace EffectCreator {
 
         private void OpenSelectedEffect() {
             RemoveExistingEffectControl();
-
-            string rowKey = lbEffects.SelectedItem.ToString();
-            IEffect effect = listboxRowToEffect[rowKey];
-            IEffectUserControl control;
+            activeRowKey = lbEffects.SelectedItem.ToString();
+            IEffect effect = listboxRowToEffect[activeRowKey];
 
             if (effect is Damage damage) {
-                control = new ucDamage(damage);
+                activeEffectControl = new ucDamage(damage);
             }
             else if (effect is DamageOverTime damageOverTime) {
-                control = new ucDamageOverTime(damageOverTime);
+                activeEffectControl = new ucDamageOverTime(damageOverTime);
             }
             else if (effect is Buff buff) {
-                control = new ucBuff(buff);
+                activeEffectControl = new ucBuff(buff);
             }
             else if (effect is StatMod statMod) {
-                control = new ucStatMod(statMod);
+                activeEffectControl = new ucStatMod(statMod);
             }
             else if (effect is Debuff debuff) {
-                control = new ucDebuff(debuff);
+                activeEffectControl = new ucDebuff(debuff);
             }
             else {
-                control = new ucHeal((Heal)effect);
+                activeEffectControl = new ucHeal((Heal)effect);
             }
 
-            AddEffectControl(control);
+            AddEffectControl(activeEffectControl);
             cbEffectType.SelectedItem = effect.GetType().Name;
         }
 
@@ -142,6 +145,10 @@ namespace EffectCreator {
             }
 
             return new EffectGroup(name, desc, radius, targetType, particleType, soundType, cooldown, effects.ToArray());
+        }
+
+        private void btnApplyChanges_Click(object sender, EventArgs e) {
+            listboxRowToEffect[activeRowKey] = activeEffectControl.GetEffect();
         }
     }
 }
