@@ -47,6 +47,9 @@ namespace EffectCreator {
             this.scEffect = new System.Windows.Forms.SplitContainer();
             this.cbEffectType = new System.Windows.Forms.ComboBox();
             this.lblEffectType = new System.Windows.Forms.Label();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.btnApplyChanges = new System.Windows.Forms.Button();
+            this.btnRevertChanges = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -56,12 +59,17 @@ namespace EffectCreator {
             ((System.ComponentModel.ISupportInitialize)(this.numCooldown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scEffect)).BeginInit();
             this.scEffect.Panel1.SuspendLayout();
+            this.scEffect.Panel2.SuspendLayout();
             this.scEffect.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -284,6 +292,7 @@ namespace EffectCreator {
             // scEffect
             // 
             this.scEffect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scEffect.IsSplitterFixed = true;
             this.scEffect.Location = new System.Drawing.Point(0, 0);
             this.scEffect.Name = "scEffect";
             this.scEffect.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -292,6 +301,10 @@ namespace EffectCreator {
             // 
             this.scEffect.Panel1.Controls.Add(this.cbEffectType);
             this.scEffect.Panel1.Controls.Add(this.lblEffectType);
+            // 
+            // scEffect.Panel2
+            // 
+            this.scEffect.Panel2.Controls.Add(this.splitContainer2);
             this.scEffect.Size = new System.Drawing.Size(455, 450);
             this.scEffect.SplitterDistance = 36;
             this.scEffect.TabIndex = 0;
@@ -322,6 +335,40 @@ namespace EffectCreator {
             this.lblEffectType.TabIndex = 0;
             this.lblEffectType.Text = "Effect Type";
             // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.IsSplitterFixed = true;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.btnRevertChanges);
+            this.splitContainer2.Panel2.Controls.Add(this.btnApplyChanges);
+            this.splitContainer2.Size = new System.Drawing.Size(455, 410);
+            this.splitContainer2.SplitterDistance = 151;
+            this.splitContainer2.TabIndex = 0;
+            // 
+            // btnApplyChanges
+            // 
+            this.btnApplyChanges.Location = new System.Drawing.Point(3, 3);
+            this.btnApplyChanges.Name = "btnApplyChanges";
+            this.btnApplyChanges.Size = new System.Drawing.Size(75, 23);
+            this.btnApplyChanges.TabIndex = 0;
+            this.btnApplyChanges.Text = "Apply";
+            this.btnApplyChanges.UseVisualStyleBackColor = true;
+            // 
+            // btnRevertChanges
+            // 
+            this.btnRevertChanges.Location = new System.Drawing.Point(84, 3);
+            this.btnRevertChanges.Name = "btnRevertChanges";
+            this.btnRevertChanges.Size = new System.Drawing.Size(75, 23);
+            this.btnRevertChanges.TabIndex = 1;
+            this.btnRevertChanges.Text = "Revert";
+            this.btnRevertChanges.UseVisualStyleBackColor = true;
+            // 
             // frmEffectGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -341,8 +388,12 @@ namespace EffectCreator {
             ((System.ComponentModel.ISupportInitialize)(this.numCooldown)).EndInit();
             this.scEffect.Panel1.ResumeLayout(false);
             this.scEffect.Panel1.PerformLayout();
+            this.scEffect.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scEffect)).EndInit();
             this.scEffect.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -372,5 +423,8 @@ namespace EffectCreator {
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.ComboBox cbParticleType;
         private System.Windows.Forms.Label lbParticleType;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.Button btnRevertChanges;
+        private System.Windows.Forms.Button btnApplyChanges;
     }
 }

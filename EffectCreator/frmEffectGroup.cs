@@ -86,13 +86,13 @@ namespace EffectCreator {
         }
 
         private void RemoveExistingEffectControl() {
-            if (scEffect.Panel2.Controls.Count > 0) {
-                scEffect.Panel2.Controls.RemoveAt(0);
+            if (splitContainer2.Panel1.Controls.Count > 0) {
+                splitContainer2.Panel1.Controls.RemoveAt(0);
             }
         }
 
         private void AddEffectControl(IEffectUserControl control) {
-            scEffect.Panel2.Controls.Add((Control)control);
+            splitContainer2.Panel1.Controls.Add((Control)control);
         }
 
         private void radTargetIndividual_CheckedChanged(object sender, EventArgs e) {
