@@ -59,6 +59,7 @@ namespace EffectCreator.EffectControls {
             // 
             // numPotency
             // 
+            this.numPotency.DecimalPlaces = 1;
             this.numPotency.Location = new System.Drawing.Point(116, 26);
             this.numPotency.Maximum = new decimal(new int[] {
             9999999,

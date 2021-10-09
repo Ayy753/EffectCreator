@@ -60,6 +60,7 @@ namespace EffectCreator.EffectControls {
             // 
             // numPotency
             // 
+            this.numPotency.DecimalPlaces = 1;
             this.numPotency.Location = new System.Drawing.Point(114, 8);
             this.numPotency.Maximum = new decimal(new int[] {
             9999999,
@@ -91,6 +92,7 @@ namespace EffectCreator.EffectControls {
             // 
             // numDuration
             // 
+            this.numDuration.DecimalPlaces = 1;
             this.numDuration.Increment = new decimal(new int[] {
             1,
             0,
@@ -114,7 +116,7 @@ namespace EffectCreator.EffectControls {
             1,
             0,
             0,
-            65536});
+            0});
             // 
             // lblDuration
             // 

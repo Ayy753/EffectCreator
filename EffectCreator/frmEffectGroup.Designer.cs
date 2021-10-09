@@ -176,10 +176,21 @@ namespace EffectCreator {
             // 
             // numRadius
             // 
+            this.numRadius.DecimalPlaces = 1;
             this.numRadius.Location = new System.Drawing.Point(91, 239);
+            this.numRadius.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
             this.numRadius.Name = "numRadius";
             this.numRadius.Size = new System.Drawing.Size(120, 20);
             this.numRadius.TabIndex = 9;
+            this.numRadius.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numRadius.Visible = false;
             // 
             // groupBox1
@@ -238,10 +249,26 @@ namespace EffectCreator {
             // 
             // numCooldown
             // 
+            this.numCooldown.DecimalPlaces = 1;
+            this.numCooldown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.numCooldown.Location = new System.Drawing.Point(91, 141);
+            this.numCooldown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.numCooldown.Name = "numCooldown";
             this.numCooldown.Size = new System.Drawing.Size(120, 20);
             this.numCooldown.TabIndex = 7;
+            this.numCooldown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // lblSoundType
             // 
