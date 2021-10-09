@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace EffectCreator.EffectControls {
     public partial class ucHeal : UserControl, IEffectUserControl {
+        public event EventHandler EffectModified;
+        
         public ucHeal(Heal heal) {
             InitializeComponent();
             PopulateForm(heal);
@@ -21,6 +23,10 @@ namespace EffectCreator.EffectControls {
 
         public IEffect GetEffect() {
             return new Heal((float)numPotency.Value);
+        }
+
+        private void numPotency_ValueChanged(object sender, EventArgs e) {
+            EffectModified?.Invoke(this, EventArgs.Empty);
         }
     }
 }

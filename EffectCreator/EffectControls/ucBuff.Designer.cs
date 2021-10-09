@@ -63,6 +63,7 @@ namespace EffectCreator.EffectControls {
             0,
             0,
             0});
+            this.numDuration.ValueChanged += new System.EventHandler(this.numDuration_ValueChanged);
             // 
             // lblDuration
             // 
@@ -98,6 +99,7 @@ namespace EffectCreator.EffectControls {
             this.cbStatType.Name = "cbStatType";
             this.cbStatType.Size = new System.Drawing.Size(121, 21);
             this.cbStatType.TabIndex = 12;
+            this.cbStatType.SelectedIndexChanged += new System.EventHandler(this.cbStatType_SelectedIndexChanged);
             // 
             // numPotency
             // 
@@ -121,6 +123,7 @@ namespace EffectCreator.EffectControls {
             0,
             0,
             0});
+            this.numPotency.ValueChanged += new System.EventHandler(this.numPotency_ValueChanged);
             // 
             // lblPotency
             // 

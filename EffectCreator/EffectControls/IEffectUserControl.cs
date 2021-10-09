@@ -7,5 +7,6 @@ using System.Threading.Tasks;
 namespace EffectCreator.EffectControls {
     interface IEffectUserControl {
         IEffect GetEffect();
+        event EventHandler EffectModified;
     }
 }

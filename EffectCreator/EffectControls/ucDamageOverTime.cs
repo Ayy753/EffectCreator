@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace EffectCreator.EffectControls {
     public partial class ucDamageOverTime : UserControl, IEffectUserControl {
+        public event EventHandler EffectModified;
+        
         public ucDamageOverTime(DamageOverTime damageOverTime) {
             InitializeComponent();
             cbDamageType.DataSource = Enum.GetValues(typeof(DamageType));
@@ -24,6 +26,18 @@ namespace EffectCreator.EffectControls {
 
         public IEffect GetEffect() {
             return new DamageOverTime((float)numPotency.Value, (float)numDuration.Value, (DamageType)cbDamageType.SelectedItem, true);
+        }
+
+        private void numPotency_ValueChanged(object sender, EventArgs e) {
+            EffectModified?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void cbDamageType_SelectedIndexChanged(object sender, EventArgs e) {
+            EffectModified?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void numDuration_ValueChanged(object sender, EventArgs e) {
+            EffectModified?.Invoke(this, EventArgs.Empty);
         }
     }
 }

@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace EffectCreator.EffectControls {
     public partial class ucDamage : UserControl, IEffectUserControl {
+        public event EventHandler EffectModified;
+        
         public ucDamage(Damage damage) {
             InitializeComponent();
             cbDamageType.DataSource = Enum.GetValues(typeof(DamageType));
@@ -23,6 +25,14 @@ namespace EffectCreator.EffectControls {
 
         public IEffect GetEffect() {
             return new Damage((float)numPotency.Value, (DamageType)cbDamageType.SelectedItem);
+        }
+
+        private void numPotency_ValueChanged(object sender, EventArgs e) {
+            EffectModified?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void cbDamageType_SelectedIndexChanged(object sender, EventArgs e) {
+            EffectModified?.Invoke(this, EventArgs.Empty);
         }
     }
 }

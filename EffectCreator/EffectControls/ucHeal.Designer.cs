@@ -51,6 +51,7 @@ namespace EffectCreator.EffectControls {
             0,
             0,
             0});
+            this.numPotency.ValueChanged += new System.EventHandler(this.numPotency_ValueChanged);
             // 
             // lblPotency
             // 

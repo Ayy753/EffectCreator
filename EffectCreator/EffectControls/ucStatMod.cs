@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace EffectCreator.EffectControls {
     public partial class ucStatMod : UserControl, IEffectUserControl {
+        public event EventHandler EffectModified;
+        
         public ucStatMod(StatMod statMod) {
             InitializeComponent();
             cbStatType.DataSource = Enum.GetValues(typeof(StatType));
@@ -22,6 +24,14 @@ namespace EffectCreator.EffectControls {
 
         public IEffect GetEffect() {
             return new StatMod((float)numPotency.Value, (StatType)cbStatType.SelectedItem);
+        }
+
+        private void numPotency_ValueChanged(object sender, EventArgs e) {
+            EffectModified?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void cbStatType_SelectedIndexChanged(object sender, EventArgs e) {
+            EffectModified?.Invoke(this, EventArgs.Empty);
         }
     }
 }

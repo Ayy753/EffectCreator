@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace EffectCreator.EffectControls {
     public partial class ucDebuff : UserControl, IEffectUserControl {
+        public event EventHandler EffectModified;
+        
         public ucDebuff(Debuff debuff) {
             InitializeComponent();
             cbStatType.DataSource = Enum.GetValues(typeof(StatType));
@@ -34,10 +36,27 @@ namespace EffectCreator.EffectControls {
         private void cbExpires_CheckedChanged(object sender, EventArgs e) {
             lblDuration.Enabled = cbExpires.Checked;
             numDuration.Enabled = cbExpires.Checked;
+            EffectModified?.Invoke(this, EventArgs.Empty);
         }
 
         public IEffect GetEffect() {
             return new Debuff((float)numPotency.Value, (float)numDuration.Value, (StatType)cbStatType.SelectedItem, (DamageType)cbResistType.SelectedItem, cbExpires.Checked);
+        }
+
+        private void numPotency_ValueChanged(object sender, EventArgs e) {
+            EffectModified?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void cbStatType_SelectedIndexChanged(object sender, EventArgs e) {
+            EffectModified?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void cbResistType_SelectedIndexChanged(object sender, EventArgs e) {
+            EffectModified?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void numDuration_ValueChanged(object sender, EventArgs e) {
+            EffectModified?.Invoke(this, EventArgs.Empty);
         }
     }
 }

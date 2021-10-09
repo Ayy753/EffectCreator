@@ -375,6 +375,7 @@ namespace EffectCreator {
             // 
             // btnRevertChanges
             // 
+            this.btnRevertChanges.Enabled = false;
             this.btnRevertChanges.Location = new System.Drawing.Point(84, 3);
             this.btnRevertChanges.Name = "btnRevertChanges";
             this.btnRevertChanges.Size = new System.Drawing.Size(75, 23);
@@ -385,6 +386,7 @@ namespace EffectCreator {
             // 
             // btnApplyChanges
             // 
+            this.btnApplyChanges.Enabled = false;
             this.btnApplyChanges.Location = new System.Drawing.Point(3, 3);
             this.btnApplyChanges.Name = "btnApplyChanges";
             this.btnApplyChanges.Size = new System.Drawing.Size(75, 23);
