@@ -11,9 +11,11 @@ using System.Windows.Forms;
 namespace EffectCreator.EffectControls {
     public partial class ucDamage : UserControl, IEffectUserControl {
         public event EventHandler EffectModified;
-        
+        IEffect cachedEffect;
+
         public ucDamage(Damage damage) {
             InitializeComponent();
+            cachedEffect = damage;
             cbDamageType.DataSource = Enum.GetValues(typeof(DamageType));
             PopulateForm(damage);
         }
@@ -33,6 +35,14 @@ namespace EffectCreator.EffectControls {
 
         private void cbDamageType_SelectedIndexChanged(object sender, EventArgs e) {
             EffectModified?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void RevertChanges() {
+            PopulateForm((Damage)cachedEffect);
+        }
+
+        public void ApplyChanges() {
+            cachedEffect = GetEffect();
         }
     }
 }

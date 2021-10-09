@@ -11,9 +11,11 @@ using System.Windows.Forms;
 namespace EffectCreator.EffectControls {
     public partial class ucHeal : UserControl, IEffectUserControl {
         public event EventHandler EffectModified;
+        IEffect cachedEffect;
         
         public ucHeal(Heal heal) {
             InitializeComponent();
+            cachedEffect = heal;
             PopulateForm(heal);
         }
 
@@ -27,6 +29,14 @@ namespace EffectCreator.EffectControls {
 
         private void numPotency_ValueChanged(object sender, EventArgs e) {
             EffectModified?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void RevertChanges() {
+            PopulateForm((Heal)cachedEffect);
+        }
+
+        public void ApplyChanges() {
+            cachedEffect = GetEffect();
         }
     }
 }

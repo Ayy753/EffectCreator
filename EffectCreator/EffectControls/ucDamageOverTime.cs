@@ -11,9 +11,11 @@ using System.Windows.Forms;
 namespace EffectCreator.EffectControls {
     public partial class ucDamageOverTime : UserControl, IEffectUserControl {
         public event EventHandler EffectModified;
-        
+        IEffect cachedEffect;
+
         public ucDamageOverTime(DamageOverTime damageOverTime) {
             InitializeComponent();
+            cachedEffect = damageOverTime;
             cbDamageType.DataSource = Enum.GetValues(typeof(DamageType));
             PopulateForm(damageOverTime);
         }
@@ -38,6 +40,14 @@ namespace EffectCreator.EffectControls {
 
         private void numDuration_ValueChanged(object sender, EventArgs e) {
             EffectModified?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void RevertChanges() {
+            PopulateForm((DamageOverTime)cachedEffect);
+        }
+
+        public void ApplyChanges() {
+            cachedEffect = GetEffect();
         }
     }
 }

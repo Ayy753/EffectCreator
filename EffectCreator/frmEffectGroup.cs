@@ -63,7 +63,7 @@ namespace EffectCreator {
 
         private void btnRevertChanges_Click(object sender, EventArgs e) {
             if (lbEffects.SelectedIndex != -1) {
-                OpenSelectedEffect();
+                activeEffectControl.RevertChanges();
             }
             btnApplyChanges.Enabled = false;
             btnRevertChanges.Enabled = false;
@@ -157,6 +157,7 @@ namespace EffectCreator {
         }
 
         private void btnApplyChanges_Click(object sender, EventArgs e) {
+            activeEffectControl.ApplyChanges();
             listboxRowToEffect[activeRowKey] = activeEffectControl.GetEffect();
             btnApplyChanges.Enabled = false;
             btnRevertChanges.Enabled = false;

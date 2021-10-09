@@ -8,5 +8,7 @@ namespace EffectCreator.EffectControls {
     interface IEffectUserControl {
         IEffect GetEffect();
         event EventHandler EffectModified;
+        void RevertChanges();
+        void ApplyChanges();
     }
 }

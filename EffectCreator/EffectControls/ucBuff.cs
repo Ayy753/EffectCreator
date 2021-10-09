@@ -12,9 +12,11 @@ using System.Windows.Forms;
 namespace EffectCreator.EffectControls {
     public partial class ucBuff : UserControl, IEffectUserControl {
         public event EventHandler EffectModified;
+        IEffect cachedEffect;
 
         public ucBuff(Buff buff) {
             InitializeComponent();
+            cachedEffect = buff;
             cbStatType.DataSource = Enum.GetValues(typeof(StatType));
             PopulateForm(buff);
         }
@@ -53,6 +55,14 @@ namespace EffectCreator.EffectControls {
 
         private void cbStatType_SelectedIndexChanged(object sender, EventArgs e) {
             EffectModified?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void RevertChanges() {
+            PopulateForm((Buff)cachedEffect);
+        }
+
+        public void ApplyChanges() {
+            cachedEffect = GetEffect();
         }
     }
 }
