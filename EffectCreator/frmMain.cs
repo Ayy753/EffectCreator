@@ -22,21 +22,14 @@ namespace EffectCreator {
         }
 
         private void lbEffectGroups_SelectedIndexChanged(object sender, EventArgs e) {
-            if (lbEffectGroups.SelectedIndex >= 0)
-                btnOpenEffectGroup.Enabled = true;
-            else 
-                btnOpenEffectGroup.Enabled = false;
-        }
-
-        private void btnOpenEffectGroup_Click(object sender, EventArgs e) {
-            EffectGroup selectedEffectGroup = GetSelectedEffectGroup();
-
-            if (selectedEffectGroup != null) {
-                frmEffectGroup newEFfectGroupForm = new frmEffectGroup(selectedEffectGroup);
-                newEFfectGroupForm.ShowDialog();
-            }
-            else {
-                MessageBox.Show($"Error: '{lbEffectGroups.SelectedItem}' does not map to any EffectGroup object in the effects.json file");
+            if (lbEffectGroups.SelectedIndex >= 0) {
+                EffectGroup selectedEffectGroup = GetSelectedEffectGroup();
+                if (selectedEffectGroup != null) {
+                    ucEffectGroup1.LoadEffectGroup(selectedEffectGroup);
+                }
+                else {
+                    MessageBox.Show($"Error: '{lbEffectGroups.SelectedItem}' does not map to any EffectGroup object in the effects.json file");
+                }
             }
         }
 

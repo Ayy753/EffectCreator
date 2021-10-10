@@ -1,7 +1,6 @@
 ﻿using EffectCreator.EffectControls;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
@@ -12,42 +11,39 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EffectCreator {
-    public partial class frmEffectGroup : Form {
+    public partial class ucEffectGroup : UserControl {
         private Dictionary<string, IEffect> listboxRowToEffect;
         private IEffectUserControl activeEffectControl;
         private string activeRowKey;
 
-        public frmEffectGroup() {
-            InitializeComponent();
-        }
-
-        public frmEffectGroup(EffectGroup effectGroup) {
+        public ucEffectGroup() {
             InitializeComponent();
 
             cbSoundType.DataSource = Enum.GetValues(typeof(SoundType));
             cbParticleType.DataSource = Enum.GetValues(typeof(ParticleType));
-
-            listboxRowToEffect = new Dictionary<string, IEffect>();
-            PopulateForm(effectGroup);
-
-            if (lbEffects.Items.Count > 0) {
-                lbEffects.SelectedIndex = 0;
-            }
         }
 
-        private void PopulateForm(EffectGroup effectGroup) {
+        public void LoadEffectGroup(EffectGroup effectGroup) {
             tbName.Text = effectGroup.Name;
             tbDescription.Text = effectGroup.Description;
             cbSoundType.SelectedItem = effectGroup.SoundType;
             cbParticleType.SelectedItem = effectGroup.ParticleName;
             numCooldown.Value = (decimal)effectGroup.Cooldown;
             radTargetGroup.Checked = effectGroup.Type == TargetType.Area;
+            radTargetIndividual.Checked = effectGroup.Type == TargetType.Individual;
             numRadius.Value = (decimal)effectGroup.Radius;
+
+            lbEffects.Items.Clear();
+            listboxRowToEffect = new Dictionary<string, IEffect>();
 
             foreach (IEffect effect in effectGroup.Effects) {
                 string rowKey = "Effect " + lbEffects.Items.Count;
                 listboxRowToEffect.Add(rowKey, effect);
                 lbEffects.Items.Add(rowKey);
+            }
+
+            if (lbEffects.Items.Count > 0) {
+                lbEffects.SelectedIndex = 0;
             }
         }
 
@@ -114,17 +110,6 @@ namespace EffectCreator {
             splitContainer2.Panel1.Controls.Add((Control)control);
         }
 
-        private void radTargetIndividual_CheckedChanged(object sender, EventArgs e) {
-            if (radTargetGroup.Checked) {
-                lblRadius.Visible = true;
-                numRadius.Visible = true;
-            }
-            else {
-                lblRadius.Visible = false;
-                numRadius.Visible = false;
-            }
-        }
-
         private void btnRemove_Click(object sender, EventArgs e) {
             int selectedRowIndex = lbEffects.SelectedIndex;
             string rowKey = lbEffects.SelectedItem.ToString();
@@ -132,7 +117,7 @@ namespace EffectCreator {
             lbEffects.Items.RemoveAt(selectedRowIndex);
 
             if (selectedRowIndex > 0) {
-                lbEffects.SelectedIndex = selectedRowIndex -1;
+                lbEffects.SelectedIndex = selectedRowIndex - 1;
             }
             else if (selectedRowIndex == 0 && lbEffects.Items.Count >= 1) {
                 lbEffects.SelectedIndex = 0;
@@ -161,6 +146,18 @@ namespace EffectCreator {
             listboxRowToEffect[activeRowKey] = activeEffectControl.GetEffect();
             btnApplyChanges.Enabled = false;
             btnRevertChanges.Enabled = false;
+        }
+
+        private void radTargetGroup_CheckedChanged(object sender, EventArgs e) {
+            Debug.WriteLine("checkbox changed");
+            if (radTargetGroup.Checked) {
+                lblRadius.Visible = true;
+                numRadius.Visible = true;
+            }
+            else {
+                lblRadius.Visible = false;
+                numRadius.Visible = false;
+            }
         }
     }
 }
