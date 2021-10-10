@@ -56,8 +56,8 @@ namespace EffectCreator {
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.ucEffectGroup1);
-            this.splitContainer1.Size = new System.Drawing.Size(958, 436);
-            this.splitContainer1.SplitterDistance = 152;
+            this.splitContainer1.Size = new System.Drawing.Size(709, 436);
+            this.splitContainer1.SplitterDistance = 145;
             this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -113,14 +113,14 @@ namespace EffectCreator {
             // 
             this.ucEffectGroup1.Location = new System.Drawing.Point(3, 3);
             this.ucEffectGroup1.Name = "ucEffectGroup1";
-            this.ucEffectGroup1.Size = new System.Drawing.Size(796, 428);
+            this.ucEffectGroup1.Size = new System.Drawing.Size(554, 428);
             this.ucEffectGroup1.TabIndex = 0;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(958, 436);
+            this.ClientSize = new System.Drawing.Size(709, 436);
             this.Controls.Add(this.splitContainer1);
             this.Name = "frmMain";
             this.Text = "frmMain";

@@ -215,7 +215,7 @@ namespace EffectCreator {
             // 
             this.splitContainer2.Panel2.Controls.Add(this.btnRevertChanges);
             this.splitContainer2.Panel2.Controls.Add(this.btnApplyChanges);
-            this.splitContainer2.Size = new System.Drawing.Size(500, 386);
+            this.splitContainer2.Size = new System.Drawing.Size(274, 386);
             this.splitContainer2.SplitterDistance = 141;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -272,7 +272,7 @@ namespace EffectCreator {
             // scEffect.Panel2
             // 
             this.scEffect.Panel2.Controls.Add(this.splitContainer2);
-            this.scEffect.Size = new System.Drawing.Size(500, 423);
+            this.scEffect.Size = new System.Drawing.Size(274, 423);
             this.scEffect.SplitterDistance = 33;
             this.scEffect.TabIndex = 0;
             // 
@@ -391,8 +391,8 @@ namespace EffectCreator {
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.scEffect);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 425);
-            this.splitContainer1.SplitterDistance = 296;
+            this.splitContainer1.Size = new System.Drawing.Size(600, 425);
+            this.splitContainer1.SplitterDistance = 322;
             this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -402,7 +402,7 @@ namespace EffectCreator {
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
             this.Name = "ucEffectGroup";
-            this.Size = new System.Drawing.Size(800, 425);
+            this.Size = new System.Drawing.Size(600, 425);
             ((System.ComponentModel.ISupportInitialize)(this.numRadius)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
