@@ -15,6 +15,7 @@ namespace EffectCreator.EffectControls {
 
         public ucStatMod(StatMod statMod) {
             InitializeComponent();
+            cachedEffect = statMod;
             cbStatType.DataSource = Enum.GetValues(typeof(StatType));
             PopulateForm(statMod);
         }
