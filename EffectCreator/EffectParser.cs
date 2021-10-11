@@ -56,7 +56,7 @@ namespace EffectCreator {
                         newEffect = new Heal(parsed.Potency);
                         break;
                     default:
-                        throw new IOException($"Error creating effect: EffectType is not defined. This should never happen");
+                        throw new IOException($"Error creating effect. The '{parsed.EffectType}' type is not currently supported");
                 }
                 effects.Add(newEffect);
             }

@@ -85,8 +85,11 @@ namespace EffectCreator {
             else if (effect is Debuff debuff) {
                 activeEffectControl = new ucDebuff(debuff);
             }
+            else if(effect is Heal heal) {
+                activeEffectControl = new ucHeal(heal);
+            }
             else {
-                activeEffectControl = new ucHeal((Heal)effect);
+                throw new ArgumentException($"Error opening effect: Effect type '{effect.GetType()}' is not currently supported.");
             }
 
             AddEffectControl(activeEffectControl);
