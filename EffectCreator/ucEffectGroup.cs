@@ -33,6 +33,10 @@ namespace EffectCreator {
             radTargetIndividual.Checked = effectGroup.Type == TargetType.Individual;
             numRadius.Value = (decimal)effectGroup.Radius;
 
+            InitializeEffectListbox(effectGroup);
+        }
+
+        private void InitializeEffectListbox(EffectGroup effectGroup) {
             lbEffects.Items.Clear();
             listboxRowToEffect = new Dictionary<string, IEffect>();
 
