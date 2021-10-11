@@ -19,6 +19,10 @@ namespace EffectCreator {
             foreach (EffectGroup group in effectGroups) {
                 lbEffectGroups.Items.Add(group.Name);
             }
+
+            if (lbEffectGroups.Items.Count > 0) {
+                lbEffectGroups.SelectedIndex = 0;
+            }
         }
 
         private void lbEffectGroups_SelectedIndexChanged(object sender, EventArgs e) {
