@@ -26,7 +26,6 @@ namespace EffectCreator {
         private void InitializeComponent() {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btnDeleteEffectGroup = new System.Windows.Forms.Button();
-            this.btnOpenEffectGroup = new System.Windows.Forms.Button();
             this.btnNewEffectGroup = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lbEffectGroups = new System.Windows.Forms.ListBox();
@@ -48,7 +47,6 @@ namespace EffectCreator {
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.btnDeleteEffectGroup);
-            this.splitContainer1.Panel1.Controls.Add(this.btnOpenEffectGroup);
             this.splitContainer1.Panel1.Controls.Add(this.btnNewEffectGroup);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
             this.splitContainer1.Panel1.Controls.Add(this.lbEffectGroups);
@@ -64,22 +62,12 @@ namespace EffectCreator {
             // btnDeleteEffectGroup
             // 
             this.btnDeleteEffectGroup.Enabled = false;
-            this.btnDeleteEffectGroup.Location = new System.Drawing.Point(15, 190);
+            this.btnDeleteEffectGroup.Location = new System.Drawing.Point(15, 159);
             this.btnDeleteEffectGroup.Name = "btnDeleteEffectGroup";
             this.btnDeleteEffectGroup.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteEffectGroup.TabIndex = 9;
             this.btnDeleteEffectGroup.Text = "Delete";
             this.btnDeleteEffectGroup.UseVisualStyleBackColor = true;
-            // 
-            // btnOpenEffectGroup
-            // 
-            this.btnOpenEffectGroup.Enabled = false;
-            this.btnOpenEffectGroup.Location = new System.Drawing.Point(15, 160);
-            this.btnOpenEffectGroup.Name = "btnOpenEffectGroup";
-            this.btnOpenEffectGroup.Size = new System.Drawing.Size(75, 23);
-            this.btnOpenEffectGroup.TabIndex = 8;
-            this.btnOpenEffectGroup.Text = "Open";
-            this.btnOpenEffectGroup.UseVisualStyleBackColor = true;
             // 
             // btnNewEffectGroup
             // 
@@ -137,7 +125,6 @@ namespace EffectCreator {
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button btnDeleteEffectGroup;
-        private System.Windows.Forms.Button btnOpenEffectGroup;
         private System.Windows.Forms.Button btnNewEffectGroup;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox lbEffectGroups;
