@@ -121,6 +121,7 @@ namespace EffectCreator {
             this.btnCreateNew.TabIndex = 13;
             this.btnCreateNew.Text = "Create New";
             this.btnCreateNew.UseVisualStyleBackColor = true;
+            this.btnCreateNew.Click += new System.EventHandler(this.btnCreateNew_Click);
             // 
             // label6
             // 

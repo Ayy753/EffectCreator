@@ -71,7 +71,7 @@ namespace EffectCreator {
             IEffect effect = listboxRowToEffect[activeRowKey];
 
             if (effect is Damage damage) {
-                activeEffectControl = new ucDamage(damage);
+                activeEffectControl = new ucDamage(damage); 
             }
             else if (effect is DamageOverTime damageOverTime) {
                 activeEffectControl = new ucDamageOverTime(damageOverTime);
@@ -158,6 +158,45 @@ namespace EffectCreator {
                 lblRadius.Visible = false;
                 numRadius.Visible = false;
             }
+        }
+
+        private void btnCreateNew_Click(object sender, EventArgs e) {
+            using (frmCreateNewEffect frmCreateNewEffect = new frmCreateNewEffect()) {
+                if (frmCreateNewEffect.ShowDialog() == DialogResult.OK) {
+                    string effectName = frmCreateNewEffect.EffectName;
+                    CreateNewEffect(effectName, frmCreateNewEffect.EffectType);
+                }
+            }
+        }
+
+        private void CreateNewEffect(string uniqueEffectName, EffectType effectType) {
+            IEffect effect;
+            switch (effectType) {
+                case EffectType.Buff:
+                    effect = new Buff(1, 1, StatType.Armor, true);
+                    break;
+                case EffectType.Damage:
+                    effect = new Damage(1, DamageType.Cold);
+                    break;
+                case EffectType.DOT:
+                    effect = new DamageOverTime(1, 1, DamageType.Cold, true);
+                    break;
+                case EffectType.StatMod:
+                    effect = new StatMod(1, StatType.Armor);
+                    break;
+                case EffectType.Debuff:
+                    effect = new Debuff(1, 1, StatType.Armor, DamageType.Cold, true);
+                    break;
+                case EffectType.Heal:
+                    effect = new Heal(1);
+                    break;
+                default:
+                    throw new ArgumentException($"Error: Effect type '{effectType}' not supported.");
+            }
+
+            listboxRowToEffect.Add(uniqueEffectName, effect);
+            lbEffects.Items.Add(uniqueEffectName);
+            lbEffects.SelectedIndex = lbEffects.Items.Count - 1;
         }
     }
 }

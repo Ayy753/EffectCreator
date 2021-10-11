@@ -105,6 +105,12 @@
     <Compile Include="EffectParser.cs" />
     <Compile Include="Effects.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="frmCreateNewEffect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreateNewEffect.Designer.cs">
+      <DependentUpon>frmCreateNewEffect.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EffectControls\ucStatMod.resx">
       <DependentUpon>ucStatMod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCreateNewEffect.resx">
+      <DependentUpon>frmCreateNewEffect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
