@@ -125,6 +125,9 @@ namespace EffectCreator {
             else if (selectedRowIndex == 0 && lbEffects.Items.Count >= 1) {
                 lbEffects.SelectedIndex = 0;
             }
+            else if (lbEffects.Items.Count == 0) {
+                RemoveExistingEffectControl();
+            }
         }
 
         public EffectGroup GetEffectGroup() {
