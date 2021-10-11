@@ -44,7 +44,7 @@ namespace EffectCreator.EffectControls {
             0,
             0,
             65536});
-            this.numDuration.Location = new System.Drawing.Point(116, 89);
+            this.numDuration.Location = new System.Drawing.Point(100, 80);
             this.numDuration.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -68,7 +68,7 @@ namespace EffectCreator.EffectControls {
             // lblDuration
             // 
             this.lblDuration.AutoSize = true;
-            this.lblDuration.Location = new System.Drawing.Point(14, 91);
+            this.lblDuration.Location = new System.Drawing.Point(0, 80);
             this.lblDuration.Name = "lblDuration";
             this.lblDuration.Size = new System.Drawing.Size(47, 13);
             this.lblDuration.TabIndex = 14;
@@ -77,7 +77,7 @@ namespace EffectCreator.EffectControls {
             // lblStatType
             // 
             this.lblStatType.AutoSize = true;
-            this.lblStatType.Location = new System.Drawing.Point(14, 39);
+            this.lblStatType.Location = new System.Drawing.Point(0, 30);
             this.lblStatType.Name = "lblStatType";
             this.lblStatType.Size = new System.Drawing.Size(53, 13);
             this.lblStatType.TabIndex = 13;
@@ -95,7 +95,7 @@ namespace EffectCreator.EffectControls {
             "LightningResist",
             "Health",
             "Speed"});
-            this.cbStatType.Location = new System.Drawing.Point(116, 39);
+            this.cbStatType.Location = new System.Drawing.Point(100, 30);
             this.cbStatType.Name = "cbStatType";
             this.cbStatType.Size = new System.Drawing.Size(121, 21);
             this.cbStatType.TabIndex = 12;
@@ -104,7 +104,7 @@ namespace EffectCreator.EffectControls {
             // numPotency
             // 
             this.numPotency.DecimalPlaces = 1;
-            this.numPotency.Location = new System.Drawing.Point(116, 12);
+            this.numPotency.Location = new System.Drawing.Point(100, 5);
             this.numPotency.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -128,7 +128,7 @@ namespace EffectCreator.EffectControls {
             // lblPotency
             // 
             this.lblPotency.AutoSize = true;
-            this.lblPotency.Location = new System.Drawing.Point(14, 13);
+            this.lblPotency.Location = new System.Drawing.Point(0, 5);
             this.lblPotency.Name = "lblPotency";
             this.lblPotency.Size = new System.Drawing.Size(65, 13);
             this.lblPotency.TabIndex = 10;
@@ -137,7 +137,7 @@ namespace EffectCreator.EffectControls {
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 66);
+            this.label1.Location = new System.Drawing.Point(0, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 16;
@@ -148,7 +148,7 @@ namespace EffectCreator.EffectControls {
             this.cbExpires.AutoSize = true;
             this.cbExpires.Checked = true;
             this.cbExpires.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbExpires.Location = new System.Drawing.Point(116, 66);
+            this.cbExpires.Location = new System.Drawing.Point(100, 60);
             this.cbExpires.Name = "cbExpires";
             this.cbExpires.Size = new System.Drawing.Size(15, 14);
             this.cbExpires.TabIndex = 17;
@@ -168,7 +168,7 @@ namespace EffectCreator.EffectControls {
             this.Controls.Add(this.numPotency);
             this.Controls.Add(this.lblPotency);
             this.Name = "ucBuff";
-            this.Size = new System.Drawing.Size(250, 125);
+            this.Size = new System.Drawing.Size(225, 110);
             ((System.ComponentModel.ISupportInitialize)(this.numDuration)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPotency)).EndInit();
             this.ResumeLayout(false);

@@ -242,7 +242,7 @@ namespace EffectCreator {
             "DamageOverTime",
             "StatMod",
             "Heal"});
-            this.cbEffectType.Location = new System.Drawing.Point(83, 6);
+            this.cbEffectType.Location = new System.Drawing.Point(100, 5);
             this.cbEffectType.Name = "cbEffectType";
             this.cbEffectType.Size = new System.Drawing.Size(121, 21);
             this.cbEffectType.TabIndex = 15;
@@ -250,7 +250,7 @@ namespace EffectCreator {
             // lblEffectType
             // 
             this.lblEffectType.AutoSize = true;
-            this.lblEffectType.Location = new System.Drawing.Point(15, 9);
+            this.lblEffectType.Location = new System.Drawing.Point(0, 5);
             this.lblEffectType.Name = "lblEffectType";
             this.lblEffectType.Size = new System.Drawing.Size(62, 13);
             this.lblEffectType.TabIndex = 0;

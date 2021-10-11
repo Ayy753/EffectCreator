@@ -37,7 +37,7 @@ namespace EffectCreator.EffectControls {
             // lblDamageType
             // 
             this.lblDamageType.AutoSize = true;
-            this.lblDamageType.Location = new System.Drawing.Point(12, 37);
+            this.lblDamageType.Location = new System.Drawing.Point(0, 30);
             this.lblDamageType.Name = "lblDamageType";
             this.lblDamageType.Size = new System.Drawing.Size(74, 13);
             this.lblDamageType.TabIndex = 7;
@@ -53,7 +53,7 @@ namespace EffectCreator.EffectControls {
             "Fire",
             "Poison",
             "Lightning"});
-            this.cbDamageType.Location = new System.Drawing.Point(114, 37);
+            this.cbDamageType.Location = new System.Drawing.Point(100, 30);
             this.cbDamageType.Name = "cbDamageType";
             this.cbDamageType.Size = new System.Drawing.Size(121, 21);
             this.cbDamageType.TabIndex = 6;
@@ -62,7 +62,7 @@ namespace EffectCreator.EffectControls {
             // numPotency
             // 
             this.numPotency.DecimalPlaces = 1;
-            this.numPotency.Location = new System.Drawing.Point(114, 8);
+            this.numPotency.Location = new System.Drawing.Point(100, 5);
             this.numPotency.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -86,7 +86,7 @@ namespace EffectCreator.EffectControls {
             // lblPotency
             // 
             this.lblPotency.AutoSize = true;
-            this.lblPotency.Location = new System.Drawing.Point(12, 9);
+            this.lblPotency.Location = new System.Drawing.Point(0, 5);
             this.lblPotency.Name = "lblPotency";
             this.lblPotency.Size = new System.Drawing.Size(86, 13);
             this.lblPotency.TabIndex = 4;
@@ -100,7 +100,7 @@ namespace EffectCreator.EffectControls {
             0,
             0,
             65536});
-            this.numDuration.Location = new System.Drawing.Point(114, 64);
+            this.numDuration.Location = new System.Drawing.Point(100, 55);
             this.numDuration.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -124,7 +124,7 @@ namespace EffectCreator.EffectControls {
             // lblDuration
             // 
             this.lblDuration.AutoSize = true;
-            this.lblDuration.Location = new System.Drawing.Point(12, 65);
+            this.lblDuration.Location = new System.Drawing.Point(0, 55);
             this.lblDuration.Name = "lblDuration";
             this.lblDuration.Size = new System.Drawing.Size(47, 13);
             this.lblDuration.TabIndex = 8;
@@ -141,7 +141,7 @@ namespace EffectCreator.EffectControls {
             this.Controls.Add(this.numPotency);
             this.Controls.Add(this.lblPotency);
             this.Name = "ucDamageOverTime";
-            this.Size = new System.Drawing.Size(250, 100);
+            this.Size = new System.Drawing.Size(225, 80);
             ((System.ComponentModel.ISupportInitialize)(this.numPotency)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDuration)).EndInit();
             this.ResumeLayout(false);

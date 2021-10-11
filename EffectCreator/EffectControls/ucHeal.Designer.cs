@@ -32,7 +32,7 @@ namespace EffectCreator.EffectControls {
             // numPotency
             // 
             this.numPotency.DecimalPlaces = 1;
-            this.numPotency.Location = new System.Drawing.Point(117, 14);
+            this.numPotency.Location = new System.Drawing.Point(100, 5);
             this.numPotency.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -56,7 +56,7 @@ namespace EffectCreator.EffectControls {
             // lblPotency
             // 
             this.lblPotency.AutoSize = true;
-            this.lblPotency.Location = new System.Drawing.Point(15, 15);
+            this.lblPotency.Location = new System.Drawing.Point(0, 5);
             this.lblPotency.Name = "lblPotency";
             this.lblPotency.Size = new System.Drawing.Size(68, 13);
             this.lblPotency.TabIndex = 12;
@@ -69,7 +69,7 @@ namespace EffectCreator.EffectControls {
             this.Controls.Add(this.numPotency);
             this.Controls.Add(this.lblPotency);
             this.Name = "ucHeal";
-            this.Size = new System.Drawing.Size(250, 50);
+            this.Size = new System.Drawing.Size(225, 30);
             ((System.ComponentModel.ISupportInitialize)(this.numPotency)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

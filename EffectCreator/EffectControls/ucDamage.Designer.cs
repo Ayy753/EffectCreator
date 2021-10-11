@@ -34,7 +34,7 @@ namespace EffectCreator.EffectControls {
             // lblPotency
             // 
             this.lblPotency.AutoSize = true;
-            this.lblPotency.Location = new System.Drawing.Point(4, 4);
+            this.lblPotency.Location = new System.Drawing.Point(0, 5);
             this.lblPotency.Name = "lblPotency";
             this.lblPotency.Size = new System.Drawing.Size(86, 13);
             this.lblPotency.TabIndex = 0;
@@ -43,7 +43,7 @@ namespace EffectCreator.EffectControls {
             // numPotency
             // 
             this.numPotency.DecimalPlaces = 1;
-            this.numPotency.Location = new System.Drawing.Point(106, 3);
+            this.numPotency.Location = new System.Drawing.Point(100, 5);
             this.numPotency.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -74,7 +74,7 @@ namespace EffectCreator.EffectControls {
             "Fire",
             "Poison",
             "Lightning"});
-            this.cbDamageType.Location = new System.Drawing.Point(106, 32);
+            this.cbDamageType.Location = new System.Drawing.Point(100, 30);
             this.cbDamageType.Name = "cbDamageType";
             this.cbDamageType.Size = new System.Drawing.Size(121, 21);
             this.cbDamageType.TabIndex = 2;
@@ -83,7 +83,7 @@ namespace EffectCreator.EffectControls {
             // lblDamageType
             // 
             this.lblDamageType.AutoSize = true;
-            this.lblDamageType.Location = new System.Drawing.Point(4, 32);
+            this.lblDamageType.Location = new System.Drawing.Point(0, 30);
             this.lblDamageType.Name = "lblDamageType";
             this.lblDamageType.Size = new System.Drawing.Size(74, 13);
             this.lblDamageType.TabIndex = 3;
@@ -98,7 +98,7 @@ namespace EffectCreator.EffectControls {
             this.Controls.Add(this.numPotency);
             this.Controls.Add(this.lblPotency);
             this.Name = "ucDamage";
-            this.Size = new System.Drawing.Size(250, 60);
+            this.Size = new System.Drawing.Size(225, 60);
             ((System.ComponentModel.ISupportInitialize)(this.numPotency)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
