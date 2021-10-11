@@ -113,7 +113,7 @@ namespace EffectCreator {
             splitContainer2.Panel1.Controls.Add((Control)control);
         }
 
-        private void btnRemove_Click(object sender, EventArgs e) {
+        private void btnRemoveEffect_Click(object sender, EventArgs e) {
             int selectedRowIndex = lbEffects.SelectedIndex;
             string rowKey = lbEffects.SelectedItem.ToString();
             listboxRowToEffect.Remove(rowKey);
@@ -163,7 +163,7 @@ namespace EffectCreator {
             }
         }
 
-        private void btnCreateNew_Click(object sender, EventArgs e) {
+        private void btnCreateNewEfect_Click(object sender, EventArgs e) {
             using (frmCreateNewEffect frmCreateNewEffect = new frmCreateNewEffect()) {
                 if (frmCreateNewEffect.ShowDialog() == DialogResult.OK) {
                     string effectName = frmCreateNewEffect.EffectName;
