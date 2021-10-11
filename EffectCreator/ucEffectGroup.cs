@@ -167,10 +167,12 @@ namespace EffectCreator {
         }
 
         private void btnCreateNewEfect_Click(object sender, EventArgs e) {
-            using (frmCreateNewEffect frmCreateNewEffect = new frmCreateNewEffect()) {
+            using (frmCreateNewEffect frmCreateNewEffect = new frmCreateNewEffect(this)) {
                 if (frmCreateNewEffect.ShowDialog() == DialogResult.OK) {
                     string effectName = frmCreateNewEffect.EffectName;
                     CreateNewEffect(effectName, frmCreateNewEffect.EffectType);
+
+                    Debug.WriteLine("Created effect in ucEffectGroup");
                 }
             }
         }
@@ -203,6 +205,10 @@ namespace EffectCreator {
             listboxRowToEffect.Add(uniqueEffectName, effect);
             lbEffects.Items.Add(uniqueEffectName);
             lbEffects.SelectedIndex = lbEffects.Items.Count - 1;
+        }
+
+        public bool EffectListContainsName(string name) {
+            return listboxRowToEffect.ContainsKey(name);
         }
     }
 }
