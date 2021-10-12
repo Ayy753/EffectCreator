@@ -24,7 +24,6 @@ namespace EffectCreator {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.btnApplyChanges = new System.Windows.Forms.Button();
             this.cbParticleType = new System.Windows.Forms.ComboBox();
             this.lbParticleType = new System.Windows.Forms.Label();
             this.btnRemove = new System.Windows.Forms.Button();
@@ -37,7 +36,6 @@ namespace EffectCreator {
             this.radTargetGroup = new System.Windows.Forms.RadioButton();
             this.radTargetIndividual = new System.Windows.Forms.RadioButton();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.btnRevertChanges = new System.Windows.Forms.Button();
             this.cbEffectType = new System.Windows.Forms.ComboBox();
             this.lblEffectType = new System.Windows.Forms.Label();
             this.scEffect = new System.Windows.Forms.SplitContainer();
@@ -53,7 +51,6 @@ namespace EffectCreator {
             ((System.ComponentModel.ISupportInitialize)(this.numRadius)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scEffect)).BeginInit();
             this.scEffect.Panel1.SuspendLayout();
@@ -65,17 +62,6 @@ namespace EffectCreator {
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnApplyChanges
-            // 
-            this.btnApplyChanges.Enabled = false;
-            this.btnApplyChanges.Location = new System.Drawing.Point(3, 3);
-            this.btnApplyChanges.Name = "btnApplyChanges";
-            this.btnApplyChanges.Size = new System.Drawing.Size(75, 23);
-            this.btnApplyChanges.TabIndex = 0;
-            this.btnApplyChanges.Text = "Apply";
-            this.btnApplyChanges.UseVisualStyleBackColor = true;
-            this.btnApplyChanges.Click += new System.EventHandler(this.btnApplyChanges_Click);
             // 
             // cbParticleType
             // 
@@ -215,25 +201,9 @@ namespace EffectCreator {
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.btnRevertChanges);
-            this.splitContainer2.Panel2.Controls.Add(this.btnApplyChanges);
             this.splitContainer2.Size = new System.Drawing.Size(274, 386);
             this.splitContainer2.SplitterDistance = 141;
             this.splitContainer2.TabIndex = 0;
-            // 
-            // btnRevertChanges
-            // 
-            this.btnRevertChanges.Enabled = false;
-            this.btnRevertChanges.Location = new System.Drawing.Point(84, 3);
-            this.btnRevertChanges.Name = "btnRevertChanges";
-            this.btnRevertChanges.Size = new System.Drawing.Size(75, 23);
-            this.btnRevertChanges.TabIndex = 1;
-            this.btnRevertChanges.Text = "Revert";
-            this.btnRevertChanges.UseVisualStyleBackColor = true;
-            this.btnRevertChanges.Click += new System.EventHandler(this.btnRevertChanges_Click);
             // 
             // cbEffectType
             // 
@@ -415,7 +385,6 @@ namespace EffectCreator {
             ((System.ComponentModel.ISupportInitialize)(this.numRadius)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.scEffect.Panel1.ResumeLayout(false);
@@ -434,8 +403,6 @@ namespace EffectCreator {
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnApplyChanges;
         private System.Windows.Forms.ComboBox cbParticleType;
         private System.Windows.Forms.Label lbParticleType;
         private System.Windows.Forms.Button btnRemove;
@@ -448,7 +415,6 @@ namespace EffectCreator {
         private System.Windows.Forms.RadioButton radTargetGroup;
         private System.Windows.Forms.RadioButton radTargetIndividual;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.Button btnRevertChanges;
         private System.Windows.Forms.ComboBox cbEffectType;
         private System.Windows.Forms.Label lblEffectType;
         private System.Windows.Forms.SplitContainer scEffect;

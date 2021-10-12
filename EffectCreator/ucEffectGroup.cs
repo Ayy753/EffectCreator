@@ -65,14 +65,6 @@ namespace EffectCreator {
             }
         }
 
-        private void btnRevertChanges_Click(object sender, EventArgs e) {
-            if (lbEffects.SelectedIndex != -1) {
-                activeEffectControl.RevertChanges();
-            }
-            btnApplyChanges.Enabled = false;
-            btnRevertChanges.Enabled = false;
-        }
-
         private void OpenSelectedEffect() {
             RemoveExistingEffectControl();
             activeRowKey = lbEffects.SelectedItem.ToString();
@@ -106,9 +98,13 @@ namespace EffectCreator {
         }
 
         private void ActiveEffectControl_EffectModified(object sender, EventArgs e) {
-            btnApplyChanges.Enabled = true;
-            btnRevertChanges.Enabled = true;
             IsModified = true;
+            UpdateEffect();
+        }
+
+        private void UpdateEffect() {
+            string rowKey = lbEffects.SelectedItem.ToString();
+            listboxRowToEffect[rowKey] = activeEffectControl.GetEffect();
         }
 
         private void RemoveExistingEffectControl() {
@@ -156,13 +152,6 @@ namespace EffectCreator {
             }
 
             return new EffectGroup(name, desc, radius, targetType, particleType, soundType, cooldown, effects.ToArray());
-        }
-
-        private void btnApplyChanges_Click(object sender, EventArgs e) {
-            activeEffectControl.ApplyChanges();
-            listboxRowToEffect[activeRowKey] = activeEffectControl.GetEffect();
-            btnApplyChanges.Enabled = false;
-            btnRevertChanges.Enabled = false;
         }
 
         private void radTargetGroup_CheckedChanged(object sender, EventArgs e) {
