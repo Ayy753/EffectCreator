@@ -63,8 +63,8 @@ namespace EffectCreator {
             return effects.ToArray();
         }
 
-        public static ReadOnlyCollection<EffectGroup> GetEffectGroups() {
-            return effectGroups.AsReadOnly();
+        public static List<EffectGroup> GetEffectGroups() {
+            return effectGroups;
         }
 
         private class Root {

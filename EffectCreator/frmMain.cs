@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace EffectCreator {
     public partial class frmMain : Form {
 
-        private ReadOnlyCollection<EffectGroup> effectGroups;
+        private List<EffectGroup> effectGroups;
 
         public frmMain() {
             InitializeComponent();
@@ -37,6 +37,15 @@ namespace EffectCreator {
             }
         }
 
+        public bool EffectGroupListContainsName(string name) {
+            foreach (EffectGroup effectGroup in effectGroups) {
+                if (effectGroup.Name == name) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private EffectGroup GetSelectedEffectGroup() {
             foreach (EffectGroup effectGroup in effectGroups) {
                 if (effectGroup.Name == lbEffectGroups.SelectedItem.ToString()) {
@@ -44,6 +53,22 @@ namespace EffectCreator {
                 }
             }
             return null;
+        }
+
+        private void btnNewEffectGroup_Click(object sender, EventArgs e) {
+            using (frmCreateEffectGroup frmCreateEffectGroup = new frmCreateEffectGroup(this)) {
+                if (frmCreateEffectGroup.ShowDialog() == DialogResult.OK) {
+                    CreateNewEffectGroup(frmCreateEffectGroup.EffectGroupName);
+                }
+            }
+        }
+
+        private void CreateNewEffectGroup(string effectGroupName) {
+            EffectGroup newEffectGroup = new EffectGroup(effectGroupName, string.Empty, 1, 
+                TargetType.Area, ParticleType.Blood, SoundType.arrowFire, 1, new IEffect[] { });
+
+            effectGroups.Add(newEffectGroup);
+            lbEffectGroups.Items.Add(effectGroupName);
         }
     }
 }

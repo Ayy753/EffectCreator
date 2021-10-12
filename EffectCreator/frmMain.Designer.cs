@@ -71,13 +71,13 @@ namespace EffectCreator {
             // 
             // btnNewEffectGroup
             // 
-            this.btnNewEffectGroup.Enabled = false;
             this.btnNewEffectGroup.Location = new System.Drawing.Point(15, 130);
             this.btnNewEffectGroup.Name = "btnNewEffectGroup";
             this.btnNewEffectGroup.Size = new System.Drawing.Size(75, 23);
             this.btnNewEffectGroup.TabIndex = 7;
             this.btnNewEffectGroup.Text = "New";
             this.btnNewEffectGroup.UseVisualStyleBackColor = true;
+            this.btnNewEffectGroup.Click += new System.EventHandler(this.btnNewEffectGroup_Click);
             // 
             // label1
             // 
