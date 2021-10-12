@@ -5,8 +5,7 @@ using System.Windows.Forms;
 
 namespace EffectCreator {
     public partial class frmMain : Form {
-
-        private List<EffectGroup> effectGroups;
+        private Dictionary<string, EffectGroup> nameToEffectGroup;
 
         public frmMain() {
             InitializeComponent();
@@ -14,10 +13,12 @@ namespace EffectCreator {
         }
 
         private void PopulateEffectGroupListBox() {
-            effectGroups = EffectParser.GetEffectGroups();
+            List<EffectGroup> effectGroups = EffectParser.GetEffectGroups();
+            nameToEffectGroup = new Dictionary<string, EffectGroup>();
 
             foreach (EffectGroup group in effectGroups) {
                 lbEffectGroups.Items.Add(group.Name);
+                nameToEffectGroup.Add(group.Name, group);
             }
 
             if (lbEffectGroups.Items.Count > 0) {
@@ -29,7 +30,8 @@ namespace EffectCreator {
             if (lbEffectGroups.SelectedIndex >= 0) {
                 btnDeleteEffectGroup.Enabled = true;
 
-                EffectGroup selectedEffectGroup = GetSelectedEffectGroup();
+                string name = lbEffectGroups.SelectedItem.ToString();
+                EffectGroup selectedEffectGroup = nameToEffectGroup[name];
                 if (selectedEffectGroup != null) {
                     ucEffectGroup1.LoadEffectGroup(selectedEffectGroup);
                 }
@@ -43,23 +45,9 @@ namespace EffectCreator {
         }
 
         public bool EffectGroupListContainsName(string name) {
-            foreach (EffectGroup effectGroup in effectGroups) {
-                if (effectGroup.Name == name) {
-                    return true;
-                }
-            }
-            return false;
+            return nameToEffectGroup.ContainsKey(name);
         }
-
-        private EffectGroup GetSelectedEffectGroup() {
-            foreach (EffectGroup effectGroup in effectGroups) {
-                if (effectGroup.Name == lbEffectGroups.SelectedItem.ToString()) {
-                    return effectGroup;
-                }
-            }
-            return null;
-        }
-
+        
         private void btnNewEffectGroup_Click(object sender, EventArgs e) {
             using (frmCreateEffectGroup frmCreateEffectGroup = new frmCreateEffectGroup(this)) {
                 if (frmCreateEffectGroup.ShowDialog() == DialogResult.OK) {
@@ -72,7 +60,7 @@ namespace EffectCreator {
             EffectGroup newEffectGroup = new EffectGroup(effectGroupName, string.Empty, 1, 
                 TargetType.Area, ParticleType.Blood, SoundType.arrowFire, 1, new IEffect[] { });
 
-            effectGroups.Add(newEffectGroup);
+            nameToEffectGroup[effectGroupName] = newEffectGroup;
             lbEffectGroups.Items.Add(effectGroupName);
 
             if (lbEffectGroups.SelectedIndex == -1) {
@@ -100,15 +88,9 @@ namespace EffectCreator {
 
         private void RemoveSelectedEffectGroup() {
             string selectedName = lbEffectGroups.SelectedItem.ToString();
-            EffectGroup selectedEG;
-            foreach (EffectGroup effectGroup in effectGroups) {
-                if (effectGroup.Name == selectedName) {
-                    selectedEG = effectGroup;
-                    effectGroups.Remove(selectedEG);
-                    lbEffectGroups.Items.Remove(selectedName);
-                    break;
-                }
-            }
+            
+            nameToEffectGroup.Remove(selectedName);
+            lbEffectGroups.Items.Remove(selectedName);
         }
     }
 }
