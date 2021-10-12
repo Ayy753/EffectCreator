@@ -11,11 +11,9 @@ using System.Windows.Forms;
 namespace EffectCreator.EffectControls {
     public partial class ucStatMod : UserControl, IEffectUserControl {
         public event EventHandler EffectModified;
-        IEffect cachedEffect;
-
+        
         public ucStatMod(StatMod statMod) {
             InitializeComponent();
-            cachedEffect = statMod;
             cbStatType.DataSource = Enum.GetValues(typeof(StatType));
             PopulateForm(statMod);
         }
@@ -34,14 +32,6 @@ namespace EffectCreator.EffectControls {
 
         private void cbStatType_SelectedIndexChanged(object sender, EventArgs e) {
             EffectModified?.Invoke(this, EventArgs.Empty);
-        }
-
-        public void RevertChanges() {
-            PopulateForm((StatMod)cachedEffect);
-        }
-
-        public void ApplyChanges() {
-            cachedEffect = GetEffect();
         }
     }
 }

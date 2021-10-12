@@ -11,11 +11,9 @@ using System.Windows.Forms;
 namespace EffectCreator.EffectControls {
     public partial class ucDebuff : UserControl, IEffectUserControl {
         public event EventHandler EffectModified;
-        IEffect cachedEffect;
-
+        
         public ucDebuff(Debuff debuff) {
             InitializeComponent();
-            cachedEffect = debuff;
             cbStatType.DataSource = Enum.GetValues(typeof(StatType));
             cbResistType.DataSource = Enum.GetValues(typeof(DamageType));
             PopulateForm(debuff);
@@ -59,14 +57,6 @@ namespace EffectCreator.EffectControls {
 
         private void numDuration_ValueChanged(object sender, EventArgs e) {
             EffectModified?.Invoke(this, EventArgs.Empty);
-        }
-
-        public void RevertChanges() {
-            PopulateForm((Debuff)cachedEffect);
-        }
-
-        public void ApplyChanges() {
-            cachedEffect = GetEffect();
         }
     }
 }
