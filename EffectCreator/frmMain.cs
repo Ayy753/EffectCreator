@@ -77,6 +77,7 @@ namespace EffectCreator {
 
             if (lbEffectGroups.SelectedIndex == -1) {
                 lbEffectGroups.SelectedIndex = 0;
+                ucEffectGroup1.Visible = true;
             }
         }
 
@@ -92,7 +93,7 @@ namespace EffectCreator {
                     lbEffectGroups.SelectedIndex = 0;
                 }
                 else {
-                    //  TODO: clear fields
+                    ucEffectGroup1.Visible = false;
                 }
             }
         }
