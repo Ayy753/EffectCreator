@@ -49,6 +49,9 @@ namespace EffectCreator {
             if (lbEffects.Items.Count > 0) {
                 lbEffects.SelectedIndex = 0;
             }
+            else{
+                RemoveExistingEffectControl();
+            }
         }
 
         private void lbEffects_SelectedIndexChanged(object sender, EventArgs e) {
@@ -110,6 +113,8 @@ namespace EffectCreator {
             if (splitContainer2.Panel1.Controls.Count > 0) {
                 splitContainer2.Panel1.Controls.RemoveAt(0);
                 activeEffectControl.EffectModified -= ActiveEffectControl_EffectModified;
+                activeRowKey = string.Empty;
+                activeEffectControl = null;
             }
         }
 
