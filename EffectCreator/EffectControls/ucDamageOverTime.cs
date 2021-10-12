@@ -28,15 +28,7 @@ namespace EffectCreator.EffectControls {
             return new DamageOverTime((float)numPotency.Value, (float)numDuration.Value, (DamageType)cbDamageType.SelectedItem, true);
         }
 
-        private void numPotency_ValueChanged(object sender, EventArgs e) {
-            EffectModified?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void cbDamageType_SelectedIndexChanged(object sender, EventArgs e) {
-            EffectModified?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void numDuration_ValueChanged(object sender, EventArgs e) {
+        private void FieldsModified(object sender, EventArgs e) {
             EffectModified?.Invoke(this, EventArgs.Empty);
         }
     }

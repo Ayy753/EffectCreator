@@ -25,7 +25,7 @@ namespace EffectCreator.EffectControls {
             return new Heal((float)numPotency.Value);
         }
 
-        private void numPotency_ValueChanged(object sender, EventArgs e) {
+        private void FieldsModified(object sender, EventArgs e) {
             EffectModified?.Invoke(this, EventArgs.Empty);
         }
     }

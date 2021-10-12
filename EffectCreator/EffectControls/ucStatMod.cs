@@ -26,11 +26,7 @@ namespace EffectCreator.EffectControls {
             return new StatMod((float)numPotency.Value, (StatType)cbStatType.SelectedItem);
         }
 
-        private void numPotency_ValueChanged(object sender, EventArgs e) {
-            EffectModified?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void cbStatType_SelectedIndexChanged(object sender, EventArgs e) {
+        private void FieldsModified(object sender, EventArgs e) {
             EffectModified?.Invoke(this, EventArgs.Empty);
         }
     }

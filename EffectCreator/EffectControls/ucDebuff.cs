@@ -43,19 +43,7 @@ namespace EffectCreator.EffectControls {
             return new Debuff((float)numPotency.Value, (float)numDuration.Value, (StatType)cbStatType.SelectedItem, (DamageType)cbResistType.SelectedItem, cbExpires.Checked);
         }
 
-        private void numPotency_ValueChanged(object sender, EventArgs e) {
-            EffectModified?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void cbStatType_SelectedIndexChanged(object sender, EventArgs e) {
-            EffectModified?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void cbResistType_SelectedIndexChanged(object sender, EventArgs e) {
-            EffectModified?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void numDuration_ValueChanged(object sender, EventArgs e) {
+        private void FieldsModified(object sender, EventArgs e) {
             EffectModified?.Invoke(this, EventArgs.Empty);
         }
     }

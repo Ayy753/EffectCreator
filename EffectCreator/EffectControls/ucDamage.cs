@@ -27,11 +27,7 @@ namespace EffectCreator.EffectControls {
             return new Damage((float)numPotency.Value, (DamageType)cbDamageType.SelectedItem);
         }
 
-        private void numPotency_ValueChanged(object sender, EventArgs e) {
-            EffectModified?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void cbDamageType_SelectedIndexChanged(object sender, EventArgs e) {
+        private void FieldsModified(object sender, EventArgs e) {
             EffectModified?.Invoke(this, EventArgs.Empty);
         }
     }
