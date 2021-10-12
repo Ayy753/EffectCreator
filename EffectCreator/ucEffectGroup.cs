@@ -15,6 +15,7 @@ namespace EffectCreator {
         private Dictionary<string, IEffect> listboxRowToEffect;
         private IEffectUserControl activeEffectControl;
         private string activeRowKey;
+        public bool IsModified { get; set; }
 
         public ucEffectGroup() {
             InitializeComponent();
@@ -107,6 +108,7 @@ namespace EffectCreator {
         private void ActiveEffectControl_EffectModified(object sender, EventArgs e) {
             btnApplyChanges.Enabled = true;
             btnRevertChanges.Enabled = true;
+            IsModified = true;
         }
 
         private void RemoveExistingEffectControl() {
@@ -218,6 +220,10 @@ namespace EffectCreator {
 
         public bool EffectListContainsName(string name) {
             return listboxRowToEffect.ContainsKey(name);
+        }
+
+        private void EffectGroupModified(object sender, EventArgs e) {
+            IsModified = true;
         }
     }
 }
