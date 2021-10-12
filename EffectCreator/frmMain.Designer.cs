@@ -61,13 +61,13 @@ namespace EffectCreator {
             // 
             // btnDeleteEffectGroup
             // 
-            this.btnDeleteEffectGroup.Enabled = false;
             this.btnDeleteEffectGroup.Location = new System.Drawing.Point(15, 159);
             this.btnDeleteEffectGroup.Name = "btnDeleteEffectGroup";
             this.btnDeleteEffectGroup.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteEffectGroup.TabIndex = 9;
             this.btnDeleteEffectGroup.Text = "Delete";
             this.btnDeleteEffectGroup.UseVisualStyleBackColor = true;
+            this.btnDeleteEffectGroup.Click += new System.EventHandler(this.btnDeleteEffectGroup_Click);
             // 
             // btnNewEffectGroup
             // 

@@ -27,6 +27,8 @@ namespace EffectCreator {
 
         private void lbEffectGroups_SelectedIndexChanged(object sender, EventArgs e) {
             if (lbEffectGroups.SelectedIndex >= 0) {
+                btnDeleteEffectGroup.Enabled = true;
+
                 EffectGroup selectedEffectGroup = GetSelectedEffectGroup();
                 if (selectedEffectGroup != null) {
                     ucEffectGroup1.LoadEffectGroup(selectedEffectGroup);
@@ -34,6 +36,9 @@ namespace EffectCreator {
                 else {
                     MessageBox.Show($"Error: '{lbEffectGroups.SelectedItem}' does not map to any EffectGroup object in the effects.json file");
                 }
+            }
+            else {
+                btnDeleteEffectGroup.Enabled = false;
             }
         }
 
@@ -69,6 +74,40 @@ namespace EffectCreator {
 
             effectGroups.Add(newEffectGroup);
             lbEffectGroups.Items.Add(effectGroupName);
+
+            if (lbEffectGroups.SelectedIndex == -1) {
+                lbEffectGroups.SelectedIndex = 0;
+            }
+        }
+
+        private void btnDeleteEffectGroup_Click(object sender, EventArgs e) {
+            int selectedIndex = lbEffectGroups.SelectedIndex;
+            if (selectedIndex!= -1) {
+                RemoveSelectedEffectGroup();
+
+                if (selectedIndex > 0) {
+                    lbEffectGroups.SelectedIndex = selectedIndex - 1;
+                }
+                else if (selectedIndex == 0 && lbEffectGroups.Items.Count > 0) {
+                    lbEffectGroups.SelectedIndex = 0;
+                }
+                else {
+                    //  TODO: clear fields
+                }
+            }
+        }
+
+        private void RemoveSelectedEffectGroup() {
+            string selectedName = lbEffectGroups.SelectedItem.ToString();
+            EffectGroup selectedEG;
+            foreach (EffectGroup effectGroup in effectGroups) {
+                if (effectGroup.Name == selectedName) {
+                    selectedEG = effectGroup;
+                    effectGroups.Remove(selectedEG);
+                    lbEffectGroups.Items.Remove(selectedName);
+                    break;
+                }
+            }
         }
     }
 }
