@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace EffectCreator {
     public partial class ucEffectGroup : UserControl {
-        private Dictionary<string, IEffect> listboxRowToEffect;
+        private Dictionary<string, IEffect> listboxRowToEffect = new Dictionary<string, IEffect>();
         private IEffectUserControl activeEffectControl;
         private string activeRowKey;
         public bool IsModified { get; set; }
@@ -25,6 +25,8 @@ namespace EffectCreator {
         }
 
         public void LoadEffectGroup(EffectGroup effectGroup) {
+            InitializeEffectListbox(effectGroup);
+
             tbName.Text = effectGroup.Name;
             tbDescription.Text = effectGroup.Description;
             cbSoundType.SelectedItem = effectGroup.SoundType;
@@ -33,13 +35,11 @@ namespace EffectCreator {
             radTargetGroup.Checked = effectGroup.Type == TargetType.Area;
             radTargetIndividual.Checked = effectGroup.Type == TargetType.Individual;
             numRadius.Value = (decimal)effectGroup.Radius;
-
-            InitializeEffectListbox(effectGroup);
         }
 
         private void InitializeEffectListbox(EffectGroup effectGroup) {
             lbEffects.Items.Clear();
-            listboxRowToEffect = new Dictionary<string, IEffect>();
+            listboxRowToEffect.Clear();
 
             foreach (IEffect effect in effectGroup.Effects) {
                 string rowKey = "Effect " + lbEffects.Items.Count;
@@ -155,7 +155,6 @@ namespace EffectCreator {
         }
 
         private void radTargetGroup_CheckedChanged(object sender, EventArgs e) {
-            Debug.WriteLine("checkbox changed");
             if (radTargetGroup.Checked) {
                 lblRadius.Visible = true;
                 numRadius.Visible = true;

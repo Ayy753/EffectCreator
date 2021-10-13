@@ -6,6 +6,7 @@ using System.Windows.Forms;
 namespace EffectCreator {
     public partial class frmMain : Form {
         private Dictionary<string, EffectGroup> nameToEffectGroup;
+        private string selectedRow = string.Empty;
 
         public frmMain() {
             InitializeComponent();
@@ -30,8 +31,10 @@ namespace EffectCreator {
             if (lbEffectGroups.SelectedIndex >= 0) {
                 btnDeleteEffectGroup.Enabled = true;
 
-                string name = lbEffectGroups.SelectedItem.ToString();
-                EffectGroup selectedEffectGroup = nameToEffectGroup[name];
+                UpdatePreviouslySelectedEffectGroup();
+
+                selectedRow = lbEffectGroups.SelectedItem.ToString();
+                EffectGroup selectedEffectGroup = nameToEffectGroup[selectedRow];
                 if (selectedEffectGroup != null) {
                     ucEffectGroup1.LoadEffectGroup(selectedEffectGroup);
                 }
@@ -41,6 +44,12 @@ namespace EffectCreator {
             }
             else {
                 btnDeleteEffectGroup.Enabled = false;
+            }
+        }
+
+        private void UpdatePreviouslySelectedEffectGroup() {
+            if (selectedRow != string.Empty) {
+                nameToEffectGroup[selectedRow] = ucEffectGroup1.GetEffectGroup();
             }
         }
 
@@ -82,6 +91,7 @@ namespace EffectCreator {
                 }
                 else {
                     ucEffectGroup1.Visible = false;
+                    selectedRow = string.Empty;
                 }
             }
         }
