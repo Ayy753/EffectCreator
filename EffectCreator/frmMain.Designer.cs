@@ -29,12 +29,12 @@ namespace EffectCreator {
             this.btnNewEffectGroup = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lbEffectGroups = new System.Windows.Forms.ListBox();
-            this.ucEffectGroup1 = new EffectCreator.ucEffectGroup();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ucEffectGroup1 = new EffectCreator.ucEffectGroup();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -104,16 +104,9 @@ namespace EffectCreator {
             this.lbEffectGroups.TabIndex = 5;
             this.lbEffectGroups.SelectedIndexChanged += new System.EventHandler(this.lbEffectGroups_SelectedIndexChanged);
             // 
-            // ucEffectGroup1
-            // 
-            this.ucEffectGroup1.IsModified = true;
-            this.ucEffectGroup1.Location = new System.Drawing.Point(3, 3);
-            this.ucEffectGroup1.Name = "ucEffectGroup1";
-            this.ucEffectGroup1.Size = new System.Drawing.Size(554, 428);
-            this.ucEffectGroup1.TabIndex = 0;
-            // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -137,6 +130,7 @@ namespace EffectCreator {
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
@@ -149,6 +143,14 @@ namespace EffectCreator {
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            // 
+            // ucEffectGroup1
+            // 
+            this.ucEffectGroup1.IsModified = true;
+            this.ucEffectGroup1.Location = new System.Drawing.Point(3, 3);
+            this.ucEffectGroup1.Name = "ucEffectGroup1";
+            this.ucEffectGroup1.Size = new System.Drawing.Size(554, 428);
+            this.ucEffectGroup1.TabIndex = 0;
             // 
             // frmMain
             // 

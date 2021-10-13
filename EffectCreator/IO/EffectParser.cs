@@ -8,7 +8,7 @@ using System.IO;
 
 namespace EffectCreator {
     public class EffectParser  {
-        private const string PARTIAL_PATH = @"\Resources\effects.json";
+        private const string PARTIAL_PATH = @"\Resources\effects1.json";
         private static List<EffectGroup> effectGroups;
 
         static EffectParser() {

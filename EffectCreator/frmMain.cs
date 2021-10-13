@@ -102,5 +102,15 @@ namespace EffectCreator {
             nameToEffectGroup.Remove(selectedName);
             lbEffectGroups.Items.Remove(selectedName);
         }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e) {
+            List<EffectGroup> effectGroups = new List<EffectGroup>();
+
+            foreach (EffectGroup effectGroup in nameToEffectGroup.Values) {
+                effectGroups.Add(effectGroup);
+            }
+
+            EffectSerializer.SaveEffectGroups(effectGroups);
+        }
     }
 }
