@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.IO;
 
 namespace EffectCreator {
-    public class EffectParser  {
+    public static class EffectParser  {
         private const string PARTIAL_PATH = @"\Resources\effects1.json";
         private static List<EffectGroup> effectGroups;
 
