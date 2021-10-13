@@ -106,6 +106,8 @@ namespace EffectCreator {
         private void saveToolStripMenuItem_Click(object sender, EventArgs e) {
             List<EffectGroup> effectGroups = new List<EffectGroup>();
 
+            UpdatePreviouslySelectedEffectGroup();
+
             foreach (EffectGroup effectGroup in nameToEffectGroup.Values) {
                 effectGroups.Add(effectGroup);
             }
