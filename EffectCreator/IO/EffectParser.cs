@@ -25,7 +25,7 @@ namespace EffectCreator {
 
         private static void ConvertEffectGroups(ParsedEffectGroup[] parsedEffectGroups) {
             effectGroups = new List<EffectGroup>();
-
+            
             foreach (ParsedEffectGroup parsed in parsedEffectGroups) {
                 IEffect[] effects = ConvertEffects(parsed.Effects);
                 effectGroups.Add(new EffectGroup(parsed.Name, parsed.Description, parsed.Radius, parsed.TargetType, parsed.ParticleName, parsed.Sound, parsed.Cooldown, effects));
@@ -37,21 +37,24 @@ namespace EffectCreator {
             
             IEffect newEffect;
             foreach (ParsedEffect parsed in parsedEffects) {
+
+                float duration = parsed.Duration != null ? (float)(parsed.Duration) : 1;
+
                 switch (parsed.EffectType) {
                     case EffectType.Buff:
-                        newEffect = new Buff(parsed.Potency, parsed.Duration, parsed.StatType, parsed.Expires);
+                        newEffect = new Buff(parsed.Potency, duration, (StatType)parsed.StatType, (bool)parsed.Expires);
                         break;
                     case EffectType.Damage:
-                        newEffect = new Damage(parsed.Potency, parsed.DamageType);
+                        newEffect = new Damage(parsed.Potency, (DamageType)parsed.DamageType);
                         break;
                     case EffectType.DOT:
-                        newEffect = new DamageOverTime(parsed.Potency, parsed.Duration, parsed.DamageType, parsed.Expires);
+                        newEffect = new DamageOverTime(parsed.Potency, duration, (DamageType)parsed.DamageType, (bool)parsed.Expires);
                         break;
                     case EffectType.StatMod:
-                        newEffect = new StatMod(parsed.Potency, parsed.StatType);
+                        newEffect = new StatMod(parsed.Potency, (StatType)parsed.StatType);
                         break;
                     case EffectType.Debuff:
-                        newEffect = new Debuff(parsed.Potency, parsed.Duration, parsed.StatType, parsed.ResistType, parsed.Expires);
+                        newEffect = new Debuff(parsed.Potency, duration, (StatType)parsed.StatType, (DamageType)parsed.ResistType, (bool)parsed.Expires);
                         break;
                     case EffectType.Heal:
                         newEffect = new Heal(parsed.Potency);

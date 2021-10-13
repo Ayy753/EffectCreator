@@ -44,21 +44,21 @@ namespace EffectCreator.IO {
         public float Potency { get; set; }
 
         [JsonProperty("duration", NullValueHandling = NullValueHandling.Ignore)]
-        public float Duration { get; set; }
+        public float? Duration { get; set; }
 
         [JsonProperty("damageType", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(StringEnumConverter))]
-        public DamageType DamageType { get; set; }
+        public DamageType? DamageType { get; set; }
 
         [JsonProperty("statType", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(StringEnumConverter))]
-        public StatType StatType { get; set; }
+        public StatType? StatType { get; set; }
 
         [JsonProperty("resistType", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(StringEnumConverter))]
-        public DamageType ResistType { get; set; }
+        public DamageType? ResistType { get; set; }
 
         [JsonProperty("expires", NullValueHandling = NullValueHandling.Ignore)]
-        public bool Expires { get; set; } = true;
+        public bool? Expires { get; set; } = true;
     }
 }
