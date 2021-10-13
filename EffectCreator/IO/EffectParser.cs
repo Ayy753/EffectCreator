@@ -28,7 +28,9 @@ namespace EffectCreator {
             
             foreach (ParsedEffectGroup parsed in parsedEffectGroups) {
                 IEffect[] effects = ConvertEffects(parsed.Effects);
-                effectGroups.Add(new EffectGroup(parsed.Name, parsed.Description, parsed.Radius, parsed.TargetType, parsed.ParticleName, parsed.Sound, parsed.Cooldown, effects));
+
+                float radius = parsed.TargetType == TargetType.Area ? (float)parsed.Radius : 1;
+                effectGroups.Add(new EffectGroup(parsed.Name, parsed.Description, radius, parsed.TargetType, parsed.ParticleName, parsed.Sound, parsed.Cooldown, effects));
             }
         }
 

@@ -47,7 +47,7 @@ namespace EffectCreator {
                 serializeEffectGroup.Radius = effectGroup.Radius;
             }
             else {
-                serializeEffectGroup.Radius = 1;
+                serializeEffectGroup.Radius = null;
             }
 
             return serializeEffectGroup;

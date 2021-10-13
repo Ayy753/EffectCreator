@@ -23,7 +23,7 @@ namespace EffectCreator.IO {
         public ParticleType ParticleName { get; set; }
 
         [JsonProperty("radius", NullValueHandling = NullValueHandling.Ignore)]
-        public float Radius { get; set; }
+        public float? Radius { get; set; }
 
         [JsonProperty("effects")]
         public ParsedEffect[] Effects { get; set; }
