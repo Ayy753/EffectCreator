@@ -25,7 +25,6 @@ namespace EffectCreator {
             root.parsedEffectGroups = parsedEffectGroups.ToArray();
 
             string contents = JsonConvert.SerializeObject(root, Formatting.Indented);
-            //Debug.WriteLine(contents);
 
             StreamWriter writer = new StreamWriter(fullPath, false);
             writer.Write(contents);
@@ -73,7 +72,7 @@ namespace EffectCreator {
                 parsedEffect.Expires = statusEffect.Expires;
                 
                 if (!statusEffect.Expires) {
-                    parsedEffect.Duration = 1;
+                    parsedEffect.Duration = null;
                 }
                 else {
                     parsedEffect.Duration = statusEffect.Duration;
