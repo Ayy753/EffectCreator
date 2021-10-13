@@ -101,9 +101,10 @@
     <Compile Include="EffectControls\ucStatMod.Designer.cs">
       <DependentUpon>ucStatMod.cs</DependentUpon>
     </Compile>
-    <Compile Include="EffectGroup.cs" />
-    <Compile Include="EffectParser.cs" />
+    <Compile Include="IO\EffectGroup.cs" />
+    <Compile Include="IO\EffectParser.cs" />
     <Compile Include="Effects.cs" />
+    <Compile Include="EffectSerializer.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="frmCreateEffectGroup.cs">
       <SubType>Form</SubType>
@@ -124,6 +125,7 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="IEffects.cs" />
+    <Compile Include="IO\JSONObjects.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ucEffectGroup.cs">

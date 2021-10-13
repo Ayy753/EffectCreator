@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EffectCreator.IO;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -65,66 +66,6 @@ namespace EffectCreator {
 
         public static List<EffectGroup> GetEffectGroups() {
             return effectGroups;
-        }
-
-        private class Root {
-            [JsonProperty("effectGroup")]
-            public ParsedEffectGroup[] parsedEffectGroups { get; set; }
-        }
-
-        private class ParsedEffectGroup {
-            [JsonProperty("name")]
-            public string Name { get; set; }
-
-            [JsonProperty("description")]
-            public string Description { get; set; }
-
-            [JsonProperty("target type")]
-            [JsonConverter(typeof(StringEnumConverter))]
-            public TargetType TargetType { get; set; }
-
-            [JsonProperty("particle effect")]
-            [JsonConverter(typeof(StringEnumConverter))]
-            public ParticleType ParticleName { get; set; }
-
-            [JsonProperty("radius", NullValueHandling = NullValueHandling.Ignore)]
-            public float Radius { get; set; } 
-
-            [JsonProperty("effects")]
-            public ParsedEffect[] Effects { get; set; }
-
-            [JsonProperty("sound type")]
-            public SoundType Sound { get; set; }
-
-            [JsonProperty("cooldown")]
-            public float Cooldown { get; set; }
-        }
-
-        private class ParsedEffect {
-            [JsonProperty("type")]
-            [JsonConverter(typeof(StringEnumConverter))]
-            public EffectType EffectType { get; set; }
-
-            [JsonProperty("potency")]
-            public float Potency { get; set; }
-
-            [JsonProperty("duration", NullValueHandling = NullValueHandling.Ignore)]
-            public float Duration { get; set; }
-
-            [JsonProperty("damageType", NullValueHandling = NullValueHandling.Ignore)]
-            [JsonConverter(typeof(StringEnumConverter))]
-            public DamageType DamageType { get; set; }
-
-            [JsonProperty("statType", NullValueHandling = NullValueHandling.Ignore)]
-            [JsonConverter(typeof(StringEnumConverter))]
-            public StatType StatType { get; set; }
-
-            [JsonProperty("resistType", NullValueHandling = NullValueHandling.Ignore)]
-            [JsonConverter(typeof(StringEnumConverter))]
-            public DamageType ResistType { get; set; }
-
-            [JsonProperty("expires", NullValueHandling = NullValueHandling.Ignore)]
-            public bool Expires { get; set; } = true;
         }
     }
 }
