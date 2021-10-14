@@ -35,10 +35,6 @@ namespace EffectCreator {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radTargetGroup = new System.Windows.Forms.RadioButton();
             this.radTargetIndividual = new System.Windows.Forms.RadioButton();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.cbEffectType = new System.Windows.Forms.ComboBox();
-            this.lblEffectType = new System.Windows.Forms.Label();
-            this.scEffect = new System.Windows.Forms.SplitContainer();
             this.label4 = new System.Windows.Forms.Label();
             this.cbSoundType = new System.Windows.Forms.ComboBox();
             this.lblSoundType = new System.Windows.Forms.Label();
@@ -50,16 +46,9 @@ namespace EffectCreator {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.numRadius)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.scEffect)).BeginInit();
-            this.scEffect.Panel1.SuspendLayout();
-            this.scEffect.Panel2.SuspendLayout();
-            this.scEffect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCooldown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -194,63 +183,6 @@ namespace EffectCreator {
             this.radTargetIndividual.UseVisualStyleBackColor = true;
             this.radTargetIndividual.CheckedChanged += new System.EventHandler(this.EffectGroupModified);
             // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.IsSplitterFixed = true;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.splitContainer2.Size = new System.Drawing.Size(274, 386);
-            this.splitContainer2.SplitterDistance = 141;
-            this.splitContainer2.TabIndex = 0;
-            // 
-            // cbEffectType
-            // 
-            this.cbEffectType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbEffectType.Enabled = false;
-            this.cbEffectType.FormattingEnabled = true;
-            this.cbEffectType.Items.AddRange(new object[] {
-            "Buff",
-            "Debuff",
-            "Damage",
-            "DamageOverTime",
-            "StatMod",
-            "Heal"});
-            this.cbEffectType.Location = new System.Drawing.Point(100, 5);
-            this.cbEffectType.Name = "cbEffectType";
-            this.cbEffectType.Size = new System.Drawing.Size(121, 21);
-            this.cbEffectType.TabIndex = 15;
-            // 
-            // lblEffectType
-            // 
-            this.lblEffectType.AutoSize = true;
-            this.lblEffectType.Location = new System.Drawing.Point(0, 5);
-            this.lblEffectType.Name = "lblEffectType";
-            this.lblEffectType.Size = new System.Drawing.Size(62, 13);
-            this.lblEffectType.TabIndex = 0;
-            this.lblEffectType.Text = "Effect Type";
-            // 
-            // scEffect
-            // 
-            this.scEffect.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scEffect.IsSplitterFixed = true;
-            this.scEffect.Location = new System.Drawing.Point(0, 0);
-            this.scEffect.Name = "scEffect";
-            this.scEffect.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // scEffect.Panel1
-            // 
-            this.scEffect.Panel1.Controls.Add(this.cbEffectType);
-            this.scEffect.Panel1.Controls.Add(this.lblEffectType);
-            // 
-            // scEffect.Panel2
-            // 
-            this.scEffect.Panel2.Controls.Add(this.splitContainer2);
-            this.scEffect.Size = new System.Drawing.Size(274, 423);
-            this.scEffect.SplitterDistance = 33;
-            this.scEffect.TabIndex = 0;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -366,10 +298,6 @@ namespace EffectCreator {
             this.splitContainer1.Panel1.Controls.Add(this.tbDescription);
             this.splitContainer1.Panel1.Controls.Add(this.lblName);
             this.splitContainer1.Panel1.Controls.Add(this.tbName);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.scEffect);
             this.splitContainer1.Size = new System.Drawing.Size(600, 425);
             this.splitContainer1.SplitterDistance = 322;
             this.splitContainer1.SplitterWidth = 2;
@@ -385,17 +313,9 @@ namespace EffectCreator {
             ((System.ComponentModel.ISupportInitialize)(this.numRadius)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
-            this.scEffect.Panel1.ResumeLayout(false);
-            this.scEffect.Panel1.PerformLayout();
-            this.scEffect.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.scEffect)).EndInit();
-            this.scEffect.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numCooldown)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -414,10 +334,6 @@ namespace EffectCreator {
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radTargetGroup;
         private System.Windows.Forms.RadioButton radTargetIndividual;
-        private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.ComboBox cbEffectType;
-        private System.Windows.Forms.Label lblEffectType;
-        private System.Windows.Forms.SplitContainer scEffect;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbSoundType;
         private System.Windows.Forms.Label lblSoundType;

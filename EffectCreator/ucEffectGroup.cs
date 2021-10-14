@@ -93,7 +93,7 @@ namespace EffectCreator {
             }
 
             AddEffectControl(activeEffectControl);
-            cbEffectType.SelectedItem = effect.GetType().Name;
+            //cbEffectType.SelectedItem = effect.GetType().Name;
             activeEffectControl.EffectModified += ActiveEffectControl_EffectModified;
         }
 
@@ -108,8 +108,8 @@ namespace EffectCreator {
         }
 
         private void RemoveExistingEffectControl() {
-            if (splitContainer2.Panel1.Controls.Count > 0) {
-                splitContainer2.Panel1.Controls.RemoveAt(0);
+            if (splitContainer1.Panel2.Controls.Count > 0) {
+                splitContainer1.Panel2.Controls.RemoveAt(0);
                 activeEffectControl.EffectModified -= ActiveEffectControl_EffectModified;
                 activeRowKey = string.Empty;
                 activeEffectControl = null;
@@ -117,7 +117,7 @@ namespace EffectCreator {
         }
 
         private void AddEffectControl(IEffectUserControl control) {
-            splitContainer2.Panel1.Controls.Add((Control)control);
+            splitContainer1.Panel2.Controls.Add((Control)control);
         }
 
         private void btnRemoveEffect_Click(object sender, EventArgs e) {
