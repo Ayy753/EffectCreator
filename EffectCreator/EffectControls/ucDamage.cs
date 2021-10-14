@@ -19,12 +19,14 @@ namespace EffectCreator.EffectControls {
         }
 
         private void PopulateForm(Damage damage) {
+            txtEffectType.Text = "Damage";
+            txtEffectName.Text = damage.Name;
             numPotency.Value = (decimal)damage.Potency;
             cbDamageType.SelectedItem = damage.Type;
         }
 
         public IEffect GetEffect() {
-            return new Damage((float)numPotency.Value, (DamageType)cbDamageType.SelectedItem);
+            return new Damage(txtEffectName.Text, (float)numPotency.Value, (DamageType)cbDamageType.SelectedItem);
         }
 
         private void FieldsModified(object sender, EventArgs e) {

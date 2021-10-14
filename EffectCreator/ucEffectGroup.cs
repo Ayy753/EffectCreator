@@ -180,22 +180,22 @@ namespace EffectCreator {
             IEffect effect;
             switch (effectType) {
                 case EffectType.Buff:
-                    effect = new Buff(1, 1, StatType.Armor, true);
+                    effect = new Buff(uniqueEffectName, 1, 1, StatType.Armor, true);
                     break;
                 case EffectType.Damage:
-                    effect = new Damage(1, DamageType.Cold);
+                    effect = new Damage(uniqueEffectName, 1, DamageType.Cold);
                     break;
                 case EffectType.DOT:
-                    effect = new DamageOverTime(1, 1, DamageType.Cold, true);
+                    effect = new DamageOverTime(uniqueEffectName, 1, 1, DamageType.Cold, true);
                     break;
                 case EffectType.StatMod:
-                    effect = new StatMod(1, StatType.Armor);
+                    effect = new StatMod(uniqueEffectName, 1, StatType.Armor);
                     break;
                 case EffectType.Debuff:
-                    effect = new Debuff(1, 1, StatType.Armor, DamageType.Cold, true);
+                    effect = new Debuff(uniqueEffectName, 1, 1, StatType.Armor, DamageType.Cold, true);
                     break;
                 case EffectType.Heal:
-                    effect = new Heal(1);
+                    effect = new Heal(uniqueEffectName, 1);
                     break;
                 default:
                     throw new ArgumentException($"Error: Effect type '{effectType}' not supported.");

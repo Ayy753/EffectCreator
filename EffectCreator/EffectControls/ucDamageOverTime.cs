@@ -19,13 +19,15 @@ namespace EffectCreator.EffectControls {
         }
 
         private void PopulateForm(DamageOverTime damageOverTime) {
+            txtEffectType.Text = "DamageOverTime";
+            txtEffectName.Text = damageOverTime.Name;
             numDuration.Value = (decimal)damageOverTime.Duration;
             numPotency.Value = (decimal)damageOverTime.Potency;
             cbDamageType.SelectedItem = damageOverTime.Type;
         }
 
         public IEffect GetEffect() {
-            return new DamageOverTime((float)numPotency.Value, (float)numDuration.Value, (DamageType)cbDamageType.SelectedItem, true);
+            return new DamageOverTime(txtEffectName.Text, (float)numPotency.Value, (float)numDuration.Value, (DamageType)cbDamageType.SelectedItem, true);
         }
 
         private void FieldsModified(object sender, EventArgs e) {

@@ -18,11 +18,13 @@ namespace EffectCreator.EffectControls {
         }
 
         private void PopulateForm(Heal heal) {
+            txtEffectType.Text = "Heal";
+            txtEffectName.Text = heal.Name;
             numPotency.Value = (decimal)heal.Potency;
         }
 
         public IEffect GetEffect() {
-            return new Heal((float)numPotency.Value);
+            return new Heal(txtEffectName.Text, (float)numPotency.Value);
         }
 
         private void FieldsModified(object sender, EventArgs e) {

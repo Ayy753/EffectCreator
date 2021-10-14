@@ -44,22 +44,22 @@ namespace EffectCreator {
 
                 switch (parsed.EffectType) {
                     case EffectType.Buff:
-                        newEffect = new Buff(parsed.Potency, duration, (StatType)parsed.StatType, (bool)parsed.Expires);
+                        newEffect = new Buff(parsed.Name, parsed.Potency, duration, (StatType)parsed.StatType, (bool)parsed.Expires);
                         break;
                     case EffectType.Damage:
-                        newEffect = new Damage(parsed.Potency, (DamageType)parsed.DamageType);
+                        newEffect = new Damage(parsed.Name, parsed.Potency, (DamageType)parsed.DamageType);
                         break;
                     case EffectType.DOT:
-                        newEffect = new DamageOverTime(parsed.Potency, duration, (DamageType)parsed.DamageType, (bool)parsed.Expires);
+                        newEffect = new DamageOverTime(parsed.Name, parsed.Potency, duration, (DamageType)parsed.DamageType, (bool)parsed.Expires);
                         break;
                     case EffectType.StatMod:
-                        newEffect = new StatMod(parsed.Potency, (StatType)parsed.StatType);
+                        newEffect = new StatMod(parsed.Name, parsed.Potency, (StatType)parsed.StatType);
                         break;
                     case EffectType.Debuff:
-                        newEffect = new Debuff(parsed.Potency, duration, (StatType)parsed.StatType, (DamageType)parsed.ResistType, (bool)parsed.Expires);
+                        newEffect = new Debuff(parsed.Name, parsed.Potency, duration, (StatType)parsed.StatType, (DamageType)parsed.ResistType, (bool)parsed.Expires);
                         break;
                     case EffectType.Heal:
-                        newEffect = new Heal(parsed.Potency);
+                        newEffect = new Heal(parsed.Name, parsed.Potency);
                         break;
                     default:
                         throw new IOException($"Error creating effect. The '{parsed.EffectType}' type is not currently supported");

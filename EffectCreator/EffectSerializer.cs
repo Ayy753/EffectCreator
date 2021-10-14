@@ -65,6 +65,7 @@ namespace EffectCreator {
 
         private static ParsedEffect ConvertEffect(IEffect effect) {
             ParsedEffect parsedEffect = new ParsedEffect();
+            parsedEffect.Name = effect.Name;
             parsedEffect.Potency = effect.Potency;
 
             //  Compose IEffect properties

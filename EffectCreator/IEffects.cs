@@ -1,6 +1,7 @@
 ﻿namespace EffectCreator {
     public interface IEffect {
         float Potency { get; }
+        string Name { get; }
     }
 
     public interface IStatusEffect : IEffect {

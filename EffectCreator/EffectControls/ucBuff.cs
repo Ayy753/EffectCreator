@@ -20,6 +20,8 @@ namespace EffectCreator.EffectControls {
         }
 
         private void PopulateForm(Buff buff) {
+            txtEffectType.Text = "Buff";
+            txtEffectName.Text = buff.Name;
             numPotency.Value = (decimal)buff.Potency;
             cbStatType.SelectedItem = buff.StatType;
             cbExpires.Checked = buff.Expires;
@@ -40,7 +42,7 @@ namespace EffectCreator.EffectControls {
         }
 
         public IEffect GetEffect() {
-            return new Buff((float)numPotency.Value, (float)numDuration.Value, (StatType)cbStatType.SelectedItem, cbExpires.Checked);
+            return new Buff(txtEffectName.Text, (float)numPotency.Value, (float)numDuration.Value, (StatType)cbStatType.SelectedItem, cbExpires.Checked);
         }
 
         private void FieldsModified(object sender, EventArgs e) {

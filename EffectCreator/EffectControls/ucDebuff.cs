@@ -20,6 +20,8 @@ namespace EffectCreator.EffectControls {
         }
 
         private void PopulateForm(Debuff debuff) {
+            txtEffectType.Text = "Debuff";
+            txtEffectName.Text = debuff.Name;
             numPotency.Value = (decimal)debuff.Potency;
             cbResistType.SelectedItem = debuff.ResistType;
             cbStatType.SelectedItem = debuff.StatType;
@@ -40,7 +42,7 @@ namespace EffectCreator.EffectControls {
         }
 
         public IEffect GetEffect() {
-            return new Debuff((float)numPotency.Value, (float)numDuration.Value, (StatType)cbStatType.SelectedItem, (DamageType)cbResistType.SelectedItem, cbExpires.Checked);
+            return new Debuff(txtEffectName.Text, (float)numPotency.Value, (float)numDuration.Value, (StatType)cbStatType.SelectedItem, (DamageType)cbResistType.SelectedItem, cbExpires.Checked);
         }
 
         private void FieldsModified(object sender, EventArgs e) {

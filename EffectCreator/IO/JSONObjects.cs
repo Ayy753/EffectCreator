@@ -36,6 +36,9 @@ namespace EffectCreator.IO {
     }
 
     public class ParsedEffect {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public EffectType EffectType { get; set; }
