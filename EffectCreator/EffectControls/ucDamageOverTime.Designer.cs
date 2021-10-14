@@ -30,6 +30,10 @@ namespace EffectCreator.EffectControls {
             this.lblPotency = new System.Windows.Forms.Label();
             this.numDuration = new System.Windows.Forms.NumericUpDown();
             this.lblDuration = new System.Windows.Forms.Label();
+            this.lblEffectName = new System.Windows.Forms.Label();
+            this.txtEffectType = new System.Windows.Forms.TextBox();
+            this.txtEffectName = new System.Windows.Forms.TextBox();
+            this.lblEffectType = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numPotency)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDuration)).BeginInit();
             this.SuspendLayout();
@@ -37,9 +41,11 @@ namespace EffectCreator.EffectControls {
             // lblDamageType
             // 
             this.lblDamageType.AutoSize = true;
-            this.lblDamageType.Location = new System.Drawing.Point(0, 30);
+            this.lblDamageType.Location = new System.Drawing.Point(0, 104);
+            this.lblDamageType.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.lblDamageType.Name = "lblDamageType";
-            this.lblDamageType.Size = new System.Drawing.Size(74, 13);
+            this.lblDamageType.Padding = new System.Windows.Forms.Padding(5);
+            this.lblDamageType.Size = new System.Drawing.Size(84, 23);
             this.lblDamageType.TabIndex = 7;
             this.lblDamageType.Text = "Damage Type";
             // 
@@ -53,7 +59,8 @@ namespace EffectCreator.EffectControls {
             "Fire",
             "Poison",
             "Lightning"});
-            this.cbDamageType.Location = new System.Drawing.Point(100, 30);
+            this.cbDamageType.Location = new System.Drawing.Point(100, 105);
+            this.cbDamageType.Margin = new System.Windows.Forms.Padding(5);
             this.cbDamageType.Name = "cbDamageType";
             this.cbDamageType.Size = new System.Drawing.Size(121, 21);
             this.cbDamageType.TabIndex = 6;
@@ -62,7 +69,8 @@ namespace EffectCreator.EffectControls {
             // numPotency
             // 
             this.numPotency.DecimalPlaces = 1;
-            this.numPotency.Location = new System.Drawing.Point(100, 5);
+            this.numPotency.Location = new System.Drawing.Point(100, 72);
+            this.numPotency.Margin = new System.Windows.Forms.Padding(5);
             this.numPotency.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -86,9 +94,11 @@ namespace EffectCreator.EffectControls {
             // lblPotency
             // 
             this.lblPotency.AutoSize = true;
-            this.lblPotency.Location = new System.Drawing.Point(0, 5);
+            this.lblPotency.Location = new System.Drawing.Point(0, 71);
+            this.lblPotency.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.lblPotency.Name = "lblPotency";
-            this.lblPotency.Size = new System.Drawing.Size(86, 13);
+            this.lblPotency.Padding = new System.Windows.Forms.Padding(5);
+            this.lblPotency.Size = new System.Drawing.Size(96, 23);
             this.lblPotency.TabIndex = 4;
             this.lblPotency.Text = "Damage Amount";
             // 
@@ -100,7 +110,8 @@ namespace EffectCreator.EffectControls {
             0,
             0,
             65536});
-            this.numDuration.Location = new System.Drawing.Point(100, 55);
+            this.numDuration.Location = new System.Drawing.Point(100, 138);
+            this.numDuration.Margin = new System.Windows.Forms.Padding(5);
             this.numDuration.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -124,16 +135,62 @@ namespace EffectCreator.EffectControls {
             // lblDuration
             // 
             this.lblDuration.AutoSize = true;
-            this.lblDuration.Location = new System.Drawing.Point(0, 55);
+            this.lblDuration.Location = new System.Drawing.Point(0, 137);
+            this.lblDuration.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.lblDuration.Name = "lblDuration";
-            this.lblDuration.Size = new System.Drawing.Size(47, 13);
+            this.lblDuration.Padding = new System.Windows.Forms.Padding(5);
+            this.lblDuration.Size = new System.Drawing.Size(57, 23);
             this.lblDuration.TabIndex = 8;
             this.lblDuration.Text = "Duration";
+            // 
+            // lblEffectName
+            // 
+            this.lblEffectName.AutoSize = true;
+            this.lblEffectName.Location = new System.Drawing.Point(0, 38);
+            this.lblEffectName.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lblEffectName.Name = "lblEffectName";
+            this.lblEffectName.Padding = new System.Windows.Forms.Padding(5);
+            this.lblEffectName.Size = new System.Drawing.Size(76, 23);
+            this.lblEffectName.TabIndex = 31;
+            this.lblEffectName.Text = "Effect Name";
+            // 
+            // txtEffectType
+            // 
+            this.txtEffectType.Enabled = false;
+            this.txtEffectType.Location = new System.Drawing.Point(100, 6);
+            this.txtEffectType.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.txtEffectType.Name = "txtEffectType";
+            this.txtEffectType.Size = new System.Drawing.Size(121, 20);
+            this.txtEffectType.TabIndex = 30;
+            // 
+            // txtEffectName
+            // 
+            this.txtEffectName.Location = new System.Drawing.Point(100, 39);
+            this.txtEffectName.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.txtEffectName.Name = "txtEffectName";
+            this.txtEffectName.Size = new System.Drawing.Size(121, 20);
+            this.txtEffectName.TabIndex = 29;
+            // 
+            // lblEffectType
+            // 
+            this.lblEffectType.AutoSize = true;
+            this.lblEffectType.Location = new System.Drawing.Point(0, 5);
+            this.lblEffectType.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lblEffectType.Name = "lblEffectType";
+            this.lblEffectType.Padding = new System.Windows.Forms.Padding(5);
+            this.lblEffectType.Size = new System.Drawing.Size(72, 23);
+            this.lblEffectType.TabIndex = 28;
+            this.lblEffectType.Text = "Effect Type";
+            this.lblEffectType.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ucDamageOverTime
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblEffectName);
+            this.Controls.Add(this.txtEffectType);
+            this.Controls.Add(this.txtEffectName);
+            this.Controls.Add(this.lblEffectType);
             this.Controls.Add(this.numDuration);
             this.Controls.Add(this.lblDuration);
             this.Controls.Add(this.lblDamageType);
@@ -141,7 +198,7 @@ namespace EffectCreator.EffectControls {
             this.Controls.Add(this.numPotency);
             this.Controls.Add(this.lblPotency);
             this.Name = "ucDamageOverTime";
-            this.Size = new System.Drawing.Size(225, 80);
+            this.Size = new System.Drawing.Size(225, 175);
             ((System.ComponentModel.ISupportInitialize)(this.numPotency)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDuration)).EndInit();
             this.ResumeLayout(false);
@@ -157,5 +214,9 @@ namespace EffectCreator.EffectControls {
         private System.Windows.Forms.Label lblPotency;
         private System.Windows.Forms.NumericUpDown numDuration;
         private System.Windows.Forms.Label lblDuration;
+        private System.Windows.Forms.Label lblEffectName;
+        private System.Windows.Forms.TextBox txtEffectType;
+        private System.Windows.Forms.TextBox txtEffectName;
+        private System.Windows.Forms.Label lblEffectType;
     }
 }
