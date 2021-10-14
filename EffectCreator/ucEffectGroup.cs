@@ -42,7 +42,7 @@ namespace EffectCreator {
             listboxRowToEffect.Clear();
 
             foreach (IEffect effect in effectGroup.Effects) {
-                string rowKey = "Effect " + lbEffects.Items.Count;
+                string rowKey = effect.Name;
                 listboxRowToEffect.Add(rowKey, effect);
                 lbEffects.Items.Add(rowKey);
             }
@@ -93,7 +93,6 @@ namespace EffectCreator {
             }
 
             AddEffectControl(activeEffectControl);
-            //cbEffectType.SelectedItem = effect.GetType().Name;
             activeEffectControl.EffectModified += ActiveEffectControl_EffectModified;
         }
 
