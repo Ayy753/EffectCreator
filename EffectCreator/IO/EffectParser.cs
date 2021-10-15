@@ -1,9 +1,6 @@
 ﻿using EffectCreator.IO;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.IO;
 
 namespace EffectCreator {
