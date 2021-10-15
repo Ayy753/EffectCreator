@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static EffectCreator.RowValidator;
 
 namespace EffectCreator {
     public partial class frmCreateNewEffect : Form {
@@ -15,10 +16,6 @@ namespace EffectCreator {
         public string EffectName { get; private set; }
 
         private ucEffectGroup parent;
-
-        enum ValidationError {
-            None, NameEmpty, NameNotUnique
-        }
 
         public frmCreateNewEffect(ucEffectGroup ucEffectGroup) {
             InitializeComponent();
@@ -35,35 +32,13 @@ namespace EffectCreator {
         }
 
         private void btnAccept_Click(object sender, EventArgs e) {
-            ValidationError validationError = ValidEffectName();
+            EffectName = txtEffectName.Text;
+            ValidationError validationError = ValidateName(EffectName, parent.RowKeys());
 
-            //  Prevent form from submitting if there is a naming error
+            //  Prevent submission if validation error
             if (validationError != ValidationError.None) {
+                DisplayNameErrorMessage(validationError, EffectName);
                 DialogResult = DialogResult.None;
-                DisplayErrorDialog(validationError);
-            }
-        }
-
-        private ValidationError ValidEffectName() {
-            if (string.IsNullOrWhiteSpace(EffectName)) {
-                return ValidationError.NameEmpty;
-            }
-            else if (parent.EffectListContainsName(EffectName)) {
-                return ValidationError.NameNotUnique;
-            }
-            else {
-                return ValidationError.None;
-            }
-        }
-
-        private void DisplayErrorDialog(ValidationError validationError) {
-            if (validationError == ValidationError.NameEmpty) {
-                MessageBox.Show($"The effect name cannot be empty.",
-                    "Effect Name Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (validationError == ValidationError.NameNotUnique) {
-                MessageBox.Show($"The Effect name '{EffectName}' already exists for this EffectGroup, please choose another.",
-                    "Effect Name Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

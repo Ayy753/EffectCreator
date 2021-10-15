@@ -37,6 +37,10 @@ namespace EffectCreator {
             numRadius.Value = (decimal)effectGroup.Radius;
         }
 
+        public List<string> RowKeys() {
+            return listboxRowToEffect.Keys.ToList();
+        }
+
         private void InitializeEffectListbox(EffectGroup effectGroup) {
             lbEffects.Items.Clear();
             listboxRowToEffect.Clear();
@@ -203,10 +207,6 @@ namespace EffectCreator {
             listboxRowToEffect.Add(uniqueEffectName, effect);
             lbEffects.Items.Add(uniqueEffectName);
             lbEffects.SelectedIndex = lbEffects.Items.Count - 1;
-        }
-
-        public bool EffectListContainsName(string name) {
-            return listboxRowToEffect.ContainsKey(name);
         }
 
         private void EffectGroupModified(object sender, EventArgs e) {

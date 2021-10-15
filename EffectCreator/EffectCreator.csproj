@@ -128,6 +128,7 @@
     <Compile Include="IO\JSONObjects.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RowValidator.cs" />
     <Compile Include="ucEffectGroup.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace EffectCreator {
@@ -53,8 +54,8 @@ namespace EffectCreator {
             }
         }
 
-        public bool EffectGroupListContainsName(string name) {
-            return nameToEffectGroup.ContainsKey(name);
+        public List<string> RowKeys() {
+            return nameToEffectGroup.Keys.ToList();
         }
         
         private void btnNewEffectGroup_Click(object sender, EventArgs e) {
