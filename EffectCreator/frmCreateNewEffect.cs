@@ -23,16 +23,10 @@ namespace EffectCreator {
             cbEffectType.DataSource = Enum.GetValues(typeof(EffectType));
         }
 
-        private void cbEffectType_SelectedIndexChanged(object sender, EventArgs e) {
-            EffectType = (EffectType)cbEffectType.SelectedItem;
-        }
-
-        private void txtEffectName_TextChanged(object sender, EventArgs e) {
-            EffectName = txtEffectName.Text;
-        }
-
         private void btnAccept_Click(object sender, EventArgs e) {
             EffectName = txtEffectName.Text;
+            EffectType = (EffectType)cbEffectType.SelectedItem;
+
             ValidationError validationError = ValidateName(EffectName, parent.RowKeys());
 
             //  Prevent submission if validation error

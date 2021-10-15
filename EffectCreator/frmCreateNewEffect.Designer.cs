@@ -48,7 +48,6 @@ namespace EffectCreator {
             this.cbEffectType.Name = "cbEffectType";
             this.cbEffectType.Size = new System.Drawing.Size(121, 21);
             this.cbEffectType.TabIndex = 17;
-            this.cbEffectType.SelectedIndexChanged += new System.EventHandler(this.cbEffectType_SelectedIndexChanged);
             // 
             // lblEffectType
             // 
@@ -96,7 +95,6 @@ namespace EffectCreator {
             this.txtEffectName.Name = "txtEffectName";
             this.txtEffectName.Size = new System.Drawing.Size(121, 20);
             this.txtEffectName.TabIndex = 21;
-            this.txtEffectName.TextChanged += new System.EventHandler(this.txtEffectName_TextChanged);
             // 
             // lblEffectName
             // 
