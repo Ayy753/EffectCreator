@@ -101,27 +101,27 @@
     <Compile Include="EffectControls\ucStatMod.Designer.cs">
       <DependentUpon>ucStatMod.cs</DependentUpon>
     </Compile>
-    <Compile Include="IO\EffectGroup.cs" />
+    <Compile Include="EffectGroup.cs" />
     <Compile Include="IO\EffectParser.cs" />
     <Compile Include="Effects.cs" />
-    <Compile Include="EffectSerializer.cs" />
+    <Compile Include="IO\EffectSerializer.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="frmCreateEffectGroup.cs">
+    <Compile Include="Forms\frmCreateEffectGroup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCreateEffectGroup.Designer.cs">
+    <Compile Include="Forms\frmCreateEffectGroup.Designer.cs">
       <DependentUpon>frmCreateEffectGroup.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCreateNewEffect.cs">
+    <Compile Include="Forms\frmCreateNewEffect.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCreateNewEffect.Designer.cs">
+    <Compile Include="Forms\frmCreateNewEffect.Designer.cs">
       <DependentUpon>frmCreateNewEffect.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMain.cs">
+    <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.Designer.cs">
+    <Compile Include="Forms\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="IEffects.cs" />
@@ -129,10 +129,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RowValidator.cs" />
-    <Compile Include="ucEffectGroup.cs">
+    <Compile Include="Forms\ucEffectGroup.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucEffectGroup.Designer.cs">
+    <Compile Include="Forms\ucEffectGroup.Designer.cs">
       <DependentUpon>ucEffectGroup.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="EffectControls\ucBuff.resx">
@@ -153,13 +153,13 @@
     <EmbeddedResource Include="EffectControls\ucStatMod.resx">
       <DependentUpon>ucStatMod.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCreateEffectGroup.resx">
+    <EmbeddedResource Include="Forms\frmCreateEffectGroup.resx">
       <DependentUpon>frmCreateEffectGroup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCreateNewEffect.resx">
+    <EmbeddedResource Include="Forms\frmCreateNewEffect.resx">
       <DependentUpon>frmCreateNewEffect.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
+    <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -171,7 +171,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ucEffectGroup.resx">
+    <EmbeddedResource Include="Forms\ucEffectGroup.resx">
       <DependentUpon>ucEffectGroup.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
