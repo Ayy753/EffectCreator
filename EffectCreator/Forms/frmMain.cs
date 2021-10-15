@@ -11,6 +11,8 @@ namespace EffectCreator {
         public frmMain() {
             InitializeComponent();
             PopulateEffectGroupListBox();
+
+            ucEffectGroup1.SetParent(this);
         }
 
         private void PopulateEffectGroupListBox() {
@@ -113,6 +115,17 @@ namespace EffectCreator {
             }
 
             EffectSerializer.SaveEffectGroups(effectGroups);
+        }
+
+        public void UpdateRowKey(string rowKey, string newName) {
+            nameToEffectGroup.Remove(rowKey);
+            nameToEffectGroup.Add(newName, ucEffectGroup1.GetEffectGroup());
+
+            int index = lbEffectGroups.Items.IndexOf(rowKey);
+            lbEffectGroups.Items.RemoveAt(index);
+            lbEffectGroups.Items.Insert(index, newName);
+            lbEffectGroups.SelectedIndex = index;
+            selectedRow = newName;
         }
     }
 }

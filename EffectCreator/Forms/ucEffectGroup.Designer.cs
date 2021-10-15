@@ -246,6 +246,7 @@ namespace EffectCreator {
             this.tbName.Size = new System.Drawing.Size(200, 20);
             this.tbName.TabIndex = 0;
             this.tbName.TextChanged += new System.EventHandler(this.EffectGroupModified);
+            this.tbName.Validating += new System.ComponentModel.CancelEventHandler(this.tbName_Validating);
             // 
             // numCooldown
             // 

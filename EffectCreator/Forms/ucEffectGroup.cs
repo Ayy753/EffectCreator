@@ -4,11 +4,19 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
+using static EffectCreator.RowValidator;
 
 namespace EffectCreator {
     public partial class ucEffectGroup : UserControl {
         private Dictionary<string, IEffect> listboxRowToEffect = new Dictionary<string, IEffect>();
         private IEffectUserControl activeEffectControl;
+        private frmMain frmMain;
+        private string egName;
+
+        internal void SetParent(frmMain frmMain) {
+            this.frmMain = frmMain;
+        }
+
         private string activeRowKey;
         public bool IsModified { get; set; }
 
@@ -20,6 +28,7 @@ namespace EffectCreator {
         }
 
         public void LoadEffectGroup(EffectGroup effectGroup) {
+            egName = effectGroup.Name;
             InitializeEffectListbox(effectGroup);
 
             tbName.Text = effectGroup.Name;
@@ -206,6 +215,23 @@ namespace EffectCreator {
 
         private void EffectGroupModified(object sender, EventArgs e) {
             IsModified = true;
+        }
+
+        private void tbName_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
+            string newName = tbName.Text;
+
+            if (egName != newName) {
+                ValidationError validationError = ValidateName(newName, frmMain.RowKeys());
+
+                if (validationError != ValidationError.None) {
+                    DisplayNameErrorMessage(validationError, newName);
+                    tbName.Text = egName;
+                }
+                else {
+                    frmMain.UpdateRowKey(egName, newName);
+                    egName = newName;
+                }
+            }
         }
     }
 }
