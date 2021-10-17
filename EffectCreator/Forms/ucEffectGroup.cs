@@ -73,6 +73,17 @@ namespace EffectCreator {
             }
         }
 
+        internal void UpdateRowKey(string effectName, string newName) {
+            listboxRowToEffect.Remove(activeRowKey);
+            listboxRowToEffect.Add(newName, activeEffectControl.GetEffect());
+
+            int index = lbEffects.Items.IndexOf(activeRowKey);
+            lbEffects.Items.RemoveAt(index);
+            lbEffects.Items.Insert(index, newName);
+            lbEffects.SelectedIndex = index;
+            activeRowKey = newName;
+        }
+
         private void OpenSelectedEffect() {
             RemoveExistingEffectControl();
             activeRowKey = lbEffects.SelectedItem.ToString();
@@ -85,7 +96,7 @@ namespace EffectCreator {
                 activeEffectControl = new ucDamageOverTime(damageOverTime);
             }
             else if (effect is Buff buff) {
-                activeEffectControl = new ucBuff(buff);
+                activeEffectControl = new ucBuff(buff, this);
             }
             else if (effect is StatMod statMod) {
                 activeEffectControl = new ucStatMod(statMod);
