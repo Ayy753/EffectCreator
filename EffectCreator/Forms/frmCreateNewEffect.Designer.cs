@@ -47,7 +47,7 @@ namespace EffectCreator {
             this.cbEffectType.Location = new System.Drawing.Point(113, 64);
             this.cbEffectType.Name = "cbEffectType";
             this.cbEffectType.Size = new System.Drawing.Size(121, 21);
-            this.cbEffectType.TabIndex = 17;
+            this.cbEffectType.TabIndex = 0;
             // 
             // lblEffectType
             // 
@@ -74,7 +74,7 @@ namespace EffectCreator {
             this.btnAccept.Location = new System.Drawing.Point(33, 126);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(75, 23);
-            this.btnAccept.TabIndex = 19;
+            this.btnAccept.TabIndex = 2;
             this.btnAccept.Text = "Accept";
             this.btnAccept.UseVisualStyleBackColor = true;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
@@ -85,7 +85,7 @@ namespace EffectCreator {
             this.btnCancel.Location = new System.Drawing.Point(115, 126);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 20;
+            this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -94,7 +94,7 @@ namespace EffectCreator {
             this.txtEffectName.Location = new System.Drawing.Point(113, 92);
             this.txtEffectName.Name = "txtEffectName";
             this.txtEffectName.Size = new System.Drawing.Size(121, 20);
-            this.txtEffectName.TabIndex = 21;
+            this.txtEffectName.TabIndex = 1;
             // 
             // lblEffectName
             // 
@@ -107,8 +107,10 @@ namespace EffectCreator {
             // 
             // frmCreateNewEffect
             // 
+            this.AcceptButton = this.btnAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(284, 161);
             this.Controls.Add(this.lblEffectName);
             this.Controls.Add(this.txtEffectName);

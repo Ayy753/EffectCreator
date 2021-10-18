@@ -45,7 +45,7 @@ namespace EffectCreator {
             this.txtEffectName.Location = new System.Drawing.Point(116, 37);
             this.txtEffectName.Name = "txtEffectName";
             this.txtEffectName.Size = new System.Drawing.Size(121, 20);
-            this.txtEffectName.TabIndex = 28;
+            this.txtEffectName.TabIndex = 0;
             // 
             // btnCancel
             // 
@@ -53,7 +53,7 @@ namespace EffectCreator {
             this.btnCancel.Location = new System.Drawing.Point(97, 74);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 27;
+            this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -63,7 +63,7 @@ namespace EffectCreator {
             this.btnAccept.Location = new System.Drawing.Point(15, 74);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(75, 23);
-            this.btnAccept.TabIndex = 26;
+            this.btnAccept.TabIndex = 1;
             this.btnAccept.Text = "Accept";
             this.btnAccept.UseVisualStyleBackColor = true;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
@@ -80,8 +80,10 @@ namespace EffectCreator {
             // 
             // frmCreateEffectGroup
             // 
+            this.AcceptButton = this.btnAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(284, 111);
             this.Controls.Add(this.lblEffectGroupName);
             this.Controls.Add(this.txtEffectName);
