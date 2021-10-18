@@ -102,7 +102,7 @@ namespace EffectCreator {
                 activeEffectControl = new ucStatMod(statMod);
             }
             else if (effect is Debuff debuff) {
-                activeEffectControl = new ucDebuff(debuff);
+                activeEffectControl = new ucDebuff(this, debuff);
             }
             else if(effect is Heal heal) {
                 activeEffectControl = new ucHeal(heal);
