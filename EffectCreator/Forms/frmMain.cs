@@ -32,6 +32,7 @@ namespace EffectCreator {
             if (formInitialized && lbEffectGroups.SelectedIndex >= 0) {
                 btnDeleteEffectGroup.Enabled = true;
 
+                UpdatePreviouslySelectedEffectGroup();
                 selectedRow = lbEffectGroups.SelectedItem.ToString();
 
                 EffectGroup selectedEffectGroup = nameToEffectGroup[selectedRow];
