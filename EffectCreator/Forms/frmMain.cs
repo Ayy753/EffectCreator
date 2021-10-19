@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -7,6 +8,8 @@ namespace EffectCreator {
     public partial class frmMain : Form {
         private Dictionary<string, EffectGroup> nameToEffectGroup;
         private string selectedRow = string.Empty;
+
+        private bool formInitialized = false;
 
         public frmMain() {
             InitializeComponent();
@@ -23,19 +26,14 @@ namespace EffectCreator {
                 lbEffectGroups.Items.Add(group.Name);
                 nameToEffectGroup.Add(group.Name, group);
             }
-
-            if (lbEffectGroups.Items.Count > 0) {
-                lbEffectGroups.SelectedIndex = 0;
-            }
         }
 
         private void lbEffectGroups_SelectedIndexChanged(object sender, EventArgs e) {
-            if (lbEffectGroups.SelectedIndex >= 0) {
+            if (formInitialized && lbEffectGroups.SelectedIndex >= 0) {
                 btnDeleteEffectGroup.Enabled = true;
 
-                UpdatePreviouslySelectedEffectGroup();
-
                 selectedRow = lbEffectGroups.SelectedItem.ToString();
+
                 EffectGroup selectedEffectGroup = nameToEffectGroup[selectedRow];
                 if (selectedEffectGroup != null) {
                     ucEffectGroup1.LoadEffectGroup(selectedEffectGroup);
@@ -58,7 +56,7 @@ namespace EffectCreator {
         public List<string> RowKeys() {
             return nameToEffectGroup.Keys.ToList();
         }
-        
+
         private void btnNewEffectGroup_Click(object sender, EventArgs e) {
             using (frmCreateEffectGroup frmCreateEffectGroup = new frmCreateEffectGroup(this)) {
                 if (frmCreateEffectGroup.ShowDialog() == DialogResult.OK) {
@@ -68,7 +66,7 @@ namespace EffectCreator {
         }
 
         private void CreateNewEffectGroup(string effectGroupName) {
-            EffectGroup newEffectGroup = new EffectGroup(effectGroupName, string.Empty, 1, 
+            EffectGroup newEffectGroup = new EffectGroup(effectGroupName, string.Empty, 1,
                 TargetType.Area, ParticleType.Blood, SoundType.arrowFire, 1, new IEffect[] { });
 
             nameToEffectGroup[effectGroupName] = newEffectGroup;
@@ -100,7 +98,7 @@ namespace EffectCreator {
 
         private void RemoveSelectedEffectGroup() {
             string selectedName = lbEffectGroups.SelectedItem.ToString();
-            
+
             nameToEffectGroup.Remove(selectedName);
             lbEffectGroups.Items.Remove(selectedName);
         }
@@ -126,6 +124,14 @@ namespace EffectCreator {
             lbEffectGroups.Items.Insert(index, newName);
             lbEffectGroups.SelectedIndex = index;
             selectedRow = newName;
+        }
+
+        private void frmMain_Load(object sender, EventArgs e) {
+            formInitialized = true;
+
+            if (lbEffectGroups.Items.Count > 0) {
+                lbEffectGroups.SelectedIndex = 0;
+            }
         }
     }
 }
