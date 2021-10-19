@@ -162,7 +162,7 @@ namespace EffectCreator {
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "frmMain";
-            this.Text = "frmMain";
+            this.Text = "Effect Creator";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
