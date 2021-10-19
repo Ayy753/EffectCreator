@@ -96,7 +96,7 @@ namespace EffectCreator.EffectControls {
             this.txtEffectName.Name = "txtEffectName";
             this.txtEffectName.Size = new System.Drawing.Size(121, 20);
             this.txtEffectName.TabIndex = 37;
-            this.txtEffectName.TextChanged += new System.EventHandler(this.FieldsModified);
+            this.txtEffectName.Validating += new System.ComponentModel.CancelEventHandler(this.txtEffectName_Validating);
             // 
             // lblEffectType
             // 

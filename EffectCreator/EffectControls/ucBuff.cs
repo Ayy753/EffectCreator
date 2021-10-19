@@ -36,6 +36,8 @@ namespace EffectCreator.EffectControls {
             if (cbExpires.Checked) {
                 numDuration.Value = (decimal)buff.Duration;
             }
+
+            effectName = txtEffectName.Text;
         }
 
         private void cbExpires_CheckStateChanged(object sender, EventArgs e) {

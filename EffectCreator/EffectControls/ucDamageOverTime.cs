@@ -7,14 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static EffectCreator.RowValidator;
 
 namespace EffectCreator.EffectControls {
     public partial class ucDamageOverTime : UserControl, IEffectUserControl {
         public event EventHandler EffectModified;
-        
-        public ucDamageOverTime(DamageOverTime damageOverTime) {
+        private ucEffectGroup parent;
+        private string effectName;
+
+        public ucDamageOverTime(DamageOverTime damageOverTime, ucEffectGroup parent) {
             InitializeComponent();
             cbDamageType.DataSource = Enum.GetValues(typeof(DamageType));
+            this.parent = parent;
+
             PopulateForm(damageOverTime);
         }
 
@@ -24,6 +29,8 @@ namespace EffectCreator.EffectControls {
             numDuration.Value = (decimal)damageOverTime.Duration;
             numPotency.Value = (decimal)damageOverTime.Potency;
             cbDamageType.SelectedItem = damageOverTime.Type;
+
+            effectName = txtEffectName.Text;
         }
 
         public IEffect GetEffect() {
@@ -32,6 +39,24 @@ namespace EffectCreator.EffectControls {
 
         private void FieldsModified(object sender, EventArgs e) {
             EffectModified?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void txtEffectName_Validating(object sender, CancelEventArgs e) {
+            string newName = txtEffectName.Text;
+
+            if (effectName != newName) {
+                ValidationError validationError = ValidateName(newName, parent.RowKeys());
+
+                if (validationError != ValidationError.None) {
+                    DisplayNameErrorMessage(validationError, newName);
+                    txtEffectName.Text = effectName;
+                }
+                else {
+                    parent.UpdateRowKey(effectName, newName);
+                    effectName = newName;
+                    EffectModified?.Invoke(this, EventArgs.Empty);
+                }
+            }
         }
     }
 }

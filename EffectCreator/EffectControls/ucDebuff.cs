@@ -7,15 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static EffectCreator.RowValidator;
 
 namespace EffectCreator.EffectControls {
     public partial class ucDebuff : UserControl, IEffectUserControl {
         public event EventHandler EffectModified;
-        
-        public ucDebuff(Debuff debuff) {
+        private ucEffectGroup parent;
+        private string effectName;
+
+        public ucDebuff(Debuff debuff, ucEffectGroup parent) {
             InitializeComponent();
             cbStatType.DataSource = Enum.GetValues(typeof(StatType));
             cbResistType.DataSource = Enum.GetValues(typeof(DamageType));
+            this.parent = parent;
+
             PopulateForm(debuff);
         }
 
@@ -33,6 +38,8 @@ namespace EffectCreator.EffectControls {
             if (debuff.Expires) {
                 numDuration.Value = (decimal)debuff.Duration;
             }
+
+            effectName = txtEffectName.Text;
         }
 
         private void cbExpires_CheckedChanged(object sender, EventArgs e) {
@@ -47,6 +54,24 @@ namespace EffectCreator.EffectControls {
 
         private void FieldsModified(object sender, EventArgs e) {
             EffectModified?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void txtEffectName_Validating(object sender, CancelEventArgs e) {
+            string newName = txtEffectName.Text;
+
+            if (effectName != newName) {
+                ValidationError validationError = ValidateName(newName, parent.RowKeys());
+
+                if (validationError != ValidationError.None) {
+                    DisplayNameErrorMessage(validationError, newName);
+                    txtEffectName.Text = effectName;
+                }
+                else {
+                    parent.UpdateRowKey(effectName, newName);
+                    effectName = newName;
+                    EffectModified?.Invoke(this, EventArgs.Empty);
+                }
+            }
         }
     }
 }

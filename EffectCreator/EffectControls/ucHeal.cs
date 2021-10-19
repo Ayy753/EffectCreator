@@ -7,13 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static EffectCreator.RowValidator;
 
 namespace EffectCreator.EffectControls {
     public partial class ucHeal : UserControl, IEffectUserControl {
         public event EventHandler EffectModified;
+        private ucEffectGroup parent;
+        private string effectName;
         
-        public ucHeal(Heal heal) {
+        public ucHeal(Heal heal, ucEffectGroup parent) {
             InitializeComponent();
+            this.parent = parent;
             PopulateForm(heal);
         }
 
@@ -21,6 +25,8 @@ namespace EffectCreator.EffectControls {
             txtEffectType.Text = "Heal";
             txtEffectName.Text = heal.Name;
             numPotency.Value = (decimal)heal.Potency;
+
+            effectName = txtEffectName.Text;
         }
 
         public IEffect GetEffect() {
@@ -29,6 +35,24 @@ namespace EffectCreator.EffectControls {
 
         private void FieldsModified(object sender, EventArgs e) {
             EffectModified?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void txtEffectName_Validating(object sender, CancelEventArgs e) {
+            string newName = txtEffectName.Text;
+
+            if (effectName != newName) {
+                ValidationError validationError = ValidateName(newName, parent.RowKeys());
+
+                if (validationError != ValidationError.None) {
+                    DisplayNameErrorMessage(validationError, newName);
+                    txtEffectName.Text = effectName;
+                }
+                else {
+                    parent.UpdateRowKey(effectName, newName);
+                    effectName = newName;
+                    EffectModified?.Invoke(this, EventArgs.Empty);
+                }
+            }
         }
     }
 }

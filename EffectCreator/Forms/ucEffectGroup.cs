@@ -90,22 +90,22 @@ namespace EffectCreator {
             IEffect effect = listboxRowToEffect[activeRowKey];
 
             if (effect is Damage damage) {
-                activeEffectControl = new ucDamage(damage); 
+                activeEffectControl = new ucDamage(damage, this); 
             }
             else if (effect is DamageOverTime damageOverTime) {
-                activeEffectControl = new ucDamageOverTime(damageOverTime);
+                activeEffectControl = new ucDamageOverTime(damageOverTime, this);
             }
             else if (effect is Buff buff) {
                 activeEffectControl = new ucBuff(buff, this);
             }
             else if (effect is StatMod statMod) {
-                activeEffectControl = new ucStatMod(statMod);
+                activeEffectControl = new ucStatMod(statMod, this);
             }
             else if (effect is Debuff debuff) {
-                activeEffectControl = new ucDebuff(debuff);
+                activeEffectControl = new ucDebuff(debuff, this);
             }
             else if(effect is Heal heal) {
-                activeEffectControl = new ucHeal(heal);
+                activeEffectControl = new ucHeal(heal, this);
             }
             else {
                 throw new ArgumentException($"Error opening effect: Effect type '{effect.GetType()}' is not currently supported.");
