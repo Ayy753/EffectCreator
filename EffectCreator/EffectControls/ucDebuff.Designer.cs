@@ -51,7 +51,7 @@ namespace EffectCreator.EffectControls {
             this.cbExpires.Margin = new System.Windows.Forms.Padding(5);
             this.cbExpires.Name = "cbExpires";
             this.cbExpires.Size = new System.Drawing.Size(15, 14);
-            this.cbExpires.TabIndex = 25;
+            this.cbExpires.TabIndex = 5;
             this.cbExpires.UseVisualStyleBackColor = true;
             this.cbExpires.CheckedChanged += new System.EventHandler(this.cbExpires_CheckedChanged);
             // 
@@ -88,7 +88,7 @@ namespace EffectCreator.EffectControls {
             65536});
             this.numDuration.Name = "numDuration";
             this.numDuration.Size = new System.Drawing.Size(121, 20);
-            this.numDuration.TabIndex = 23;
+            this.numDuration.TabIndex = 6;
             this.numDuration.Value = new decimal(new int[] {
             1,
             0,
@@ -132,9 +132,10 @@ namespace EffectCreator.EffectControls {
             "Speed"});
             this.cbStatType.Location = new System.Drawing.Point(100, 105);
             this.cbStatType.Margin = new System.Windows.Forms.Padding(5);
+            this.cbStatType.MaxDropDownItems = 3;
             this.cbStatType.Name = "cbStatType";
             this.cbStatType.Size = new System.Drawing.Size(121, 21);
-            this.cbStatType.TabIndex = 20;
+            this.cbStatType.TabIndex = 3;
             this.cbStatType.SelectedIndexChanged += new System.EventHandler(this.FieldsModified);
             // 
             // numPotency
@@ -149,7 +150,7 @@ namespace EffectCreator.EffectControls {
             0});
             this.numPotency.Name = "numPotency";
             this.numPotency.Size = new System.Drawing.Size(121, 20);
-            this.numPotency.TabIndex = 19;
+            this.numPotency.TabIndex = 2;
             this.numPotency.Value = new decimal(new int[] {
             1,
             0,
@@ -193,7 +194,7 @@ namespace EffectCreator.EffectControls {
             this.cbResistType.Margin = new System.Windows.Forms.Padding(5);
             this.cbResistType.Name = "cbResistType";
             this.cbResistType.Size = new System.Drawing.Size(121, 21);
-            this.cbResistType.TabIndex = 26;
+            this.cbResistType.TabIndex = 4;
             this.cbResistType.SelectedIndexChanged += new System.EventHandler(this.FieldsModified);
             // 
             // lblEffectName
@@ -214,7 +215,7 @@ namespace EffectCreator.EffectControls {
             this.txtEffectType.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.txtEffectType.Name = "txtEffectType";
             this.txtEffectType.Size = new System.Drawing.Size(121, 20);
-            this.txtEffectType.TabIndex = 34;
+            this.txtEffectType.TabIndex = 0;
             // 
             // txtEffectName
             // 
@@ -222,7 +223,7 @@ namespace EffectCreator.EffectControls {
             this.txtEffectName.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.txtEffectName.Name = "txtEffectName";
             this.txtEffectName.Size = new System.Drawing.Size(121, 20);
-            this.txtEffectName.TabIndex = 33;
+            this.txtEffectName.TabIndex = 1;
             this.txtEffectName.Validating += new System.ComponentModel.CancelEventHandler(this.txtEffectName_Validating);
             // 
             // lblEffectType

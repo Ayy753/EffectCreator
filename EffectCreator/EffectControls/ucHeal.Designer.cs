@@ -52,7 +52,7 @@ namespace EffectCreator.EffectControls {
             this.numPotency.Size = new System.Drawing.Size(121, 20);
             this.numPotency.TabIndex = 13;
             this.numPotency.Value = new decimal(new int[] {
-            1,
+            2,
             0,
             0,
             0});
@@ -87,7 +87,7 @@ namespace EffectCreator.EffectControls {
             this.txtEffectType.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.txtEffectType.Name = "txtEffectType";
             this.txtEffectType.Size = new System.Drawing.Size(121, 20);
-            this.txtEffectType.TabIndex = 38;
+            this.txtEffectType.TabIndex = 0;
             // 
             // txtEffectName
             // 
@@ -95,7 +95,7 @@ namespace EffectCreator.EffectControls {
             this.txtEffectName.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.txtEffectName.Name = "txtEffectName";
             this.txtEffectName.Size = new System.Drawing.Size(121, 20);
-            this.txtEffectName.TabIndex = 37;
+            this.txtEffectName.TabIndex = 1;
             this.txtEffectName.Validating += new System.ComponentModel.CancelEventHandler(this.txtEffectName_Validating);
             // 
             // lblEffectType

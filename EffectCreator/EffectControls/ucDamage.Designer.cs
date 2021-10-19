@@ -63,7 +63,7 @@ namespace EffectCreator.EffectControls {
             65536});
             this.numPotency.Name = "numPotency";
             this.numPotency.Size = new System.Drawing.Size(121, 20);
-            this.numPotency.TabIndex = 1;
+            this.numPotency.TabIndex = 2;
             this.numPotency.Value = new decimal(new int[] {
             1,
             0,
@@ -85,7 +85,7 @@ namespace EffectCreator.EffectControls {
             this.cbDamageType.Margin = new System.Windows.Forms.Padding(5);
             this.cbDamageType.Name = "cbDamageType";
             this.cbDamageType.Size = new System.Drawing.Size(121, 21);
-            this.cbDamageType.TabIndex = 2;
+            this.cbDamageType.TabIndex = 3;
             this.cbDamageType.SelectedIndexChanged += new System.EventHandler(this.FieldsModified);
             // 
             // lblDamageType
@@ -117,7 +117,7 @@ namespace EffectCreator.EffectControls {
             this.txtEffectType.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.txtEffectType.Name = "txtEffectType";
             this.txtEffectType.Size = new System.Drawing.Size(121, 20);
-            this.txtEffectType.TabIndex = 26;
+            this.txtEffectType.TabIndex = 0;
             // 
             // txtEffectName
             // 
@@ -125,7 +125,7 @@ namespace EffectCreator.EffectControls {
             this.txtEffectName.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.txtEffectName.Name = "txtEffectName";
             this.txtEffectName.Size = new System.Drawing.Size(121, 20);
-            this.txtEffectName.TabIndex = 25;
+            this.txtEffectName.TabIndex = 1;
             this.txtEffectName.Validating += new System.ComponentModel.CancelEventHandler(this.txtEffectName_Validating);
             // 
             // lblEffectType

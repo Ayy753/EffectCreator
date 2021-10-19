@@ -62,7 +62,7 @@ namespace EffectCreator.EffectControls {
             65536});
             this.numDuration.Name = "numDuration";
             this.numDuration.Size = new System.Drawing.Size(121, 20);
-            this.numDuration.TabIndex = 15;
+            this.numDuration.TabIndex = 5;
             this.numDuration.Value = new decimal(new int[] {
             1,
             0,
@@ -108,7 +108,7 @@ namespace EffectCreator.EffectControls {
             this.cbStatType.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.cbStatType.Name = "cbStatType";
             this.cbStatType.Size = new System.Drawing.Size(121, 21);
-            this.cbStatType.TabIndex = 12;
+            this.cbStatType.TabIndex = 3;
             this.cbStatType.SelectedIndexChanged += new System.EventHandler(this.FieldsModified);
             // 
             // numPotency
@@ -128,7 +128,7 @@ namespace EffectCreator.EffectControls {
             65536});
             this.numPotency.Name = "numPotency";
             this.numPotency.Size = new System.Drawing.Size(121, 20);
-            this.numPotency.TabIndex = 11;
+            this.numPotency.TabIndex = 2;
             this.numPotency.Value = new decimal(new int[] {
             1,
             0,
@@ -167,7 +167,7 @@ namespace EffectCreator.EffectControls {
             this.cbExpires.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.cbExpires.Name = "cbExpires";
             this.cbExpires.Size = new System.Drawing.Size(15, 14);
-            this.cbExpires.TabIndex = 17;
+            this.cbExpires.TabIndex = 4;
             this.cbExpires.UseVisualStyleBackColor = true;
             this.cbExpires.CheckStateChanged += new System.EventHandler(this.cbExpires_CheckStateChanged);
             // 
@@ -190,7 +190,7 @@ namespace EffectCreator.EffectControls {
             this.txtEffectType.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.txtEffectType.Name = "txtEffectType";
             this.txtEffectType.Size = new System.Drawing.Size(121, 20);
-            this.txtEffectType.TabIndex = 22;
+            this.txtEffectType.TabIndex = 0;
             // 
             // txtEffectName
             // 
@@ -198,7 +198,7 @@ namespace EffectCreator.EffectControls {
             this.txtEffectName.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.txtEffectName.Name = "txtEffectName";
             this.txtEffectName.Size = new System.Drawing.Size(121, 20);
-            this.txtEffectName.TabIndex = 21;
+            this.txtEffectName.TabIndex = 1;
             this.txtEffectName.Validating += new System.ComponentModel.CancelEventHandler(this.txtEffectName_Validating);
             // 
             // lblEffectName
