@@ -67,7 +67,7 @@ namespace EffectCreator {
             this.cbParticleType.Name = "cbParticleType";
             this.cbParticleType.Size = new System.Drawing.Size(121, 21);
             this.cbParticleType.Sorted = true;
-            this.cbParticleType.TabIndex = 16;
+            this.cbParticleType.TabIndex = 3;
             this.cbParticleType.SelectedIndexChanged += new System.EventHandler(this.EffectGroupModified);
             // 
             // lbParticleType
@@ -85,7 +85,7 @@ namespace EffectCreator {
             this.btnRemove.Location = new System.Drawing.Point(12, 384);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 23);
-            this.btnRemove.TabIndex = 14;
+            this.btnRemove.TabIndex = 8;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemoveEffect_Click);
@@ -95,7 +95,7 @@ namespace EffectCreator {
             this.btnCreateNew.Location = new System.Drawing.Point(94, 384);
             this.btnCreateNew.Name = "btnCreateNew";
             this.btnCreateNew.Size = new System.Drawing.Size(75, 23);
-            this.btnCreateNew.TabIndex = 13;
+            this.btnCreateNew.TabIndex = 9;
             this.btnCreateNew.Text = "Create New";
             this.btnCreateNew.UseVisualStyleBackColor = true;
             this.btnCreateNew.Click += new System.EventHandler(this.btnCreateNewEfect_Click);
@@ -115,7 +115,7 @@ namespace EffectCreator {
             this.lbEffects.Location = new System.Drawing.Point(12, 283);
             this.lbEffects.Name = "lbEffects";
             this.lbEffects.Size = new System.Drawing.Size(157, 95);
-            this.lbEffects.TabIndex = 11;
+            this.lbEffects.TabIndex = 7;
             this.lbEffects.SelectedIndexChanged += new System.EventHandler(this.lbEffects_SelectedIndexChanged);
             // 
             // lblRadius
@@ -139,7 +139,7 @@ namespace EffectCreator {
             0});
             this.numRadius.Name = "numRadius";
             this.numRadius.Size = new System.Drawing.Size(120, 20);
-            this.numRadius.TabIndex = 9;
+            this.numRadius.TabIndex = 6;
             this.numRadius.Value = new decimal(new int[] {
             1,
             0,
@@ -155,7 +155,7 @@ namespace EffectCreator {
             this.groupBox1.Location = new System.Drawing.Point(12, 164);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 71);
-            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Target Type";
             // 
@@ -201,7 +201,7 @@ namespace EffectCreator {
             this.cbSoundType.Location = new System.Drawing.Point(91, 71);
             this.cbSoundType.Name = "cbSoundType";
             this.cbSoundType.Size = new System.Drawing.Size(121, 21);
-            this.cbSoundType.TabIndex = 8;
+            this.cbSoundType.TabIndex = 2;
             this.cbSoundType.SelectedIndexChanged += new System.EventHandler(this.EffectGroupModified);
             // 
             // lblSoundType
@@ -227,7 +227,7 @@ namespace EffectCreator {
             this.tbDescription.Location = new System.Drawing.Point(91, 40);
             this.tbDescription.Name = "tbDescription";
             this.tbDescription.Size = new System.Drawing.Size(200, 20);
-            this.tbDescription.TabIndex = 2;
+            this.tbDescription.TabIndex = 1;
             this.tbDescription.TextChanged += new System.EventHandler(this.EffectGroupModified);
             // 
             // lblName
@@ -263,7 +263,7 @@ namespace EffectCreator {
             65536});
             this.numCooldown.Name = "numCooldown";
             this.numCooldown.Size = new System.Drawing.Size(120, 20);
-            this.numCooldown.TabIndex = 7;
+            this.numCooldown.TabIndex = 4;
             this.numCooldown.Value = new decimal(new int[] {
             1,
             0,

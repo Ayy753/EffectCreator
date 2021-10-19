@@ -71,7 +71,7 @@ namespace EffectCreator {
             this.btnDeleteEffectGroup.Location = new System.Drawing.Point(3, 408);
             this.btnDeleteEffectGroup.Name = "btnDeleteEffectGroup";
             this.btnDeleteEffectGroup.Size = new System.Drawing.Size(137, 23);
-            this.btnDeleteEffectGroup.TabIndex = 9;
+            this.btnDeleteEffectGroup.TabIndex = 3;
             this.btnDeleteEffectGroup.Text = "Delete";
             this.btnDeleteEffectGroup.UseVisualStyleBackColor = true;
             this.btnDeleteEffectGroup.Click += new System.EventHandler(this.btnDeleteEffectGroup_Click);
@@ -81,7 +81,7 @@ namespace EffectCreator {
             this.btnNewEffectGroup.Location = new System.Drawing.Point(3, 379);
             this.btnNewEffectGroup.Name = "btnNewEffectGroup";
             this.btnNewEffectGroup.Size = new System.Drawing.Size(137, 23);
-            this.btnNewEffectGroup.TabIndex = 7;
+            this.btnNewEffectGroup.TabIndex = 2;
             this.btnNewEffectGroup.Text = "New";
             this.btnNewEffectGroup.UseVisualStyleBackColor = true;
             this.btnNewEffectGroup.Click += new System.EventHandler(this.btnNewEffectGroup_Click);
@@ -101,7 +101,7 @@ namespace EffectCreator {
             this.lbEffectGroups.Location = new System.Drawing.Point(3, 58);
             this.lbEffectGroups.Name = "lbEffectGroups";
             this.lbEffectGroups.Size = new System.Drawing.Size(137, 316);
-            this.lbEffectGroups.TabIndex = 5;
+            this.lbEffectGroups.TabIndex = 1;
             this.lbEffectGroups.SelectedIndexChanged += new System.EventHandler(this.lbEffectGroups_SelectedIndexChanged);
             // 
             // menuStrip1
@@ -112,7 +112,7 @@ namespace EffectCreator {
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(143, 24);
-            this.menuStrip1.TabIndex = 10;
+            this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
