@@ -33,7 +33,7 @@ namespace EffectCreator {
             this.lblRadius = new System.Windows.Forms.Label();
             this.numRadius = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radTargetGroup = new System.Windows.Forms.RadioButton();
+            this.radTargetArea = new System.Windows.Forms.RadioButton();
             this.radTargetIndividual = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.cbSoundType = new System.Windows.Forms.ComboBox();
@@ -150,7 +150,7 @@ namespace EffectCreator {
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radTargetGroup);
+            this.groupBox1.Controls.Add(this.radTargetArea);
             this.groupBox1.Controls.Add(this.radTargetIndividual);
             this.groupBox1.Location = new System.Drawing.Point(12, 164);
             this.groupBox1.Name = "groupBox1";
@@ -159,16 +159,16 @@ namespace EffectCreator {
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Target Type";
             // 
-            // radTargetGroup
+            // radTargetArea
             // 
-            this.radTargetGroup.AutoSize = true;
-            this.radTargetGroup.Location = new System.Drawing.Point(6, 42);
-            this.radTargetGroup.Name = "radTargetGroup";
-            this.radTargetGroup.Size = new System.Drawing.Size(54, 17);
-            this.radTargetGroup.TabIndex = 1;
-            this.radTargetGroup.Text = "Group";
-            this.radTargetGroup.UseVisualStyleBackColor = true;
-            this.radTargetGroup.CheckedChanged += new System.EventHandler(this.radTargetGroup_CheckedChanged);
+            this.radTargetArea.AutoSize = true;
+            this.radTargetArea.Location = new System.Drawing.Point(6, 42);
+            this.radTargetArea.Name = "radTargetArea";
+            this.radTargetArea.Size = new System.Drawing.Size(47, 17);
+            this.radTargetArea.TabIndex = 1;
+            this.radTargetArea.Text = "Area";
+            this.radTargetArea.UseVisualStyleBackColor = true;
+            this.radTargetArea.CheckedChanged += new System.EventHandler(this.radTargetGroup_CheckedChanged);
             // 
             // radTargetIndividual
             // 
@@ -332,7 +332,7 @@ namespace EffectCreator {
         private System.Windows.Forms.Label lblRadius;
         private System.Windows.Forms.NumericUpDown numRadius;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radTargetGroup;
+        private System.Windows.Forms.RadioButton radTargetArea;
         private System.Windows.Forms.RadioButton radTargetIndividual;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbSoundType;

@@ -36,7 +36,7 @@ namespace EffectCreator {
             cbSoundType.SelectedItem = effectGroup.SoundType;
             cbParticleType.SelectedItem = effectGroup.ParticleName;
             numCooldown.Value = (decimal)effectGroup.Cooldown;
-            radTargetGroup.Checked = effectGroup.Type == TargetType.Area;
+            radTargetArea.Checked = effectGroup.Type == TargetType.Area;
             radTargetIndividual.Checked = effectGroup.Type == TargetType.Individual;
             numRadius.Value = (decimal)effectGroup.Radius;
         }
@@ -173,7 +173,7 @@ namespace EffectCreator {
         }
 
         private void radTargetGroup_CheckedChanged(object sender, EventArgs e) {
-            if (radTargetGroup.Checked) {
+            if (radTargetArea.Checked) {
                 lblRadius.Visible = true;
                 numRadius.Visible = true;
             }
