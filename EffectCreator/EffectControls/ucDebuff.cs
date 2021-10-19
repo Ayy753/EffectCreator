@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EffectCreator.EffectControls {
-    public partial class ucDebuff : ucEffectBase {
-        public ucDebuff() {
-            InitializeComponent();
-        }
-
-        public ucDebuff(ucEffectGroup parent, Debuff debuff) : base(parent) {
+    public partial class ucDebuff : UserControl, IEffectUserControl {
+        public event EventHandler EffectModified;
+        
+        public ucDebuff(Debuff debuff) {
             InitializeComponent();
             cbStatType.DataSource = Enum.GetValues(typeof(StatType));
             cbResistType.DataSource = Enum.GetValues(typeof(DamageType));
@@ -38,15 +38,15 @@ namespace EffectCreator.EffectControls {
         private void cbExpires_CheckedChanged(object sender, EventArgs e) {
             lblDuration.Enabled = cbExpires.Checked;
             numDuration.Enabled = cbExpires.Checked;
-            base.FieldsModified(sender, e);
+            EffectModified?.Invoke(this, EventArgs.Empty);
         }
 
-        public override IEffect GetEffect() {
+        public IEffect GetEffect() {
             return new Debuff(txtEffectName.Text, (float)numPotency.Value, (float)numDuration.Value, (StatType)cbStatType.SelectedItem, (DamageType)cbResistType.SelectedItem, cbExpires.Checked);
         }
 
-        protected override void FieldsModified(object sender, EventArgs e) {
-            base.FieldsModified(sender, e);
+        private void FieldsModified(object sender, EventArgs e) {
+            EffectModified?.Invoke(this, EventArgs.Empty);
         }
     }
 }

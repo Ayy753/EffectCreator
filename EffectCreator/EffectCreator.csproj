@@ -83,11 +83,11 @@
     <Compile Include="EffectControls\ucDamageOverTime.Designer.cs">
       <DependentUpon>ucDamageOverTime.cs</DependentUpon>
     </Compile>
-    <Compile Include="EffectControls\ucEffectBase.cs">
+    <Compile Include="EffectControls\ucDebuff.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EffectControls\ucEffectBase.Designer.cs">
-      <DependentUpon>ucEffectBase.cs</DependentUpon>
+    <Compile Include="EffectControls\ucDebuff.Designer.cs">
+      <DependentUpon>ucDebuff.cs</DependentUpon>
     </Compile>
     <Compile Include="EffectControls\ucHeal.cs">
       <SubType>UserControl</SubType>
@@ -100,12 +100,6 @@
     </Compile>
     <Compile Include="EffectControls\ucStatMod.Designer.cs">
       <DependentUpon>ucStatMod.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EffectControls\ucDebuff.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="EffectControls\ucDebuff.Designer.cs">
-      <DependentUpon>ucDebuff.cs</DependentUpon>
     </Compile>
     <Compile Include="EffectGroup.cs" />
     <Compile Include="IO\EffectParser.cs" />
@@ -150,17 +144,14 @@
     <EmbeddedResource Include="EffectControls\ucDamageOverTime.resx">
       <DependentUpon>ucDamageOverTime.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EffectControls\ucEffectBase.resx">
-      <DependentUpon>ucEffectBase.cs</DependentUpon>
+    <EmbeddedResource Include="EffectControls\ucDebuff.resx">
+      <DependentUpon>ucDebuff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EffectControls\ucHeal.resx">
       <DependentUpon>ucHeal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EffectControls\ucStatMod.resx">
       <DependentUpon>ucStatMod.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EffectControls\ucDebuff.resx">
-      <DependentUpon>ucDebuff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCreateEffectGroup.resx">
       <DependentUpon>frmCreateEffectGroup.cs</DependentUpon>
