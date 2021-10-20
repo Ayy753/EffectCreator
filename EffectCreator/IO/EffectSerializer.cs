@@ -1,15 +1,9 @@
 ﻿using EffectCreator.IO;
-using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.IO;
 
 namespace EffectCreator {
     public static class EffectSerializer {
-        private const string PARTIAL_PATH = @"\Resources\effects1.json";
-
         public static void SaveEffectGroups(List<EffectGroup> effectGroups) {
-            string fullPath = Directory.GetCurrentDirectory() + PARTIAL_PATH;
-
             Root root = new Root();
             List<ParsedEffectGroup> parsedEffectGroups = new List<ParsedEffectGroup>();
 
@@ -18,12 +12,7 @@ namespace EffectCreator {
                 parsedEffectGroups.Add(serializedEffectGroup);
             }
             root.parsedEffectGroups = parsedEffectGroups.ToArray();
-
-            string contents = JsonConvert.SerializeObject(root, Formatting.Indented);
-
-            StreamWriter writer = new StreamWriter(fullPath, false);
-            writer.Write(contents);
-            writer.Close();
+            IOHandler.SerializeEffects(root);
         }
 
         private static ParsedEffectGroup SerializeEffectGroup(EffectGroup effectGroup) {

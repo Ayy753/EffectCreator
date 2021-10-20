@@ -125,6 +125,7 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="IEffects.cs" />
+    <Compile Include="IO\IOHandler.cs" />
     <Compile Include="IO\JSONObjects.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

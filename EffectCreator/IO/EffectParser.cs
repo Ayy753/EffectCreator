@@ -1,22 +1,17 @@
 ﻿using EffectCreator.IO;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 
 namespace EffectCreator {
     public static class EffectParser  {
-        private const string PARTIAL_PATH = @"\Resources\effects1.json";
         private static List<EffectGroup> effectGroups;
 
         static EffectParser() {
-            ParseEffects();
+            LoadEffectGroups();
         }
 
-        private static void ParseEffects() {
-            string fullPath = Directory.GetCurrentDirectory() + PARTIAL_PATH;
-
-            string jsonText = File.ReadAllText(fullPath);
-            ParsedEffectGroup[] parsedEffectGroups = JsonConvert.DeserializeObject<Root>(jsonText).parsedEffectGroups;
+        private static void LoadEffectGroups() {
+            ParsedEffectGroup[] parsedEffectGroups = IOHandler.ParseEffects().parsedEffectGroups;
             ConvertEffectGroups(parsedEffectGroups);
         }
 
