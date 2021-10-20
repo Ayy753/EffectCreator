@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
@@ -39,6 +40,20 @@ namespace EffectCreator.IO {
 
             if (sfd.FileName != string.Empty) {
                 customFilePath = sfd.FileName;
+            }
+        }
+
+        internal static void OpenFile() {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Effect Data|*.json";
+            ofd.Title = "Open File";
+            ofd.InitialDirectory = DEFAULT_DIRECTORY;
+
+            ofd.ShowDialog();
+
+            if (ofd.FileName != string.Empty) {
+                customFilePath = ofd.FileName;
+                Debug.WriteLine("file opened: " + customFilePath);
             }
         }
     }

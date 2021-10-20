@@ -7,11 +7,9 @@ namespace EffectCreator {
     public static class EffectParser  {
         private static List<EffectGroup> effectGroups = new List<EffectGroup>();
 
-        static EffectParser() {
-            LoadEffectGroups();
-        }
-
         private static void LoadEffectGroups() {
+            effectGroups.Clear();
+
             try {
                 Root jsonRoot = IOHandler.ParseEffects();
                 ParsedEffectGroup[] parsedEffectGroups = jsonRoot.parsedEffectGroups;
@@ -68,6 +66,7 @@ namespace EffectCreator {
         }
 
         public static List<EffectGroup> GetEffectGroups() {
+            LoadEffectGroups();
             return effectGroups;
         }
     }

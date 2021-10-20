@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace EffectCreator {
     public partial class frmMain : Form {
-        private Dictionary<string, EffectGroup> nameToEffectGroup;
+        private Dictionary<string, EffectGroup> nameToEffectGroup = new Dictionary<string, EffectGroup>();
         private string selectedRow = string.Empty;
 
         private bool formInitialized = false;
@@ -20,12 +20,22 @@ namespace EffectCreator {
         }
 
         private void PopulateEffectGroupListBox() {
+            formInitialized = false;
+
+            lbEffectGroups.Items.Clear();
+            nameToEffectGroup.Clear();
+
             List<EffectGroup> effectGroups = EffectParser.GetEffectGroups();
-            nameToEffectGroup = new Dictionary<string, EffectGroup>();
 
             foreach (EffectGroup group in effectGroups) {
                 lbEffectGroups.Items.Add(group.Name);
                 nameToEffectGroup.Add(group.Name, group);
+            }
+
+            formInitialized = true;
+
+            if (lbEffectGroups.Items.Count > 0) {
+                lbEffectGroups.SelectedIndex = 0;
             }
         }
 
@@ -52,6 +62,7 @@ namespace EffectCreator {
         private void UpdatePreviouslySelectedEffectGroup() {
             if (selectedRow != string.Empty) {
                 nameToEffectGroup[selectedRow] = ucEffectGroup1.GetEffectGroup();
+                Debug.WriteLine("updated effectgroup");
             }
         }
 
@@ -132,17 +143,14 @@ namespace EffectCreator {
             selectedRow = newName;
         }
 
-        private void frmMain_Load(object sender, EventArgs e) {
-            formInitialized = true;
-
-            if (lbEffectGroups.Items.Count > 0) {
-                lbEffectGroups.SelectedIndex = 0;
-            }
-        }
-
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e) {
             IOHandler.SetFilePath();
             SaveEffectGroups();
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e) {
+            IOHandler.OpenFile();
+            PopulateEffectGroupListBox();
         }
     }
 }
