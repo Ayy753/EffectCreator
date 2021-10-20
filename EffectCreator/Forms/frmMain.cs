@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EffectCreator.IO;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -105,6 +106,10 @@ namespace EffectCreator {
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e) {
+            SaveEffectGroups();
+        }
+
+        private void SaveEffectGroups() {
             List<EffectGroup> effectGroups = new List<EffectGroup>();
 
             UpdatePreviouslySelectedEffectGroup();
@@ -133,6 +138,11 @@ namespace EffectCreator {
             if (lbEffectGroups.Items.Count > 0) {
                 lbEffectGroups.SelectedIndex = 0;
             }
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e) {
+            IOHandler.SetFilePath();
+            SaveEffectGroups();
         }
     }
 }
