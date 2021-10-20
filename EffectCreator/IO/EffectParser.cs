@@ -1,6 +1,7 @@
 ﻿using EffectCreator.IO;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Forms;
 
 namespace EffectCreator {
     public static class EffectParser  {
@@ -11,13 +12,13 @@ namespace EffectCreator {
         }
 
         private static void LoadEffectGroups() {
-            Root jsonRoot = IOHandler.ParseEffects();
-
-            if (jsonRoot != null) {
+            try {
+                Root jsonRoot = IOHandler.ParseEffects();
                 ParsedEffectGroup[] parsedEffectGroups = jsonRoot.parsedEffectGroups;
                 ConvertEffectGroups(parsedEffectGroups);
             }
-            else {
+            catch (FileNotFoundException e) {
+                MessageBox.Show(e.Message + "An empty file will be created", "File not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 effectGroups.Add(new EffectGroup("New Effect Group", "", 1, TargetType.Area, ParticleType.Blood, SoundType.arrowFire, 1, new IEffect[] { }));
             }
         }

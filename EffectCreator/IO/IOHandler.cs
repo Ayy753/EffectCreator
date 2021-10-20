@@ -10,14 +10,14 @@ namespace EffectCreator.IO {
         private static string customFilePath = string.Empty;
 
         public static Root ParseEffects() {
-            string filePath = customFilePath == string.Empty ? DEFAULT_FILE_PATH : customFilePath;
+            string filePath = (customFilePath == string.Empty) ? DEFAULT_FILE_PATH : customFilePath;
 
             if (File.Exists(filePath) ){
                 string jsonText = File.ReadAllText(filePath);
                 return JsonConvert.DeserializeObject<Root>(jsonText);
             }
             else {
-                return null;
+                throw new FileNotFoundException($"The file {filePath} does not exist.");
             }
         }
 
