@@ -14,18 +14,15 @@ namespace EffectCreator {
 
         public frmMain() {
             InitializeComponent();
-            PopulateEffectGroupListBox();
-
+            PopulateEffectGroupListBox(IOHandler.OpenDefault());
             ucEffectGroup1.SetParent(this);
         }
 
-        private void PopulateEffectGroupListBox() {
+        private void PopulateEffectGroupListBox(List<EffectGroup> effectGroups) {
             formInitialized = false;
 
             lbEffectGroups.Items.Clear();
             nameToEffectGroup.Clear();
-
-            List<EffectGroup> effectGroups = EffectParser.GetEffectGroups();
 
             foreach (EffectGroup group in effectGroups) {
                 lbEffectGroups.Items.Add(group.Name);
@@ -117,10 +114,10 @@ namespace EffectCreator {
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e) {
-            SaveEffectGroups();
+            IOHandler.Save(EffectGroups());
         }
 
-        private void SaveEffectGroups() {
+        private List<EffectGroup> EffectGroups() {
             List<EffectGroup> effectGroups = new List<EffectGroup>();
 
             UpdatePreviouslySelectedEffectGroup();
@@ -129,7 +126,7 @@ namespace EffectCreator {
                 effectGroups.Add(effectGroup);
             }
 
-            EffectSerializer.SaveEffectGroups(effectGroups);
+            return effectGroups;
         }
 
         public void UpdateRowKey(string rowKey, string newName) {
@@ -144,13 +141,11 @@ namespace EffectCreator {
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e) {
-            IOHandler.SetFilePath();
-            SaveEffectGroups();
+            IOHandler.SaveAs(EffectGroups());
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e) {
-            IOHandler.OpenFile();
-            PopulateEffectGroupListBox();
+            PopulateEffectGroupListBox(IOHandler.Open());
         }
     }
 }

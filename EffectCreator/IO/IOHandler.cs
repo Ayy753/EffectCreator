@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
@@ -30,7 +31,7 @@ namespace EffectCreator.IO {
             writer.Close();
         }
 
-        public static void SetFilePath() {
+        private static void SetFilePath() {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Effect Data|*.json";
             sfd.Title = "Save As";
@@ -43,7 +44,7 @@ namespace EffectCreator.IO {
             }
         }
 
-        internal static void OpenFile() {
+        private static void OpenFilePath() {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Effect Data|*.json";
             ofd.Title = "Open File";
@@ -53,8 +54,25 @@ namespace EffectCreator.IO {
 
             if (ofd.FileName != string.Empty) {
                 customFilePath = ofd.FileName;
-                Debug.WriteLine("file opened: " + customFilePath);
             }
+        }
+
+        public static void SaveAs(List<EffectGroup> effectGroups) {
+            SetFilePath();
+            Save(effectGroups);
+        }
+
+        public static void Save(List<EffectGroup> effectGroups) {
+            EffectSerializer.SaveEffectGroups(effectGroups);
+        }
+
+        public static List<EffectGroup> Open() {
+            OpenFilePath();
+            return EffectParser.GetEffectGroups();
+        }
+
+        public static List<EffectGroup> OpenDefault() {
+            return EffectParser.GetEffectGroups();
         }
     }
 }
