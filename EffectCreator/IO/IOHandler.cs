@@ -11,8 +11,14 @@ namespace EffectCreator.IO {
 
         public static Root ParseEffects() {
             string filePath = customFilePath == string.Empty ? DEFAULT_FILE_PATH : customFilePath;
-            string jsonText = File.ReadAllText(filePath);
-            return JsonConvert.DeserializeObject<Root>(jsonText);
+
+            if (File.Exists(filePath) ){
+                string jsonText = File.ReadAllText(filePath);
+                return JsonConvert.DeserializeObject<Root>(jsonText);
+            }
+            else {
+                return null;
+            }
         }
 
         public static void SerializeEffects(Root jsonObject) {

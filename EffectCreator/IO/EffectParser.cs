@@ -4,20 +4,25 @@ using System.IO;
 
 namespace EffectCreator {
     public static class EffectParser  {
-        private static List<EffectGroup> effectGroups;
+        private static List<EffectGroup> effectGroups = new List<EffectGroup>();
 
         static EffectParser() {
             LoadEffectGroups();
         }
 
         private static void LoadEffectGroups() {
-            ParsedEffectGroup[] parsedEffectGroups = IOHandler.ParseEffects().parsedEffectGroups;
-            ConvertEffectGroups(parsedEffectGroups);
+            Root jsonRoot = IOHandler.ParseEffects();
+
+            if (jsonRoot != null) {
+                ParsedEffectGroup[] parsedEffectGroups = jsonRoot.parsedEffectGroups;
+                ConvertEffectGroups(parsedEffectGroups);
+            }
+            else {
+                effectGroups.Add(new EffectGroup("New Effect Group", "", 1, TargetType.Area, ParticleType.Blood, SoundType.arrowFire, 1, new IEffect[] { }));
+            }
         }
 
         private static void ConvertEffectGroups(ParsedEffectGroup[] parsedEffectGroups) {
-            effectGroups = new List<EffectGroup>();
-            
             foreach (ParsedEffectGroup parsed in parsedEffectGroups) {
                 IEffect[] effects = ConvertEffects(parsed.Effects);
 
