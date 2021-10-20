@@ -36,7 +36,10 @@ namespace EffectCreator.IO {
             sfd.InitialDirectory = DEFAULT_DIRECTORY;
 
             sfd.ShowDialog();
-            customFilePath = sfd.FileName;
+
+            if (sfd.FileName != string.Empty) {
+                customFilePath = sfd.FileName;
+            }
         }
     }
 }
