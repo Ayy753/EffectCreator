@@ -5,7 +5,8 @@ using System.Windows.Forms;
 
 namespace EffectCreator.IO {
     public static class IOHandler {
-        private static readonly string DEFAULT_FILE_PATH = Directory.GetCurrentDirectory() + @"\Resources\effects1.json";
+        private static readonly string DEFAULT_DIRECTORY = Directory.GetCurrentDirectory() + @"\Resources\";
+        private static readonly string DEFAULT_FILE_PATH = DEFAULT_DIRECTORY + @"effects1.json";
         private static string customFilePath = string.Empty;
 
         public static Root ParseEffects() {
@@ -26,7 +27,7 @@ namespace EffectCreator.IO {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Effect Data|*.json";
             sfd.Title = "Save As";
-            sfd.InitialDirectory = Directory.GetCurrentDirectory() + @"\Resources";
+            sfd.InitialDirectory = DEFAULT_DIRECTORY;
 
             sfd.ShowDialog();
             customFilePath = sfd.FileName;
