@@ -19,7 +19,6 @@ namespace EffectCreator.IO {
                 return EffectParser.ParseEffectGroups(JsonConvert.DeserializeObject<Root>(jsonText));
             }
             else {
-                MessageBox.Show($"The path {filePath} does not exist. An empty file will be created", "File not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return NewJsonObject();
             }
         }
