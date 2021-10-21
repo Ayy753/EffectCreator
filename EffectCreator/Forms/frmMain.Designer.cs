@@ -35,8 +35,8 @@ namespace EffectCreator {
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ucEffectGroup1 = new EffectCreator.ucEffectGroup();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ucEffectGroup1 = new EffectCreator.ucEffectGroup();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -155,6 +155,14 @@ namespace EffectCreator {
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newToolStripMenuItem.Text = "New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // ucEffectGroup1
             // 
@@ -163,13 +171,6 @@ namespace EffectCreator {
             this.ucEffectGroup1.Name = "ucEffectGroup1";
             this.ucEffectGroup1.Size = new System.Drawing.Size(554, 428);
             this.ucEffectGroup1.TabIndex = 0;
-            // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.newToolStripMenuItem.Text = "New";
-            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // frmMain
             // 

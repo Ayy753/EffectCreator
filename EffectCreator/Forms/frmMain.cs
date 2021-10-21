@@ -151,5 +151,9 @@ namespace EffectCreator {
         private void newToolStripMenuItem_Click(object sender, EventArgs e) {
             PopulateEffectGroupListBox(IOHandler.NewFile());
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
+            Application.Exit();
+        }
     }
 }
