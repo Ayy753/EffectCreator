@@ -21,6 +21,7 @@ namespace EffectCreator {
         private void PopulateEffectGroupListBox(List<EffectGroup> effectGroups) {
             formInitialized = false;
 
+            selectedRow = string.Empty;
             lbEffectGroups.Items.Clear();
             nameToEffectGroup.Clear();
 
@@ -59,7 +60,7 @@ namespace EffectCreator {
         private void UpdatePreviouslySelectedEffectGroup() {
             if (selectedRow != string.Empty) {
                 nameToEffectGroup[selectedRow] = ucEffectGroup1.GetEffectGroup();
-                Debug.WriteLine("updated effectgroup");
+                Debug.WriteLine("updated effectgroup " + selectedRow);
             }
         }
 
