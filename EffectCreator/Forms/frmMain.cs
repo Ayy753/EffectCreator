@@ -1,4 +1,5 @@
-﻿using EffectCreator.IO;
+﻿using EffectCreator.Forms;
+using EffectCreator.IO;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
