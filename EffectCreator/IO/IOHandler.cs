@@ -20,10 +20,14 @@ namespace EffectCreator.IO {
             }
             else {
                 MessageBox.Show($"The path {filePath} does not exist. An empty file will be created", "File not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                List<EffectGroup> effectGroups = new List<EffectGroup>();
-                effectGroups.Add(new EffectGroup("New Effect Group", "", 1, TargetType.Area, ParticleType.Blood, SoundType.arrowFire, 1, new IEffect[] { }));
-                return effectGroups;
+                return NewJsonObject();
             }
+        }
+
+        private static List<EffectGroup> NewJsonObject() {
+            List<EffectGroup> effectGroups = new List<EffectGroup>();
+            effectGroups.Add(new EffectGroup("New Effect Group", "", 1, TargetType.Area, ParticleType.Blood, SoundType.arrowFire, 1, new IEffect[] { }));
+            return effectGroups;
         }
 
         public static void SaveJsonObject(Root jsonObject) {
@@ -76,6 +80,10 @@ namespace EffectCreator.IO {
 
         public static List<EffectGroup> OpenDefault() {
             return LoadJsonObject();
+        }
+
+        public static List<EffectGroup> NewFile() {
+            return NewJsonObject();
         }
     }
 }

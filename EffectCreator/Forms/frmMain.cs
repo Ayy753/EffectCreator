@@ -147,5 +147,9 @@ namespace EffectCreator {
         private void openToolStripMenuItem_Click(object sender, EventArgs e) {
             PopulateEffectGroupListBox(IOHandler.Open());
         }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e) {
+            PopulateEffectGroupListBox(IOHandler.NewFile());
+        }
     }
 }
