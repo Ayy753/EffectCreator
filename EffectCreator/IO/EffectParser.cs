@@ -5,29 +5,21 @@ using System.Windows.Forms;
 
 namespace EffectCreator {
     public static class EffectParser  {
-        private static List<EffectGroup> effectGroups = new List<EffectGroup>();
 
-        private static void LoadEffectGroups() {
-            effectGroups.Clear();
-
-            try {
-                Root jsonRoot = IOHandler.ParseEffects();
-                ParsedEffectGroup[] parsedEffectGroups = jsonRoot.parsedEffectGroups;
-                ConvertEffectGroups(parsedEffectGroups);
-            }
-            catch (FileNotFoundException e) {
-                MessageBox.Show(e.Message + "An empty file will be created", "File not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                effectGroups.Add(new EffectGroup("New Effect Group", "", 1, TargetType.Area, ParticleType.Blood, SoundType.arrowFire, 1, new IEffect[] { }));
-            }
+        public static List<EffectGroup> ParseEffectGroups(Root jsonRoot) {
+            return ConvertEffectGroups(jsonRoot.parsedEffectGroups);
         }
 
-        private static void ConvertEffectGroups(ParsedEffectGroup[] parsedEffectGroups) {
+        private static List<EffectGroup> ConvertEffectGroups(ParsedEffectGroup[] parsedEffectGroups) {
+            List<EffectGroup> effectGroups = new List<EffectGroup>();
+            
             foreach (ParsedEffectGroup parsed in parsedEffectGroups) {
                 IEffect[] effects = ConvertEffects(parsed.Effects);
 
                 float radius = parsed.TargetType == TargetType.Area ? (float)parsed.Radius : 1;
                 effectGroups.Add(new EffectGroup(parsed.Name, parsed.Description, radius, parsed.TargetType, parsed.ParticleName, parsed.Sound, parsed.Cooldown, effects));
             }
+            return effectGroups;
         }
 
         private static IEffect[] ConvertEffects(ParsedEffect[] parsedEffects) {
@@ -63,11 +55,6 @@ namespace EffectCreator {
                 effects.Add(newEffect);
             }
             return effects.ToArray();
-        }
-
-        public static List<EffectGroup> GetEffectGroups() {
-            LoadEffectGroups();
-            return effectGroups;
         }
     }
 }

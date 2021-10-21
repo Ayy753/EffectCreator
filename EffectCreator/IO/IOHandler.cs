@@ -11,19 +11,22 @@ namespace EffectCreator.IO {
         private static readonly string DEFAULT_FILE_PATH = DEFAULT_DIRECTORY + @"effects1.json";
         private static string customFilePath = string.Empty;
 
-        public static Root ParseEffects() {
+        public static List<EffectGroup> LoadJsonObject() {
             string filePath = (customFilePath == string.Empty) ? DEFAULT_FILE_PATH : customFilePath;
 
             if (File.Exists(filePath) ){
                 string jsonText = File.ReadAllText(filePath);
-                return JsonConvert.DeserializeObject<Root>(jsonText);
+                return EffectParser.ParseEffectGroups(JsonConvert.DeserializeObject<Root>(jsonText));
             }
             else {
-                throw new FileNotFoundException($"The file {filePath} does not exist.");
+                MessageBox.Show($"The path {filePath} does not exist. An empty file will be created", "File not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                List<EffectGroup> effectGroups = new List<EffectGroup>();
+                effectGroups.Add(new EffectGroup("New Effect Group", "", 1, TargetType.Area, ParticleType.Blood, SoundType.arrowFire, 1, new IEffect[] { }));
+                return effectGroups;
             }
         }
 
-        public static void SerializeEffects(Root jsonObject) {
+        public static void SaveJsonObject(Root jsonObject) {
             string filePath = customFilePath == string.Empty ? DEFAULT_FILE_PATH : customFilePath;
             string contents = JsonConvert.SerializeObject(jsonObject, Formatting.Indented);
             StreamWriter writer = new StreamWriter(filePath, false);
@@ -68,11 +71,11 @@ namespace EffectCreator.IO {
 
         public static List<EffectGroup> Open() {
             OpenFilePath();
-            return EffectParser.GetEffectGroups();
+            return LoadJsonObject();
         }
 
         public static List<EffectGroup> OpenDefault() {
-            return EffectParser.GetEffectGroups();
+            return LoadJsonObject();
         }
     }
 }

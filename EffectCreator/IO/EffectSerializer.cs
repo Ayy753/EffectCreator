@@ -12,7 +12,7 @@ namespace EffectCreator {
                 parsedEffectGroups.Add(serializedEffectGroup);
             }
             root.parsedEffectGroups = parsedEffectGroups.ToArray();
-            IOHandler.SerializeEffects(root);
+            IOHandler.SaveJsonObject(root);
         }
 
         private static ParsedEffectGroup SerializeEffectGroup(EffectGroup effectGroup) {
