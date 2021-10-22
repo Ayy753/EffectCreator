@@ -11,8 +11,6 @@ namespace EffectCreator {
         private Dictionary<string, EffectGroup> nameToEffectGroup = new Dictionary<string, EffectGroup>();
         private string selectedRow = string.Empty;
 
-        private bool formInitialized = false;
-
         public frmMain() {
             InitializeComponent();
             PopulateEffectGroupListBox(IOHandler.OpenDefault());
@@ -25,8 +23,6 @@ namespace EffectCreator {
         }
 
         private void PopulateEffectGroupListBox(List<EffectGroup> effectGroups) {
-            formInitialized = false;
-
             selectedRow = string.Empty;
             lbEffectGroups.Items.Clear();
             nameToEffectGroup.Clear();
@@ -36,26 +32,17 @@ namespace EffectCreator {
                 nameToEffectGroup.Add(group.Name, group);
             }
 
-            formInitialized = true;
-
             if (lbEffectGroups.Items.Count > 0) {
                 lbEffectGroups.SelectedIndex = 0;
             }
         }
 
         private void lbEffectGroups_SelectedIndexChanged(object sender, EventArgs e) {
-            if (formInitialized && lbEffectGroups.SelectedIndex >= 0) {
+            if (lbEffectGroups.SelectedIndex >= 0) {
                 btnDeleteEffectGroup.Enabled = true;
-
                 selectedRow = lbEffectGroups.SelectedItem.ToString();
-
                 EffectGroup selectedEffectGroup = nameToEffectGroup[selectedRow];
-                if (selectedEffectGroup != null) {
-                    ucEffectGroup1.LoadEffectGroup(selectedEffectGroup);
-                }
-                else {
-                    MessageBox.Show($"Error: '{lbEffectGroups.SelectedItem}' does not map to any EffectGroup object in the effects.json file");
-                }
+                ucEffectGroup1.LoadEffectGroup(selectedEffectGroup);
             }
             else {
                 btnDeleteEffectGroup.Enabled = false;
