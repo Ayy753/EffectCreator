@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EffectCreator.Forms;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,11 +9,12 @@ using System.Windows.Forms;
 namespace EffectCreator.IO {
     public static class IOHandler {
         private static readonly string DEFAULT_DIRECTORY = Directory.GetCurrentDirectory() + @"\Resources\";
-        private static readonly string DEFAULT_FILE_PATH = DEFAULT_DIRECTORY + @"effects1.json";
-        private static string customFilePath = string.Empty;
+        private static readonly string DEFAULT_FILE_NAME = "effects1.json";
+        private static string customFileName = string.Empty;
+        private static string customDirectory = string.Empty;
 
         public static List<EffectGroup> LoadJsonObject() {
-            string filePath = (customFilePath == string.Empty) ? DEFAULT_FILE_PATH : customFilePath;
+            string filePath = ActiveFilePath();
 
             if (File.Exists(filePath) ){
                 string jsonText = File.ReadAllText(filePath);
@@ -30,11 +32,19 @@ namespace EffectCreator.IO {
         }
 
         public static void SaveJsonObject(Root jsonObject) {
-            string filePath = customFilePath == string.Empty ? DEFAULT_FILE_PATH : customFilePath;
+            string filePath = ActiveFilePath();
             string contents = JsonConvert.SerializeObject(jsonObject, Formatting.Indented);
             StreamWriter writer = new StreamWriter(filePath, false);
             writer.Write(contents);
             writer.Close();
+        }
+
+        private static string ActiveFilePath() {
+            return (customFileName == string.Empty) ? DEFAULT_DIRECTORY + "\\" + DEFAULT_FILE_NAME : customDirectory + "\\" + customFileName;
+        }
+
+        private static string ActiveFileName() {
+            return customFileName == string.Empty ? DEFAULT_FILE_NAME : customFileName;
         }
 
         private static void SetFilePath() {
@@ -46,7 +56,8 @@ namespace EffectCreator.IO {
             sfd.ShowDialog();
 
             if (sfd.FileName != string.Empty) {
-                customFilePath = sfd.FileName;
+                customFileName = Path.GetFileName(sfd.FileName);
+                customDirectory = Path.GetDirectoryName(sfd.FileName);
             }
         }
 
@@ -59,7 +70,7 @@ namespace EffectCreator.IO {
             ofd.ShowDialog();
 
             if (ofd.FileName != string.Empty) {
-                customFilePath = ofd.FileName;
+                customDirectory = ofd.FileName;
             }
         }
 
