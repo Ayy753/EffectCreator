@@ -247,11 +247,11 @@ namespace EffectCreator {
                 if (validationError != ValidationError.None) {
                     DisplayNameErrorMessage(validationError, newName);
                     tbName.Text = egName;
-                    HandleEffectGroupModified();
                 }
                 else {
                     frmMain.UpdateRowKey(egName, newName);
                     egName = newName;
+                    HandleEffectGroupModified();
                 }
             }
         }
