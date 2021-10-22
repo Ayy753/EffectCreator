@@ -166,7 +166,6 @@ namespace EffectCreator {
             // 
             // ucEffectGroup1
             // 
-            this.ucEffectGroup1.IsModified = true;
             this.ucEffectGroup1.Location = new System.Drawing.Point(3, 3);
             this.ucEffectGroup1.Name = "ucEffectGroup1";
             this.ucEffectGroup1.Size = new System.Drawing.Size(554, 428);

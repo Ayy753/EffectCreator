@@ -18,7 +18,6 @@ namespace EffectCreator {
         }
 
         private string activeRowKey;
-        public bool IsModified { get; set; }
 
         public ucEffectGroup() {
             InitializeComponent();
@@ -116,7 +115,6 @@ namespace EffectCreator {
         }
 
         private void ActiveEffectControl_EffectModified(object sender, EventArgs e) {
-            IsModified = true;
             UpdateEffect();
         }
 
@@ -225,7 +223,6 @@ namespace EffectCreator {
         }
 
         private void EffectGroupModified(object sender, EventArgs e) {
-            IsModified = true;
         }
 
         private void tbName_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
