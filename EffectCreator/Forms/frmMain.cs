@@ -17,6 +17,11 @@ namespace EffectCreator {
             InitializeComponent();
             PopulateEffectGroupListBox(IOHandler.OpenDefault());
             ucEffectGroup1.SetParent(this);
+            ucEffectGroup1.EffectGroupModified += UcEffectGroup1_EffectGroupModified;
+        }
+
+        private void UcEffectGroup1_EffectGroupModified(object sender, EventArgs e) {
+            UpdateSelectedEffectGroup();
         }
 
         private void PopulateEffectGroupListBox(List<EffectGroup> effectGroups) {
@@ -42,7 +47,6 @@ namespace EffectCreator {
             if (formInitialized && lbEffectGroups.SelectedIndex >= 0) {
                 btnDeleteEffectGroup.Enabled = true;
 
-                UpdatePreviouslySelectedEffectGroup();
                 selectedRow = lbEffectGroups.SelectedItem.ToString();
 
                 EffectGroup selectedEffectGroup = nameToEffectGroup[selectedRow];
@@ -58,7 +62,7 @@ namespace EffectCreator {
             }
         }
 
-        private void UpdatePreviouslySelectedEffectGroup() {
+        private void UpdateSelectedEffectGroup() {
             if (selectedRow != string.Empty) {
                 nameToEffectGroup[selectedRow] = ucEffectGroup1.GetEffectGroup();
                 Debug.WriteLine("updated effectgroup " + selectedRow);
@@ -122,7 +126,7 @@ namespace EffectCreator {
         private List<EffectGroup> EffectGroups() {
             List<EffectGroup> effectGroups = new List<EffectGroup>();
 
-            UpdatePreviouslySelectedEffectGroup();
+            UpdateSelectedEffectGroup();
 
             foreach (EffectGroup effectGroup in nameToEffectGroup.Values) {
                 effectGroups.Add(effectGroup);

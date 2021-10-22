@@ -68,7 +68,7 @@ namespace EffectCreator {
             this.cbParticleType.Size = new System.Drawing.Size(121, 21);
             this.cbParticleType.Sorted = true;
             this.cbParticleType.TabIndex = 3;
-            this.cbParticleType.SelectedIndexChanged += new System.EventHandler(this.EffectGroupModified);
+            this.cbParticleType.SelectedIndexChanged += new System.EventHandler(this.ControlsModified);
             // 
             // lbParticleType
             // 
@@ -146,7 +146,7 @@ namespace EffectCreator {
             0,
             0});
             this.numRadius.Visible = false;
-            this.numRadius.ValueChanged += new System.EventHandler(this.EffectGroupModified);
+            this.numRadius.ValueChanged += new System.EventHandler(this.ControlsModified);
             // 
             // groupBox1
             // 
@@ -181,7 +181,7 @@ namespace EffectCreator {
             this.radTargetIndividual.TabStop = true;
             this.radTargetIndividual.Text = "Individual";
             this.radTargetIndividual.UseVisualStyleBackColor = true;
-            this.radTargetIndividual.CheckedChanged += new System.EventHandler(this.EffectGroupModified);
+            this.radTargetIndividual.CheckedChanged += new System.EventHandler(this.ControlsModified);
             // 
             // label4
             // 
@@ -202,7 +202,7 @@ namespace EffectCreator {
             this.cbSoundType.Name = "cbSoundType";
             this.cbSoundType.Size = new System.Drawing.Size(121, 21);
             this.cbSoundType.TabIndex = 2;
-            this.cbSoundType.SelectedIndexChanged += new System.EventHandler(this.EffectGroupModified);
+            this.cbSoundType.SelectedIndexChanged += new System.EventHandler(this.ControlsModified);
             // 
             // lblSoundType
             // 
@@ -228,7 +228,7 @@ namespace EffectCreator {
             this.tbDescription.Name = "tbDescription";
             this.tbDescription.Size = new System.Drawing.Size(200, 20);
             this.tbDescription.TabIndex = 1;
-            this.tbDescription.TextChanged += new System.EventHandler(this.EffectGroupModified);
+            this.tbDescription.TextChanged += new System.EventHandler(this.ControlsModified);
             // 
             // lblName
             // 
@@ -269,7 +269,7 @@ namespace EffectCreator {
             0,
             0,
             0});
-            this.numCooldown.ValueChanged += new System.EventHandler(this.EffectGroupModified);
+            this.numCooldown.ValueChanged += new System.EventHandler(this.ControlsModified);
             // 
             // splitContainer1
             // 

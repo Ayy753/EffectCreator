@@ -8,6 +8,7 @@ using static EffectCreator.RowValidator;
 
 namespace EffectCreator {
     public partial class ucEffectGroup : UserControl {
+        public event EventHandler EffectGroupModified;
         private Dictionary<string, IEffect> listboxRowToEffect = new Dictionary<string, IEffect>();
         private IEffectUserControl activeEffectControl;
         private frmMain frmMain;
@@ -116,6 +117,7 @@ namespace EffectCreator {
 
         private void ActiveEffectControl_EffectModified(object sender, EventArgs e) {
             UpdateEffect();
+            EffectGroupModified?.Invoke(this, EventArgs.Empty);
         }
 
         private void UpdateEffect() {
@@ -222,7 +224,8 @@ namespace EffectCreator {
             lbEffects.SelectedIndex = lbEffects.Items.Count - 1;
         }
 
-        private void EffectGroupModified(object sender, EventArgs e) {
+        private void ControlsModified(object sender, EventArgs e) {
+            EffectGroupModified?.Invoke(this, EventArgs.Empty);
         }
 
         private void tbName_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
@@ -234,6 +237,7 @@ namespace EffectCreator {
                 if (validationError != ValidationError.None) {
                     DisplayNameErrorMessage(validationError, newName);
                     tbName.Text = egName;
+                    EffectGroupModified?.Invoke(this, EventArgs.Empty);
                 }
                 else {
                     frmMain.UpdateRowKey(egName, newName);
