@@ -107,7 +107,7 @@ namespace EffectCreator {
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e) {
-            IOHandler.Save(EffectGroups());
+            Save();
         }
 
         private List<EffectGroup> EffectGroups() {
@@ -133,23 +133,68 @@ namespace EffectCreator {
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e) {
-            IOHandler.SaveAs(EffectGroups());
+            SaveAs();
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e) {
-            PopulateEffectGroupListBox(IOHandler.Open());
+            OpenFile();
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e) {
-            PopulateEffectGroupListBox(IOHandler.NewFile());
+            NewFile();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
-            Application.Exit();
+            Exit();
         }
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e) {
             ucEffectGroup1.Validate();
+        }
+
+        private void frmMain_KeyDown(object sender, KeyEventArgs e) {
+            if (e.Control){
+                if (e.KeyCode == Keys.S) {
+                    if (e.Alt)
+                        SaveAs();
+                    else 
+                        Save();
+                }
+                else if (e.KeyCode == Keys.N) {
+                    NewFile();
+                }
+                else if (e.KeyCode == Keys.O) {
+                    OpenFile();
+                }
+                else if (e.KeyCode == Keys.X) {
+                    Exit();
+                }
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void frmMain_KeyUp(object sender, KeyEventArgs e) {
+            e.SuppressKeyPress = false;
+        }
+
+        private void SaveAs() {
+            IOHandler.SaveAs(EffectGroups());
+        }
+
+        private void Save() {
+            IOHandler.Save(EffectGroups());
+        }
+
+        private void NewFile() {
+            PopulateEffectGroupListBox(IOHandler.NewFile());
+        }
+
+        private void OpenFile() {
+            PopulateEffectGroupListBox(IOHandler.Open());
+        }
+
+        private void Exit() {
+            Application.Exit();
         }
     }
 }
