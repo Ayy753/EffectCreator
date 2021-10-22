@@ -149,6 +149,10 @@ namespace EffectCreator {
         }
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e) {
+            ForceEffectGroupValidation();
+        }
+
+        private void ForceEffectGroupValidation() {
             ucEffectGroup1.Validate();
         }
 
@@ -178,10 +182,12 @@ namespace EffectCreator {
         }
 
         private void SaveAs() {
+            ForceEffectGroupValidation();
             IOHandler.SaveAs(EffectGroups());
         }
 
         private void Save() {
+            ForceEffectGroupValidation();
             IOHandler.Save(EffectGroups());
         }
 
