@@ -113,7 +113,6 @@ namespace EffectCreator {
         private List<EffectGroup> EffectGroups() {
             List<EffectGroup> effectGroups = new List<EffectGroup>();
 
-            UpdateSelectedEffectGroup();
 
             foreach (EffectGroup effectGroup in nameToEffectGroup.Values) {
                 effectGroups.Add(effectGroup);
@@ -147,6 +146,10 @@ namespace EffectCreator {
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
             Application.Exit();
+        }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e) {
+            ucEffectGroup1.Validate();
         }
     }
 }
