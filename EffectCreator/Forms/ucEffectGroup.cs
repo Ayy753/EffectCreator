@@ -13,12 +13,12 @@ namespace EffectCreator {
         private IEffectUserControl activeEffectControl;
         private frmMain frmMain;
         private string egName;
+        private string activeRowKey;
+        private bool ready = false;
 
         internal void SetParent(frmMain frmMain) {
             this.frmMain = frmMain;
         }
-
-        private string activeRowKey;
 
         public ucEffectGroup() {
             InitializeComponent();
@@ -28,6 +28,8 @@ namespace EffectCreator {
         }
 
         public void LoadEffectGroup(EffectGroup effectGroup) {
+            ready = false;
+
             egName = effectGroup.Name;
             InitializeEffectListbox(effectGroup);
 
@@ -39,6 +41,8 @@ namespace EffectCreator {
             radTargetArea.Checked = effectGroup.Type == TargetType.Area;
             radTargetIndividual.Checked = effectGroup.Type == TargetType.Individual;
             numRadius.Value = (decimal)effectGroup.Radius;
+
+            ready = true;
         }
 
         public List<string> RowKeys() {
@@ -117,7 +121,7 @@ namespace EffectCreator {
 
         private void ActiveEffectControl_EffectModified(object sender, EventArgs e) {
             UpdateEffect();
-            EffectGroupModified?.Invoke(this, EventArgs.Empty);
+            HandleEffectGroupModified();
         }
 
         private void UpdateEffect() {
@@ -225,7 +229,13 @@ namespace EffectCreator {
         }
 
         private void ControlsModified(object sender, EventArgs e) {
-            EffectGroupModified?.Invoke(this, EventArgs.Empty);
+            HandleEffectGroupModified();
+        }
+
+        private void HandleEffectGroupModified() {
+            if (ready) {
+                EffectGroupModified?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         private void tbName_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
@@ -237,7 +247,7 @@ namespace EffectCreator {
                 if (validationError != ValidationError.None) {
                     DisplayNameErrorMessage(validationError, newName);
                     tbName.Text = egName;
-                    EffectGroupModified?.Invoke(this, EventArgs.Empty);
+                    HandleEffectGroupModified();
                 }
                 else {
                     frmMain.UpdateRowKey(egName, newName);
