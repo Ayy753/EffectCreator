@@ -191,6 +191,7 @@ namespace EffectCreator {
         private void SaveAs() {
             ForceEffectGroupValidation();
             IOHandler.SaveAs(EffectGroups());
+            isDirty = false;
             UpdateFormText();
         }
 
@@ -201,6 +202,7 @@ namespace EffectCreator {
         private void Save() {
             ForceEffectGroupValidation();
             IOHandler.Save(EffectGroups());
+            isDirty = false;
             UpdateFormText();
         }
 
@@ -214,9 +216,12 @@ namespace EffectCreator {
 
         private void OpenFile() {
             if (HandleDirty()) {
-                PopulateEffectGroupListBox(IOHandler.Open());
-                isDirty = false;
-                UpdateFormText();
+                List<EffectGroup> effectGroups = IOHandler.Open();
+                if (effectGroups.Count > 0) {
+                    PopulateEffectGroupListBox(effectGroups);
+                    isDirty = false;
+                    UpdateFormText();
+                }
             }
         }
 

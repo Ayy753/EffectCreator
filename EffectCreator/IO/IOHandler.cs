@@ -65,18 +65,19 @@ namespace EffectCreator.IO {
             return false;
         }
 
-        private static void OpenFilePath() {
+        private static bool OpenFilePath() {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Effect Data|*.json";
             ofd.Title = "Open File";
             ofd.InitialDirectory = DEFAULT_DIRECTORY;
-            ofd.FileName = ActiveFileName();
             ofd.ShowDialog();
 
             if (ofd.FileName != string.Empty) {
                 customFileName = Path.GetFileName(ofd.FileName);
                 customDirectory = Path.GetDirectoryName(ofd.FileName);
+                return true;
             }
+            return false;
         }
 
         public static void SaveAs(List<EffectGroup> effectGroups) {
@@ -97,8 +98,11 @@ namespace EffectCreator.IO {
         }
 
         public static List<EffectGroup> Open() {
-            OpenFilePath();
-            return LoadJsonObject();
+            if (OpenFilePath()) {
+                newFile = false;
+                return LoadJsonObject();
+            }
+            return new List<EffectGroup>();
         }
 
         public static List<EffectGroup> OpenDefault() {
