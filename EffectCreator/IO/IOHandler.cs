@@ -13,6 +13,8 @@ namespace EffectCreator.IO {
         private static string customFileName = string.Empty;
         private static string customDirectory = string.Empty;
 
+        private static bool newFile = false;
+
         public static List<EffectGroup> LoadJsonObject() {
             string filePath = ActiveFilePath();
 
@@ -21,6 +23,7 @@ namespace EffectCreator.IO {
                 return EffectParser.ParseEffectGroups(JsonConvert.DeserializeObject<Root>(jsonText));
             }
             else {
+                newFile = true;
                 return NewJsonObject();
             }
         }
@@ -47,18 +50,19 @@ namespace EffectCreator.IO {
             return customFileName == string.Empty ? DEFAULT_FILE_NAME : customFileName;
         }
 
-        private static void SetFilePath() {
+        private static bool SetFilePath() {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Effect Data|*.json";
             sfd.Title = "Save As";
             sfd.InitialDirectory = DEFAULT_DIRECTORY;
-
             sfd.ShowDialog();
 
             if (sfd.FileName != string.Empty) {
                 customFileName = Path.GetFileName(sfd.FileName);
                 customDirectory = Path.GetDirectoryName(sfd.FileName);
+                return true;
             }
+            return false;
         }
 
         private static void OpenFilePath() {
@@ -66,7 +70,7 @@ namespace EffectCreator.IO {
             ofd.Filter = "Effect Data|*.json";
             ofd.Title = "Open File";
             ofd.InitialDirectory = DEFAULT_DIRECTORY;
-
+            ofd.FileName = ActiveFileName();
             ofd.ShowDialog();
 
             if (ofd.FileName != string.Empty) {
@@ -75,13 +79,20 @@ namespace EffectCreator.IO {
         }
 
         public static void SaveAs(List<EffectGroup> effectGroups) {
-            SetFilePath();
-            Save(effectGroups);
+            if (SetFilePath()) {
+                newFile = false;
+                Save(effectGroups);
+            }
         }
 
         public static void Save(List<EffectGroup> effectGroups) {
-            Root jsonRoot = EffectSerializer.ConvertToJsonObject(effectGroups);
-            SaveJsonObject(jsonRoot);
+            if (newFile) {
+                SaveAs(effectGroups);
+            }
+            else {
+                Root jsonRoot = EffectSerializer.ConvertToJsonObject(effectGroups);
+                SaveJsonObject(jsonRoot);
+            }
         }
 
         public static List<EffectGroup> Open() {
@@ -94,6 +105,8 @@ namespace EffectCreator.IO {
         }
 
         public static List<EffectGroup> NewFile() {
+            newFile = true;
+            customFileName = "Untitled";
             return NewJsonObject();
         }
 
