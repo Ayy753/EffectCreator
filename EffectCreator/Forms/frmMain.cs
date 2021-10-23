@@ -18,6 +18,7 @@ namespace EffectCreator {
             PopulateEffectGroupListBox(IOHandler.OpenDefault());
             ucEffectGroup1.SetParent(this);
             ucEffectGroup1.EffectGroupModified += UcEffectGroup1_EffectGroupModified;
+            UpdateFormText();
         }
 
         private void UcEffectGroup1_EffectGroupModified(object sender, EventArgs e) {
@@ -190,17 +191,24 @@ namespace EffectCreator {
         private void SaveAs() {
             ForceEffectGroupValidation();
             IOHandler.SaveAs(EffectGroups());
+            UpdateFormText();
+        }
+
+        private void UpdateFormText() {
+            this.Text = IOHandler.ActiveFileName() + " - Effect Creator";
         }
 
         private void Save() {
             ForceEffectGroupValidation();
             IOHandler.Save(EffectGroups());
+            UpdateFormText();
         }
 
         private void NewFile() {
             if (HandleDirty()) {
                 PopulateEffectGroupListBox(IOHandler.NewFile());
                 isDirty = false;
+                UpdateFormText();
             }
         }
 
@@ -208,6 +216,7 @@ namespace EffectCreator {
             if (HandleDirty()) {
                 PopulateEffectGroupListBox(IOHandler.Open());
                 isDirty = false;
+                UpdateFormText();
             }
         }
 

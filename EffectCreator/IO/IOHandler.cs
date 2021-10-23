@@ -42,11 +42,11 @@ namespace EffectCreator.IO {
             writer.Close();
         }
 
-        private static string ActiveFilePath() {
+        public static string ActiveFilePath() {
             return (customFileName == string.Empty) ? DEFAULT_DIRECTORY + "\\" + DEFAULT_FILE_NAME : customDirectory + "\\" + customFileName;
         }
 
-        private static string ActiveFileName() {
+        public static string ActiveFileName() {
             return customFileName == string.Empty ? DEFAULT_FILE_NAME : customFileName;
         }
 
