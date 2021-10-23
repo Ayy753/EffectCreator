@@ -74,7 +74,8 @@ namespace EffectCreator.IO {
             ofd.ShowDialog();
 
             if (ofd.FileName != string.Empty) {
-                customDirectory = ofd.FileName;
+                customFileName = Path.GetFileName(ofd.FileName);
+                customDirectory = Path.GetDirectoryName(ofd.FileName);
             }
         }
 
