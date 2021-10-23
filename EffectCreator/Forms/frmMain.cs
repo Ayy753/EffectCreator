@@ -11,6 +11,8 @@ namespace EffectCreator {
         private Dictionary<string, EffectGroup> nameToEffectGroup = new Dictionary<string, EffectGroup>();
         private string selectedRow = string.Empty;
 
+        private bool isDirty = false;
+
         public frmMain() {
             InitializeComponent();
             PopulateEffectGroupListBox(IOHandler.OpenDefault());
@@ -19,6 +21,7 @@ namespace EffectCreator {
         }
 
         private void UcEffectGroup1_EffectGroupModified(object sender, EventArgs e) {
+            isDirty = true;
             UpdateSelectedEffectGroup();
         }
 
@@ -64,6 +67,7 @@ namespace EffectCreator {
             using (frmCreateEffectGroup frmCreateEffectGroup = new frmCreateEffectGroup(this)) {
                 if (frmCreateEffectGroup.ShowDialog() == DialogResult.OK) {
                     CreateNewEffectGroup(frmCreateEffectGroup.EffectGroupName);
+                    isDirty = true;
                 }
             }
         }
@@ -96,6 +100,8 @@ namespace EffectCreator {
                     ucEffectGroup1.Visible = false;
                     selectedRow = string.Empty;
                 }
+
+                isDirty = true;
             }
         }
 
@@ -192,15 +198,32 @@ namespace EffectCreator {
         }
 
         private void NewFile() {
-            PopulateEffectGroupListBox(IOHandler.NewFile());
+            if (HandleDirty()) {
+                PopulateEffectGroupListBox(IOHandler.NewFile());
+                isDirty = false;
+            }
         }
 
         private void OpenFile() {
-            PopulateEffectGroupListBox(IOHandler.Open());
+            if (HandleDirty()) {
+                PopulateEffectGroupListBox(IOHandler.Open());
+                isDirty = false;
+            }
         }
 
         private void Exit() {
-            Application.Exit();
+            if (HandleDirty()) {
+                Application.Exit();
+            }
+        }
+
+        private bool HandleDirty() {
+            if (isDirty) {
+                return IOHandler.HandleDirty(EffectGroups());
+            }
+            else {
+                return true;
+            }
         }
     }
 }

@@ -95,5 +95,22 @@ namespace EffectCreator.IO {
         public static List<EffectGroup> NewFile() {
             return NewJsonObject();
         }
+
+        public static bool HandleDirty(List<EffectGroup> effectGroups) {
+            string fileName = ActiveFileName();
+            frmSaveChangesDialog scd = new frmSaveChangesDialog(fileName);
+            scd.ShowDialog();
+
+            if (scd.DialogResult == DialogResult.Yes) {
+                Save(effectGroups);
+                return true;
+            }
+            else if (scd.DialogResult == DialogResult.No) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
     }
 }
