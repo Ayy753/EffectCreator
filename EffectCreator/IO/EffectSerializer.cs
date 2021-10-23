@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EffectCreator {
     public static class EffectSerializer {
-        public static void SaveEffectGroups(List<EffectGroup> effectGroups) {
+        public static Root ConvertToJsonObject(List<EffectGroup> effectGroups) {
             Root root = new Root();
             List<ParsedEffectGroup> parsedEffectGroups = new List<ParsedEffectGroup>();
 
@@ -12,7 +12,7 @@ namespace EffectCreator {
                 parsedEffectGroups.Add(serializedEffectGroup);
             }
             root.parsedEffectGroups = parsedEffectGroups.ToArray();
-            IOHandler.SaveJsonObject(root);
+            return root;
         }
 
         private static ParsedEffectGroup SerializeEffectGroup(EffectGroup effectGroup) {

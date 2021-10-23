@@ -80,7 +80,8 @@ namespace EffectCreator.IO {
         }
 
         public static void Save(List<EffectGroup> effectGroups) {
-            EffectSerializer.SaveEffectGroups(effectGroups);
+            Root jsonRoot = EffectSerializer.ConvertToJsonObject(effectGroups);
+            SaveJsonObject(jsonRoot);
         }
 
         public static List<EffectGroup> Open() {
