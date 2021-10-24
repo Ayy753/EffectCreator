@@ -18,12 +18,17 @@ namespace EffectCreator {
             PopulateEffectGroupListBox(IOHandler.OpenDefault());
             ucEffectGroup1.SetParent(this);
             ucEffectGroup1.EffectGroupModified += UcEffectGroup1_EffectGroupModified;
-            UpdateFormText();
+            SetDirty(false);
         }
 
         private void UcEffectGroup1_EffectGroupModified(object sender, EventArgs e) {
-            isDirty = true;
+            SetDirty(true);
             UpdateSelectedEffectGroup();
+        }
+
+        private void SetDirty(bool isDirty) {
+            this.isDirty = isDirty;
+            UpdateFormText(isDirty);
         }
 
         private void PopulateEffectGroupListBox(List<EffectGroup> effectGroups) {
@@ -191,26 +196,24 @@ namespace EffectCreator {
         private void SaveAs() {
             ForceEffectGroupValidation();
             IOHandler.SaveAs(EffectGroups());
-            isDirty = false;
-            UpdateFormText();
+            SetDirty(false);
         }
 
-        private void UpdateFormText() {
-            this.Text = IOHandler.ActiveFileName() + " - Effect Creator";
+        private void UpdateFormText(bool isDirty) {
+            string prefix = isDirty ? "*" : string.Empty;
+            this.Text = $"{prefix}{IOHandler.ActiveFileName()} - Effect Creator";
         }
 
         private void Save() {
             ForceEffectGroupValidation();
             IOHandler.Save(EffectGroups());
-            isDirty = false;
-            UpdateFormText();
+            SetDirty(false);
         }
 
         private void NewFile() {
             if (HandleDirty()) {
                 PopulateEffectGroupListBox(IOHandler.NewFile());
-                isDirty = false;
-                UpdateFormText();
+                SetDirty(false);
             }
         }
 
@@ -219,8 +222,7 @@ namespace EffectCreator {
                 List<EffectGroup> effectGroups = IOHandler.Open();
                 if (effectGroups.Count > 0) {
                     PopulateEffectGroupListBox(effectGroups);
-                    isDirty = false;
-                    UpdateFormText();
+                    SetDirty(false);
                 }
             }
         }
