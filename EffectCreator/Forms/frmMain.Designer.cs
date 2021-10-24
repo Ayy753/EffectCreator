@@ -63,16 +63,16 @@ namespace EffectCreator {
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.ucEffectGroup1);
-            this.splitContainer1.Size = new System.Drawing.Size(774, 436);
-            this.splitContainer1.SplitterDistance = 158;
-            this.splitContainer1.SplitterWidth = 2;
+            this.splitContainer1.Size = new System.Drawing.Size(734, 436);
+            this.splitContainer1.SplitterDistance = 150;
+            this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 0;
             // 
             // btnDeleteEffectGroup
             // 
             this.btnDeleteEffectGroup.Location = new System.Drawing.Point(3, 408);
             this.btnDeleteEffectGroup.Name = "btnDeleteEffectGroup";
-            this.btnDeleteEffectGroup.Size = new System.Drawing.Size(152, 23);
+            this.btnDeleteEffectGroup.Size = new System.Drawing.Size(142, 23);
             this.btnDeleteEffectGroup.TabIndex = 3;
             this.btnDeleteEffectGroup.Text = "Delete";
             this.btnDeleteEffectGroup.UseVisualStyleBackColor = true;
@@ -82,7 +82,7 @@ namespace EffectCreator {
             // 
             this.btnNewEffectGroup.Location = new System.Drawing.Point(3, 379);
             this.btnNewEffectGroup.Name = "btnNewEffectGroup";
-            this.btnNewEffectGroup.Size = new System.Drawing.Size(152, 23);
+            this.btnNewEffectGroup.Size = new System.Drawing.Size(142, 23);
             this.btnNewEffectGroup.TabIndex = 2;
             this.btnNewEffectGroup.Text = "New";
             this.btnNewEffectGroup.UseVisualStyleBackColor = true;
@@ -102,7 +102,7 @@ namespace EffectCreator {
             this.lbEffectGroups.FormattingEnabled = true;
             this.lbEffectGroups.Location = new System.Drawing.Point(3, 58);
             this.lbEffectGroups.Name = "lbEffectGroups";
-            this.lbEffectGroups.Size = new System.Drawing.Size(152, 316);
+            this.lbEffectGroups.Size = new System.Drawing.Size(142, 316);
             this.lbEffectGroups.TabIndex = 1;
             this.lbEffectGroups.SelectedIndexChanged += new System.EventHandler(this.lbEffectGroups_SelectedIndexChanged);
             // 
@@ -113,7 +113,7 @@ namespace EffectCreator {
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(156, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(148, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -167,16 +167,16 @@ namespace EffectCreator {
             // 
             // ucEffectGroup1
             // 
-            this.ucEffectGroup1.Location = new System.Drawing.Point(3, 3);
+            this.ucEffectGroup1.Location = new System.Drawing.Point(0, -1);
             this.ucEffectGroup1.Name = "ucEffectGroup1";
-            this.ucEffectGroup1.Size = new System.Drawing.Size(606, 428);
+            this.ucEffectGroup1.Size = new System.Drawing.Size(582, 436);
             this.ucEffectGroup1.TabIndex = 0;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(774, 436);
+            this.ClientSize = new System.Drawing.Size(734, 436);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;

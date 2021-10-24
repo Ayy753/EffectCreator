@@ -310,9 +310,9 @@ namespace EffectCreator {
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(600, 425);
-            this.splitContainer1.SplitterDistance = 322;
-            this.splitContainer1.SplitterWidth = 2;
+            this.splitContainer1.Size = new System.Drawing.Size(575, 425);
+            this.splitContainer1.SplitterDistance = 295;
+            this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 1;
             // 
             // splitContainer2
@@ -327,16 +327,16 @@ namespace EffectCreator {
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer2.Size = new System.Drawing.Size(276, 425);
+            this.splitContainer2.Size = new System.Drawing.Size(279, 425);
             this.splitContainer2.SplitterDistance = 255;
-            this.splitContainer2.SplitterWidth = 2;
+            this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 0;
             // 
             // txtEffectGroupInfo
             // 
             this.txtEffectGroupInfo.Location = new System.Drawing.Point(6, 16);
             this.txtEffectGroupInfo.Name = "txtEffectGroupInfo";
-            this.txtEffectGroupInfo.Size = new System.Drawing.Size(256, 139);
+            this.txtEffectGroupInfo.Size = new System.Drawing.Size(259, 143);
             this.txtEffectGroupInfo.TabIndex = 1;
             this.txtEffectGroupInfo.Text = "[Value]";
             // 
@@ -345,7 +345,7 @@ namespace EffectCreator {
             this.groupBox2.Controls.Add(this.txtEffectGroupInfo);
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(268, 158);
+            this.groupBox2.Size = new System.Drawing.Size(271, 162);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Effect Group Info:";
@@ -356,7 +356,7 @@ namespace EffectCreator {
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
             this.Name = "ucEffectGroup";
-            this.Size = new System.Drawing.Size(600, 425);
+            this.Size = new System.Drawing.Size(575, 425);
             ((System.ComponentModel.ISupportInitialize)(this.numRadius)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
