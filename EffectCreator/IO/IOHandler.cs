@@ -20,7 +20,8 @@ namespace EffectCreator.IO {
 
             if (File.Exists(filePath) ){
                 string jsonText = File.ReadAllText(filePath);
-                return EffectParser.ParseEffectGroups(JsonConvert.DeserializeObject<Root>(jsonText));
+                Root jsonRoot = JsonConvert.DeserializeObject<Root>(jsonText);
+                return EffectParser.ParseEffectGroups(jsonRoot);
             }
             else {
                 newFile = true;
