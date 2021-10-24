@@ -44,12 +44,20 @@ namespace EffectCreator {
             this.tbName = new System.Windows.Forms.TextBox();
             this.numCooldown = new System.Windows.Forms.NumericUpDown();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.txtEffectGroupInfo = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.numRadius)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCooldown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbParticleType
@@ -298,10 +306,49 @@ namespace EffectCreator {
             this.splitContainer1.Panel1.Controls.Add(this.tbDescription);
             this.splitContainer1.Panel1.Controls.Add(this.lblName);
             this.splitContainer1.Panel1.Controls.Add(this.tbName);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(600, 425);
             this.splitContainer1.SplitterDistance = 322;
             this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 1;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.IsSplitterFixed = true;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.groupBox2);
+            this.splitContainer2.Size = new System.Drawing.Size(276, 425);
+            this.splitContainer2.SplitterDistance = 255;
+            this.splitContainer2.SplitterWidth = 2;
+            this.splitContainer2.TabIndex = 0;
+            // 
+            // txtEffectGroupInfo
+            // 
+            this.txtEffectGroupInfo.Location = new System.Drawing.Point(6, 16);
+            this.txtEffectGroupInfo.Name = "txtEffectGroupInfo";
+            this.txtEffectGroupInfo.Size = new System.Drawing.Size(256, 139);
+            this.txtEffectGroupInfo.TabIndex = 1;
+            this.txtEffectGroupInfo.Text = "[Value]";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtEffectGroupInfo);
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(268, 158);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Effect Group Info:";
             // 
             // ucEffectGroup
             // 
@@ -316,8 +363,13 @@ namespace EffectCreator {
             ((System.ComponentModel.ISupportInitialize)(this.numCooldown)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -343,5 +395,8 @@ namespace EffectCreator {
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.NumericUpDown numCooldown;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.Label txtEffectGroupInfo;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
