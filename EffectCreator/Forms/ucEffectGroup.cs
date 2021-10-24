@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using static EffectCreator.RowValidator;
 
@@ -47,6 +48,42 @@ namespace EffectCreator {
 
         public List<string> RowKeys() {
             return listboxRowToEffect.Keys.ToList();
+        }
+
+        public string EffectGroupInfo() {
+            StringBuilder result = new StringBuilder();
+
+            foreach (IEffect effect in Effects()) {
+                if (effect is Damage damage) {
+                    result.Append(string.Format("Deals {0} {1} damage\n", effect.Potency, damage.Type));
+                }
+                else if (effect is DamageOverTime dot) {
+                    result.Append($"Deals {effect.Potency} {dot.Type} damage");
+                    result.Append(dot.Expires ? $" over {dot.Duration} seconds\n" : "\n");
+                }
+                else if (effect is Debuff debuff) {
+                    result.Append($"Reduces {debuff.StatType} by {effect.Potency}");
+                    result.Append(debuff.Expires ? $" for {debuff.Duration} seconds\n" : "\n");
+                }
+                else if (effect is Buff buff) {
+                    result.Append($"Increases {buff.StatType} by {effect.Potency}");
+                    result.Append(buff.Expires ? $" for {buff.Duration} seconds\n" : "\n");
+
+                }
+                else if (effect is Heal) {
+                    result.Append(string.Format("Restores {0} HP\n", effect.Potency));
+                }
+            }
+
+            if (radTargetArea.Checked) {
+                result.Append(string.Format("In a {0}m radius\n", numRadius.Value));
+            }
+
+            return result.ToString();
+        }
+
+        private IEnumerable<IEffect> Effects() {
+            return listboxRowToEffect.Values.ToList();
         }
 
         private void InitializeEffectListbox(EffectGroup effectGroup) {
