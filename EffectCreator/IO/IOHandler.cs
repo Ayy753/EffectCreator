@@ -118,6 +118,7 @@ namespace EffectCreator.IO {
         public static List<EffectGroup> NewFile() {
             newFile = true;
             customFileName = "Untitled";
+            customDirectory = DEFAULT_DIRECTORY;
             return NewJsonObject();
         }
 
