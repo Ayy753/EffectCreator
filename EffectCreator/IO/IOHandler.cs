@@ -13,7 +13,7 @@ namespace EffectCreator.IO {
         private static string customFileName = string.Empty;
         private static string customDirectory = string.Empty;
 
-        private static bool newFile = false;
+        private static bool newFile = false; 
 
         public static List<EffectGroup> LoadJsonObject() {
             string filePath = ActiveFilePath();
@@ -50,11 +50,16 @@ namespace EffectCreator.IO {
             return customFileName == string.Empty ? DEFAULT_FILE_NAME : customFileName;
         }
 
+        public static string ActiveDirectory() {
+            string fullPath = ActiveFilePath();
+            return Path.GetDirectoryName(fullPath);
+        }
+
         private static bool SetFilePath() {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Effect Data|*.json";
             sfd.Title = "Save As";
-            sfd.InitialDirectory = DEFAULT_DIRECTORY;
+            sfd.InitialDirectory = ActiveDirectory();
             sfd.ShowDialog();
 
             if (sfd.FileName != string.Empty) {
@@ -69,7 +74,7 @@ namespace EffectCreator.IO {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Effect Data|*.json";
             ofd.Title = "Open File";
-            ofd.InitialDirectory = DEFAULT_DIRECTORY;
+            ofd.InitialDirectory = ActiveDirectory();
             ofd.ShowDialog();
 
             if (ofd.FileName != string.Empty) {
