@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -67,9 +68,9 @@ namespace EffectCreator.EffectControls {
                     txtEffectName.Text = effectName;
                 }
                 else {
-                    parent.UpdateRowKey(effectName, newName);
                     effectName = newName;
                     EffectModified?.Invoke(this, EventArgs.Empty);
+                    parent.UpdateRowKey(effectName, newName);
                 }
             }
         }

@@ -48,9 +48,9 @@ namespace EffectCreator.EffectControls {
                     txtEffectName.Text = effectName;
                 }
                 else {
-                    parent.UpdateRowKey(effectName, newName);
                     effectName = newName;
                     EffectModified?.Invoke(this, EventArgs.Empty);
+                    parent.UpdateRowKey(effectName, newName);
                 }
             }
         }
