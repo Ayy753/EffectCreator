@@ -215,12 +215,12 @@ namespace EffectCreator {
 
         private void radTargetGroup_CheckedChanged(object sender, EventArgs e) {
             if (radTargetArea.Checked) {
-                lblRadius.Visible = true;
-                numRadius.Visible = true;
+                lblRadius.Enabled = true;
+                numRadius.Enabled = true;
             }
             else {
-                lblRadius.Visible = false;
-                numRadius.Visible = false;
+                lblRadius.Enabled = false;
+                numRadius.Enabled = false;
             }
         }
 

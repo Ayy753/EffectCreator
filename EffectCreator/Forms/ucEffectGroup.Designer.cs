@@ -121,16 +121,17 @@ namespace EffectCreator {
             // lblRadius
             // 
             this.lblRadius.AutoSize = true;
+            this.lblRadius.Enabled = false;
             this.lblRadius.Location = new System.Drawing.Point(12, 238);
             this.lblRadius.Name = "lblRadius";
             this.lblRadius.Size = new System.Drawing.Size(40, 13);
             this.lblRadius.TabIndex = 10;
             this.lblRadius.Text = "Radius";
-            this.lblRadius.Visible = false;
             // 
             // numRadius
             // 
             this.numRadius.DecimalPlaces = 1;
+            this.numRadius.Enabled = false;
             this.numRadius.Location = new System.Drawing.Point(91, 239);
             this.numRadius.Maximum = new decimal(new int[] {
             999,
@@ -145,7 +146,6 @@ namespace EffectCreator {
             0,
             0,
             0});
-            this.numRadius.Visible = false;
             this.numRadius.ValueChanged += new System.EventHandler(this.ControlsModified);
             // 
             // groupBox1
