@@ -42,10 +42,13 @@ namespace EffectCreator {
             radTargetArea.Checked = effectGroup.Type == TargetType.Area;
             radTargetIndividual.Checked = effectGroup.Type == TargetType.Individual;
             numRadius.Value = (decimal)effectGroup.Radius;
-
-            txtEffectGroupInfo.Text = EffectGroupInfo();
+            UpdateEffectGroupInfo();
 
             ready = true;
+        }
+
+        private void UpdateEffectGroupInfo() {
+            txtEffectGroupInfo.Text = EffectGroupInfo();
         }
 
         public List<string> RowKeys() {
@@ -273,6 +276,7 @@ namespace EffectCreator {
 
         private void HandleEffectGroupModified() {
             if (ready) {
+                UpdateEffectGroupInfo();
                 EffectGroupModified?.Invoke(this, EventArgs.Empty);
             }
         }
