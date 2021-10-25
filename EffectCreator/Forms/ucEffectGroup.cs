@@ -199,6 +199,8 @@ namespace EffectCreator {
             else if (lbEffects.Items.Count == 0) {
                 RemoveExistingEffectControl();
             }
+
+            UpdateEffectGroupInfo();
         }
 
         public EffectGroup GetEffectGroup() {
@@ -268,6 +270,7 @@ namespace EffectCreator {
             listboxRowToEffect.Add(uniqueEffectName, effect);
             lbEffects.Items.Add(uniqueEffectName);
             lbEffects.SelectedIndex = lbEffects.Items.Count - 1;
+            UpdateEffectGroupInfo();
         }
 
         private void ControlsModified(object sender, EventArgs e) {
