@@ -15,6 +15,7 @@ namespace EffectCreator.EffectControls {
         public event EventHandler EffectModified;
         private ucEffectGroup parent;
         private string effectName;
+        private bool ready = false; 
 
         public ucDebuff(Debuff debuff, ucEffectGroup parent) {
             InitializeComponent();
@@ -26,6 +27,8 @@ namespace EffectCreator.EffectControls {
         }
 
         private void PopulateForm(Debuff debuff) {
+            ready = false;
+
             txtEffectType.Text = "Debuff";
             txtEffectName.Text = debuff.Name;
             numPotency.Value = (decimal)debuff.Potency;
@@ -41,6 +44,7 @@ namespace EffectCreator.EffectControls {
             }
 
             effectName = txtEffectName.Text;
+            ready = true;
         }
 
         private void cbExpires_CheckedChanged(object sender, EventArgs e) {
@@ -54,7 +58,9 @@ namespace EffectCreator.EffectControls {
         }
 
         private void FieldsModified(object sender, EventArgs e) {
-            EffectModified?.Invoke(this, EventArgs.Empty);
+            if (ready) {
+                EffectModified?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         private void txtEffectName_Validating(object sender, CancelEventArgs e) {

@@ -14,6 +14,7 @@ namespace EffectCreator.EffectControls {
         public event EventHandler EffectModified;
         private ucEffectGroup parent;
         private string effectName;
+        private bool ready;
 
         public ucDamage(Damage damage, ucEffectGroup parent) {
             InitializeComponent();
@@ -24,12 +25,15 @@ namespace EffectCreator.EffectControls {
         }
 
         private void PopulateForm(Damage damage) {
+            ready = false;
+
             txtEffectType.Text = "Damage";
             txtEffectName.Text = damage.Name;
             numPotency.Value = (decimal)damage.Potency;
             cbDamageType.SelectedItem = damage.Type;
 
             effectName = txtEffectName.Text;
+            ready = true;
         }
 
         public IEffect GetEffect() {
@@ -37,7 +41,9 @@ namespace EffectCreator.EffectControls {
         }
 
         private void FieldsModified(object sender, EventArgs e) {
-            EffectModified?.Invoke(this, EventArgs.Empty);
+            if (ready) {
+                EffectModified?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         private void txtEffectName_Validating(object sender, CancelEventArgs e) {

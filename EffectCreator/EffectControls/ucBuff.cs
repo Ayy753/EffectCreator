@@ -15,6 +15,7 @@ namespace EffectCreator.EffectControls {
         public event EventHandler EffectModified;
         private ucEffectGroup parent;
         private string effectName;
+        private bool ready;
 
         public ucBuff(Buff buff, ucEffectGroup parent) {
             InitializeComponent();
@@ -24,6 +25,8 @@ namespace EffectCreator.EffectControls {
         }
 
         private void PopulateForm(Buff buff) {
+            ready = false; 
+
             txtEffectType.Text = "Buff";
             txtEffectName.Text = buff.Name;
             numPotency.Value = (decimal)buff.Potency;
@@ -38,6 +41,7 @@ namespace EffectCreator.EffectControls {
             }
 
             effectName = txtEffectName.Text;
+            ready = true;
         }
 
         private void cbExpires_CheckStateChanged(object sender, EventArgs e) {
@@ -52,7 +56,9 @@ namespace EffectCreator.EffectControls {
         }
 
         private void FieldsModified(object sender, EventArgs e) {
-            EffectModified?.Invoke(this, EventArgs.Empty);
+            if (ready) {
+                EffectModified?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         private void txtEffectName_Validating(object sender, CancelEventArgs e) {

@@ -14,7 +14,7 @@ namespace EffectCreator.EffectControls {
         public event EventHandler EffectModified;
         private ucEffectGroup parent;
         private string effectName;
-
+        private bool ready;
         public ucDamageOverTime(DamageOverTime damageOverTime, ucEffectGroup parent) {
             InitializeComponent();
             cbDamageType.DataSource = Enum.GetValues(typeof(DamageType));
@@ -24,6 +24,8 @@ namespace EffectCreator.EffectControls {
         }
 
         private void PopulateForm(DamageOverTime damageOverTime) {
+            ready = false; 
+
             txtEffectType.Text = "DamageOverTime";
             txtEffectName.Text = damageOverTime.Name;
             numDuration.Value = (decimal)damageOverTime.Duration;
@@ -31,6 +33,7 @@ namespace EffectCreator.EffectControls {
             cbDamageType.SelectedItem = damageOverTime.Type;
 
             effectName = txtEffectName.Text;
+            ready = true;
         }
 
         public IEffect GetEffect() {
@@ -38,7 +41,9 @@ namespace EffectCreator.EffectControls {
         }
 
         private void FieldsModified(object sender, EventArgs e) {
-            EffectModified?.Invoke(this, EventArgs.Empty);
+            if (ready) {
+                EffectModified?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         private void txtEffectName_Validating(object sender, CancelEventArgs e) {

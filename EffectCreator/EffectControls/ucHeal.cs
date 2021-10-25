@@ -14,7 +14,8 @@ namespace EffectCreator.EffectControls {
         public event EventHandler EffectModified;
         private ucEffectGroup parent;
         private string effectName;
-        
+        private bool ready;
+
         public ucHeal(Heal heal, ucEffectGroup parent) {
             InitializeComponent();
             this.parent = parent;
@@ -22,11 +23,14 @@ namespace EffectCreator.EffectControls {
         }
 
         private void PopulateForm(Heal heal) {
+            ready = false;
+
             txtEffectType.Text = "Heal";
             txtEffectName.Text = heal.Name;
             numPotency.Value = (decimal)heal.Potency;
 
             effectName = txtEffectName.Text;
+            ready = true;
         }
 
         public IEffect GetEffect() {
@@ -34,7 +38,9 @@ namespace EffectCreator.EffectControls {
         }
 
         private void FieldsModified(object sender, EventArgs e) {
-            EffectModified?.Invoke(this, EventArgs.Empty);
+            if (ready) {
+                EffectModified?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         private void txtEffectName_Validating(object sender, CancelEventArgs e) {
