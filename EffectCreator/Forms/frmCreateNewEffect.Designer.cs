@@ -120,6 +120,7 @@ namespace EffectCreator {
             this.Controls.Add(this.cbEffectType);
             this.Controls.Add(this.lblEffectType);
             this.Name = "frmCreateNewEffect";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Create New Effect";
             this.ResumeLayout(false);
             this.PerformLayout();

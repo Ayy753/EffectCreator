@@ -91,6 +91,7 @@ namespace EffectCreator {
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.lblTitle);
             this.Name = "frmCreateEffectGroup";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Create Effect Group";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -86,6 +86,7 @@ namespace EffectCreator.Forms {
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmSaveChangesDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Save Changes";
             this.ResumeLayout(false);
             this.PerformLayout();
