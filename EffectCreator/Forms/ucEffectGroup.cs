@@ -73,10 +73,13 @@ namespace EffectCreator {
                 else if (effect is Buff buff) {
                     result.Append($"Increases {buff.StatType} by {effect.Potency}");
                     result.Append(buff.Expires ? $" for {buff.Duration} seconds\n" : "\n");
-
                 }
                 else if (effect is Heal) {
                     result.Append(string.Format("Restores {0} HP\n", effect.Potency));
+                }
+                else if (effect is StatMod statMod) {
+                    string modificationType = effect.Potency > 0 ? "Increases" : "Decreases";
+                    result.Append($"Permanently {modificationType} {statMod.StatType} by {Math.Abs(statMod.Potency)}\n");
                 }
             }
 
