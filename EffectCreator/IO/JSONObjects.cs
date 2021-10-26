@@ -29,6 +29,7 @@ namespace EffectCreator.IO {
         public ParsedEffect[] Effects { get; set; }
 
         [JsonProperty("sound type")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public SoundType Sound { get; set; }
 
         [JsonProperty("cooldown")]
