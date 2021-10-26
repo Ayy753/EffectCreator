@@ -1,4 +1,5 @@
 ﻿using EffectCreator.Forms;
+using EffectCreator.Properties;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,6 @@ namespace EffectCreator.IO {
     public static class IOHandler {
         private static readonly string DEFAULT_DIRECTORY = Directory.GetCurrentDirectory() + @"\Resources\";
         private static readonly string DEFAULT_FILE_NAME = "effects.json";
-        private static string customFileName = string.Empty;
-        private static string customDirectory = string.Empty;
 
         private static bool newFile = false; 
 
@@ -44,11 +43,12 @@ namespace EffectCreator.IO {
         }
 
         public static string ActiveFilePath() {
-            return (customFileName == string.Empty) ? DEFAULT_DIRECTORY + "\\" + DEFAULT_FILE_NAME : customDirectory + "\\" + customFileName;
+            return (Settings.Default.FileName == string.Empty) ? 
+                DEFAULT_DIRECTORY + "\\" + DEFAULT_FILE_NAME : Settings.Default.DirectoryPath + "\\" + Settings.Default.FileName;
         }
 
         public static string ActiveFileName() {
-            return customFileName == string.Empty ? DEFAULT_FILE_NAME : customFileName;
+            return Settings.Default.FileName == string.Empty ? DEFAULT_FILE_NAME : Settings.Default.FileName;
         }
 
 
@@ -86,8 +86,9 @@ namespace EffectCreator.IO {
         }
 
         private static void SetActivePath(string path) {
-            customFileName = Path.GetFileName(path);
-            customDirectory = Path.GetDirectoryName(path);
+            Settings.Default.FileName = Path.GetFileName(path);
+            Settings.Default.DirectoryPath = Path.GetDirectoryName(path);
+            Settings.Default.Save();
         }
 
         public static void SaveAs(List<EffectGroup> effectGroups) {
@@ -121,8 +122,7 @@ namespace EffectCreator.IO {
 
         public static List<EffectGroup> NewFile() {
             newFile = true;
-            customFileName = "Untitled";
-            customDirectory = DEFAULT_DIRECTORY;
+            SetActivePath(ActiveDirectory() + "/Untitled");
             return NewJsonObject();
         }
 
