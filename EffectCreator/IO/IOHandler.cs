@@ -51,6 +51,7 @@ namespace EffectCreator.IO {
             return customFileName == string.Empty ? DEFAULT_FILE_NAME : customFileName;
         }
 
+
         public static string ActiveDirectory() {
             string fullPath = ActiveFilePath();
             return Path.GetDirectoryName(fullPath);
@@ -64,8 +65,7 @@ namespace EffectCreator.IO {
             sfd.ShowDialog();
 
             if (sfd.FileName != string.Empty) {
-                customFileName = Path.GetFileName(sfd.FileName);
-                customDirectory = Path.GetDirectoryName(sfd.FileName);
+                SetActivePath(sfd.FileName);
                 return true;
             }
             return false;
@@ -79,11 +79,15 @@ namespace EffectCreator.IO {
             ofd.ShowDialog();
 
             if (ofd.FileName != string.Empty) {
-                customFileName = Path.GetFileName(ofd.FileName);
-                customDirectory = Path.GetDirectoryName(ofd.FileName);
+                SetActivePath(ofd.FileName);
                 return true;
             }
             return false;
+        }
+
+        private static void SetActivePath(string path) {
+            customFileName = Path.GetFileName(path);
+            customDirectory = Path.GetDirectoryName(path);
         }
 
         public static void SaveAs(List<EffectGroup> effectGroups) {
