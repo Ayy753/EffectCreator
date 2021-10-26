@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace EffectCreator.IO {
     public static class IOHandler {
         private static readonly string DEFAULT_DIRECTORY = Directory.GetCurrentDirectory() + @"\Resources\";
-        private static readonly string DEFAULT_FILE_NAME = "effects1.json";
+        private static readonly string DEFAULT_FILE_NAME = "effects.json";
         private static string customFileName = string.Empty;
         private static string customDirectory = string.Empty;
 
