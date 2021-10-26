@@ -204,6 +204,7 @@ namespace EffectCreator {
             }
 
             UpdateEffectGroupInfo();
+            HandleEffectGroupModified();
         }
 
         public EffectGroup GetEffectGroup() {
@@ -239,8 +240,7 @@ namespace EffectCreator {
                 if (frmCreateNewEffect.ShowDialog() == DialogResult.OK) {
                     string effectName = frmCreateNewEffect.EffectName;
                     CreateNewEffect(effectName, frmCreateNewEffect.EffectType);
-
-                    Debug.WriteLine("Created effect in ucEffectGroup");
+                    HandleEffectGroupModified();
                 }
             }
         }
