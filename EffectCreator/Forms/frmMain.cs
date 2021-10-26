@@ -85,10 +85,8 @@ namespace EffectCreator {
             nameToEffectGroup[effectGroupName] = newEffectGroup;
             lbEffectGroups.Items.Add(effectGroupName);
 
-            if (lbEffectGroups.SelectedIndex == -1) {
-                lbEffectGroups.SelectedIndex = 0;
-                ucEffectGroup1.Visible = true;
-            }
+            ucEffectGroup1.Visible = true;
+            lbEffectGroups.SelectedIndex = lbEffectGroups.Items.Count - 1;
         }
 
         private void btnDeleteEffectGroup_Click(object sender, EventArgs e) {
