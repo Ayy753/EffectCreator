@@ -17,7 +17,7 @@ namespace EffectCreator {
         private string activeRowKey;
         private bool ready = false;
 
-        internal void SetParent(frmMain frmMain) {
+        public void SetParent(frmMain frmMain) {
             this.frmMain = frmMain;
         }
 
@@ -47,15 +47,38 @@ namespace EffectCreator {
             ready = true;
         }
 
+        private void InitializeEffectListbox(EffectGroup effectGroup) {
+            lbEffects.Items.Clear();
+            listboxRowToEffect.Clear();
+
+            foreach (IEffect effect in effectGroup.Effects) {
+                string rowKey = effect.Name;
+                listboxRowToEffect.Add(rowKey, effect);
+                lbEffects.Items.Add(rowKey);
+            }
+
+            if (lbEffects.Items.Count > 0) {
+                lbEffects.SelectedIndex = 0;
+            }
+            else{
+                RemoveExistingEffectControl();
+            }
+        }
+
+        private void RemoveExistingEffectControl() {
+            if (splitContainer2.Panel1.Controls.Count > 0) {
+                splitContainer2.Panel1.Controls.RemoveAt(0);
+                activeEffectControl.EffectModified -= ActiveEffectControl_EffectModified;
+                activeRowKey = string.Empty;
+                activeEffectControl = null;
+            }
+        }
+
         private void UpdateEffectGroupInfo() {
             txtEffectGroupInfo.Text = EffectGroupInfo();
         }
 
-        public List<string> RowKeys() {
-            return listboxRowToEffect.Keys.ToList();
-        }
-
-        public string EffectGroupInfo() {
+        private string EffectGroupInfo() {
             StringBuilder result = new StringBuilder();
 
             foreach (IEffect effect in Effects()) {
@@ -94,24 +117,6 @@ namespace EffectCreator {
             return listboxRowToEffect.Values.ToList();
         }
 
-        private void InitializeEffectListbox(EffectGroup effectGroup) {
-            lbEffects.Items.Clear();
-            listboxRowToEffect.Clear();
-
-            foreach (IEffect effect in effectGroup.Effects) {
-                string rowKey = effect.Name;
-                listboxRowToEffect.Add(rowKey, effect);
-                lbEffects.Items.Add(rowKey);
-            }
-
-            if (lbEffects.Items.Count > 0) {
-                lbEffects.SelectedIndex = 0;
-            }
-            else{
-                RemoveExistingEffectControl();
-            }
-        }
-
         private void lbEffects_SelectedIndexChanged(object sender, EventArgs e) {
             if (lbEffects.SelectedIndex != -1) {
                 OpenSelectedEffect();
@@ -120,17 +125,6 @@ namespace EffectCreator {
             else {
                 btnRemove.Enabled = false;
             }
-        }
-
-        internal void UpdateRowKey(string effectName, string newName) {
-            listboxRowToEffect.Remove(activeRowKey);
-            listboxRowToEffect.Add(newName, activeEffectControl.GetEffect());
-
-            int index = lbEffects.Items.IndexOf(activeRowKey);
-            lbEffects.Items.RemoveAt(index);
-            lbEffects.Items.Insert(index, newName);
-            lbEffects.SelectedIndex = index;
-            activeRowKey = newName;
         }
 
         private void OpenSelectedEffect() {
@@ -164,6 +158,10 @@ namespace EffectCreator {
             activeEffectControl.EffectModified += ActiveEffectControl_EffectModified;
         }
 
+        private void AddEffectControl(IEffectUserControl control) {
+            splitContainer2.Panel1.Controls.Add((Control)control);
+        }
+
         private void ActiveEffectControl_EffectModified(object sender, EventArgs e) {
             UpdateEffect();
             HandleEffectGroupModified();
@@ -172,19 +170,6 @@ namespace EffectCreator {
         private void UpdateEffect() {
             string rowKey = lbEffects.SelectedItem.ToString();
             listboxRowToEffect[rowKey] = activeEffectControl.GetEffect();
-        }
-
-        private void RemoveExistingEffectControl() {
-            if (splitContainer2.Panel1.Controls.Count > 0) {
-                splitContainer2.Panel1.Controls.RemoveAt(0);
-                activeEffectControl.EffectModified -= ActiveEffectControl_EffectModified;
-                activeRowKey = string.Empty;
-                activeEffectControl = null;
-            }
-        }
-
-        private void AddEffectControl(IEffectUserControl control) {
-            splitContainer2.Panel1.Controls.Add((Control)control);
         }
 
         private void btnRemoveEffect_Click(object sender, EventArgs e) {
@@ -207,21 +192,11 @@ namespace EffectCreator {
             HandleEffectGroupModified();
         }
 
-        public EffectGroup GetEffectGroup() {
-            string name = tbName.Text;
-            string desc = tbDescription.Text;
-            float radius = (float)numRadius.Value;
-            TargetType targetType = radTargetIndividual.Checked ? TargetType.Individual : TargetType.Area;
-            ParticleType particleType = (ParticleType)cbParticleType.SelectedItem;
-            SoundType soundType = (SoundType)cbSoundType.SelectedIndex;
-            float cooldown = (float)numCooldown.Value;
-            List<IEffect> effects = new List<IEffect>();
-
-            foreach (IEffect item in listboxRowToEffect.Values) {
-                effects.Add(item);
+        private void HandleEffectGroupModified() {
+            if (ready) {
+                UpdateEffectGroupInfo();
+                EffectGroupModified?.Invoke(this, EventArgs.Empty);
             }
-
-            return new EffectGroup(name, desc, radius, targetType, particleType, soundType, cooldown, effects.ToArray());
         }
 
         private void radTargetGroup_CheckedChanged(object sender, EventArgs e) {
@@ -280,13 +255,6 @@ namespace EffectCreator {
             HandleEffectGroupModified();
         }
 
-        private void HandleEffectGroupModified() {
-            if (ready) {
-                UpdateEffectGroupInfo();
-                EffectGroupModified?.Invoke(this, EventArgs.Empty);
-            }
-        }
-
         private void tbName_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
             string newName = tbName.Text;
 
@@ -303,6 +271,38 @@ namespace EffectCreator {
                     HandleEffectGroupModified();
                 }
             }
+        }
+
+        public EffectGroup GetEffectGroup() {
+            string name = tbName.Text;
+            string desc = tbDescription.Text;
+            float radius = (float)numRadius.Value;
+            TargetType targetType = radTargetIndividual.Checked ? TargetType.Individual : TargetType.Area;
+            ParticleType particleType = (ParticleType)cbParticleType.SelectedItem;
+            SoundType soundType = (SoundType)cbSoundType.SelectedIndex;
+            float cooldown = (float)numCooldown.Value;
+            List<IEffect> effects = new List<IEffect>();
+
+            foreach (IEffect item in listboxRowToEffect.Values) {
+                effects.Add(item);
+            }
+
+            return new EffectGroup(name, desc, radius, targetType, particleType, soundType, cooldown, effects.ToArray());
+        }
+
+        public List<string> RowKeys() {
+            return listboxRowToEffect.Keys.ToList();
+        }
+
+        public void UpdateRowKey(string effectName, string newName) {
+            listboxRowToEffect.Remove(activeRowKey);
+            listboxRowToEffect.Add(newName, activeEffectControl.GetEffect());
+
+            int index = lbEffects.Items.IndexOf(activeRowKey);
+            lbEffects.Items.RemoveAt(index);
+            lbEffects.Items.Insert(index, newName);
+            lbEffects.SelectedIndex = index;
+            activeRowKey = newName;
         }
     }
 }
