@@ -15,17 +15,22 @@ namespace EffectCreator.IO {
         private static bool newFile = false; 
 
         public static List<EffectGroup> LoadJsonObject() {
-            string filePath = ActiveFilePath();
+            string jsonText;
 
-            if (File.Exists(filePath) ){
-                string jsonText = File.ReadAllText(filePath);
-                Root jsonRoot = JsonConvert.DeserializeObject<Root>(jsonText);
-                return EffectParser.ParseEffectGroups(jsonRoot);
+            if (File.Exists(ActiveFilePath())) {
+                jsonText = File.ReadAllText(ActiveFilePath());
+            }
+            else if (File.Exists(DefaultFilePath())) {
+                jsonText = File.ReadAllText(DefaultFilePath());
+                SetActivePathToDefault();
             }
             else {
                 newFile = true;
                 return NewJsonObject();
             }
+
+            Root jsonRoot = JsonConvert.DeserializeObject<Root>(jsonText);
+            return EffectParser.ParseEffectGroups(jsonRoot);
         }
 
         private static List<EffectGroup> NewJsonObject() {
@@ -43,18 +48,19 @@ namespace EffectCreator.IO {
         }
 
         public static string ActiveFilePath() {
-            return (Settings.Default.FileName == string.Empty) ? 
-                DEFAULT_DIRECTORY + "\\" + DEFAULT_FILE_NAME : Settings.Default.DirectoryPath + "\\" + Settings.Default.FileName;
+            return ActiveDirectory() + "\\" + ActiveFileName();
         }
 
         public static string ActiveFileName() {
-            return Settings.Default.FileName == string.Empty ? DEFAULT_FILE_NAME : Settings.Default.FileName;
+            return Settings.Default.FileName;
         }
 
-
         public static string ActiveDirectory() {
-            string fullPath = ActiveFilePath();
-            return Path.GetDirectoryName(fullPath);
+            return Settings.Default.DirectoryPath;
+        }
+
+        private static string DefaultFilePath() {
+            return DEFAULT_DIRECTORY + "//" + DEFAULT_FILE_NAME;
         }
 
         private static bool SetFilePath() {
@@ -88,6 +94,12 @@ namespace EffectCreator.IO {
         private static void SetActivePath(string path) {
             Settings.Default.FileName = Path.GetFileName(path);
             Settings.Default.DirectoryPath = Path.GetDirectoryName(path);
+            Settings.Default.Save();
+        }
+
+        private static void SetActivePathToDefault() {
+            Settings.Default.FileName = DEFAULT_FILE_NAME ;
+            Settings.Default.DirectoryPath = DEFAULT_DIRECTORY;
             Settings.Default.Save();
         }
 
