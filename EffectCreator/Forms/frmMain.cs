@@ -21,16 +21,6 @@ namespace EffectCreator {
             SetDirty(false);
         }
 
-        private void UcEffectGroup1_EffectGroupModified(object sender, EventArgs e) {
-            SetDirty(true);
-            UpdateSelectedEffectGroup();
-        }
-
-        private void SetDirty(bool isDirty) {
-            this.isDirty = isDirty;
-            UpdateFormText(isDirty);
-        }
-
         private void PopulateEffectGroupListBox(List<EffectGroup> effectGroups) {
             selectedRow = string.Empty;
             lbEffectGroups.Items.Clear();
@@ -46,6 +36,27 @@ namespace EffectCreator {
             }
         }
 
+        private void UcEffectGroup1_EffectGroupModified(object sender, EventArgs e) {
+            SetDirty(true);
+            UpdateSelectedEffectGroup();
+        }
+
+        private void SetDirty(bool isDirty) {
+            this.isDirty = isDirty;
+            UpdateFormText(isDirty);
+        }
+
+        private void UpdateFormText(bool isDirty) {
+            string prefix = isDirty ? "*" : string.Empty;
+            this.Text = $"{prefix}{IOHandler.ActiveFileName()} - Effect Creator";
+        }
+
+        private void UpdateSelectedEffectGroup() {
+            if (selectedRow != string.Empty) {
+                nameToEffectGroup[selectedRow] = ucEffectGroup1.GetEffectGroup();
+            }
+        }
+
         private void lbEffectGroups_SelectedIndexChanged(object sender, EventArgs e) {
             if (lbEffectGroups.SelectedIndex >= 0) {
                 btnDeleteEffectGroup.Enabled = true;
@@ -56,17 +67,6 @@ namespace EffectCreator {
             else {
                 btnDeleteEffectGroup.Enabled = false;
             }
-        }
-
-        private void UpdateSelectedEffectGroup() {
-            if (selectedRow != string.Empty) {
-                nameToEffectGroup[selectedRow] = ucEffectGroup1.GetEffectGroup();
-                Debug.WriteLine("updated effectgroup " + selectedRow);
-            }
-        }
-
-        public List<string> RowKeys() {
-            return nameToEffectGroup.Keys.ToList();
         }
 
         private void btnNewEffectGroup_Click(object sender, EventArgs e) {
@@ -116,21 +116,6 @@ namespace EffectCreator {
             lbEffectGroups.Items.Remove(selectedName);
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e) {
-            Save();
-        }
-
-        private List<EffectGroup> EffectGroups() {
-            List<EffectGroup> effectGroups = new List<EffectGroup>();
-
-
-            foreach (EffectGroup effectGroup in nameToEffectGroup.Values) {
-                effectGroups.Add(effectGroup);
-            }
-
-            return effectGroups;
-        }
-
         public void UpdateRowKey(string rowKey, string newName) {
             nameToEffectGroup.Remove(rowKey);
             nameToEffectGroup.Add(newName, ucEffectGroup1.GetEffectGroup());
@@ -140,6 +125,10 @@ namespace EffectCreator {
             lbEffectGroups.Items.Insert(index, newName);
             lbEffectGroups.SelectedIndex = index;
             selectedRow = newName;
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e) {
+            Save();
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -160,10 +149,6 @@ namespace EffectCreator {
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e) {
             ForceEffectGroupValidation();
-        }
-
-        private void ForceEffectGroupValidation() {
-            ucEffectGroup1.Validate();
         }
 
         private void frmMain_KeyDown(object sender, KeyEventArgs e) {
@@ -197,15 +182,23 @@ namespace EffectCreator {
             SetDirty(false);
         }
 
-        private void UpdateFormText(bool isDirty) {
-            string prefix = isDirty ? "*" : string.Empty;
-            this.Text = $"{prefix}{IOHandler.ActiveFileName()} - Effect Creator";
-        }
-
         private void Save() {
             ForceEffectGroupValidation();
             IOHandler.Save(EffectGroups());
             SetDirty(false);
+        }
+
+        private void ForceEffectGroupValidation() {
+            ucEffectGroup1.Validate();
+        }
+
+        private List<EffectGroup> EffectGroups() {
+            List<EffectGroup> effectGroups = new List<EffectGroup>();
+
+            foreach (EffectGroup effectGroup in nameToEffectGroup.Values) {
+                effectGroups.Add(effectGroup);
+            }
+            return effectGroups;
         }
 
         private void NewFile() {
@@ -238,6 +231,10 @@ namespace EffectCreator {
             else {
                 return true;
             }
+        }
+
+        public List<string> RowKeys() {
+            return nameToEffectGroup.Keys.ToList();
         }
     }
 }
