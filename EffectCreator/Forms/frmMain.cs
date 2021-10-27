@@ -224,6 +224,12 @@ namespace EffectCreator {
             }
         }
 
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e) {
+            if (!HandleDirty()) {
+                e.Cancel = true;
+            }
+        }
+
         private bool HandleDirty() {
             if (isDirty) {
                 return IOHandler.HandleDirty(EffectGroups());
