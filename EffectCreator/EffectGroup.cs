@@ -1,5 +1,7 @@
-﻿namespace EffectCreator {
-    public class EffectGroup {
+﻿using System;
+
+namespace EffectCreator {
+    public class EffectGroup : ICloneable {
         public string Name { get; }
         public string Description { get; }
         public float Radius { get; }
@@ -18,6 +20,18 @@
             SoundType = soundType;
             Cooldown = cooldown;
             Effects = effects;
+        }
+
+        public object Clone() {
+            IEffect[] effects = new IEffect[Effects.Length];
+            string newName = Name + " - Copy";
+
+            for (int i = 0; i < Effects.Length; i++) {
+                effects[i] = (IEffect)Effects[i].Clone();
+            }
+
+            EffectGroup effectGroup = new EffectGroup(newName, Description, Radius, Type, ParticleName, SoundType, Cooldown, effects);
+            return effectGroup;
         }
     }
 }

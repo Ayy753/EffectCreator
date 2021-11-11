@@ -89,6 +89,15 @@ namespace EffectCreator {
             lbEffectGroups.SelectedIndex = lbEffectGroups.Items.Count - 1;
         }
 
+        private void CreateNewEffectGroup(EffectGroup newEffectGroup) {
+            string effectGroupName = newEffectGroup.Name;
+            nameToEffectGroup[effectGroupName] = newEffectGroup;
+            lbEffectGroups.Items.Add(effectGroupName);
+
+            ucEffectGroup1.Visible = true;
+            lbEffectGroups.SelectedIndex = lbEffectGroups.Items.Count - 1;
+        }
+
         private void btnDeleteEffectGroup_Click(object sender, EventArgs e) {
             int selectedIndex = lbEffectGroups.SelectedIndex;
             if (selectedIndex!= -1) {
@@ -241,6 +250,13 @@ namespace EffectCreator {
 
         public List<string> RowKeys() {
             return nameToEffectGroup.Keys.ToList();
+        }
+
+        private void btnDuplicate_Click(object sender, EventArgs e) {
+            selectedRow = lbEffectGroups.SelectedItem.ToString();
+            EffectGroup selectedEffectGroup = nameToEffectGroup[selectedRow];
+            EffectGroup newEffectGroup = (EffectGroup)selectedEffectGroup.Clone();
+            CreateNewEffectGroup(newEffectGroup);
         }
     }
 }

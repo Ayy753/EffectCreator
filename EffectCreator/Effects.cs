@@ -8,6 +8,10 @@
             Potency = potency;
             Type = damageType;
         }
+
+        public object Clone() {
+            return new Damage(Name, Potency, Type);
+        }
     }
 
     public struct Buff : IStatusEffect, IStatMod {
@@ -22,6 +26,10 @@
             StatType = statType;
             Duration = duration;
             Expires = expires;
+        }
+
+        public object Clone() {
+            return new Buff(Name, Potency, Duration, StatType, Expires);
         }
     }
 
@@ -38,6 +46,10 @@
             Potency = potency;
             Type = damageType;
             Expires = expires;
+        }
+
+        public object Clone() {
+            return new DamageOverTime(Name, Potency, Duration, Type, Expires);
         }
     }
 
@@ -57,6 +69,10 @@
             ResistType = resistType;
             Expires = expires;
         }
+
+        public object Clone() {
+            return new Debuff(Name, Potency, Duration, StatType, ResistType, Expires);
+        }
     }
 
     public struct Heal : IEffect{
@@ -66,6 +82,10 @@
         public Heal(string name, float potency) {
             Name = name;
             Potency = potency;
+        }
+
+        public object Clone() {
+            return new Heal(Name, Potency);
         }
     }
 
@@ -78,6 +98,10 @@
             Name = name;
             Potency = potency;
             StatType = statType;
+        }
+
+        public object Clone() {
+            return new StatMod(Name, Potency, StatType);
         }
     }
 }

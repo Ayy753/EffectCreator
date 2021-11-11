@@ -1,5 +1,7 @@
-﻿namespace EffectCreator {
-    public interface IEffect {
+﻿using System;
+
+namespace EffectCreator {
+    public interface IEffect : ICloneable {
         float Potency { get; }
         string Name { get; }
     }
